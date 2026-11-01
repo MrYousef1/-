@@ -32,11 +32,21 @@
             transition: all 0.25s ease;
         }
 
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            height: 100%;
+            background-color: #f4f7f6;
+        }
+
         body {
             background-color: #f4f7f6;
             color: var(--dark);
             line-height: 1.6;
-            padding-bottom: 60px;
+            padding-bottom: 0;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
         }
 
         /* Auth Modal Styles */
@@ -44,56 +54,63 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(8px);
             z-index: 9999;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
+            padding: 12px;
+            box-sizing: border-box;
         }
 
         .auth-card {
             background: var(--white);
             border-radius: var(--radius);
-            max-width: 480px;
             width: 100%;
-            padding: 2.5rem;
+            max-width: 480px;
+            padding: 1.8rem 1.5rem;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             text-align: center;
             position: relative;
             border-top: 6px solid var(--primary);
+            max-height: 90vh;
+            overflow-y: auto;
+            margin: 0 auto;
+            box-sizing: border-box;
         }
 
         .auth-card h2 {
             font-family: 'Amiri', serif;
             color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
         }
 
         .auth-card p {
             color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
         }
 
         .plan-selector {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
         }
 
         .plan-box {
-            flex: 1;
+            flex: 1 1 140px;
             border: 2px solid #cbd5e1;
-            padding: 1rem;
+            padding: 0.8rem 0.5rem;
             border-radius: 12px;
             cursor: pointer;
             text-align: center;
             background: #f8fafc;
+            box-sizing: border-box;
         }
 
         .plan-box.active {
@@ -103,35 +120,36 @@
 
         .plan-box h4 {
             color: var(--primary);
-            font-size: 1.1rem;
+            font-size: 0.95rem;
         }
 
         .plan-box .price {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             font-weight: 800;
             color: var(--dark);
-            margin-top: 0.3rem;
+            margin-top: 0.2rem;
         }
 
         .form-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             text-align: right;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         .form-control {
             width: 100%;
-            padding: 0.8rem 1rem;
+            padding: 0.75rem 1rem;
             border-radius: 10px;
             border: 1px solid #cbd5e1;
-            font-size: 1rem;
+            font-size: 0.95rem;
             outline: none;
+            box-sizing: border-box;
         }
 
         .form-control:focus {
@@ -139,19 +157,68 @@
             box-shadow: 0 0 0 3px rgba(15, 81, 50, 0.15);
         }
 
-        .otp-box {
-            display: none;
+        /* Payment Details Box */
+        .payment-box {
+            background: #f8fafc;
+            border: 1px dashed var(--primary-light);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            text-align: right;
         }
 
-        /* Header & Navigation */
+        .payment-title {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .payment-item {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .payment-item strong {
+            color: #1e293b;
+            font-size: 1.05rem;
+            direction: ltr;
+        }
+
+        .voda-fee-note {
+            font-size: 0.8rem;
+            color: #b91c1c;
+            background: #fef2f2;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            margin-top: 0.3rem;
+            width: 100%;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Header & Navigation Fixes */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, #083320 100%);
             color: var(--white);
-            padding: 1.2rem 2rem;
+            padding: 0.8rem 1rem;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .header-container {
@@ -160,8 +227,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .logo {
@@ -173,35 +240,48 @@
         }
 
         .logo-icon {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             background: var(--secondary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--primary);
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            flex-shrink: 0;
         }
 
         .logo-text h1 {
             font-family: 'Amiri', serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             line-height: 1.1;
             color: var(--secondary-light);
         }
 
         .logo-text span {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             opacity: 0.9;
             font-weight: 400;
         }
 
+        /* Burger Menu Button */
+        .burger-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--white);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 0.4rem;
+        }
+
+        /* Navigation Desktop & Mobile Drawer */
         nav ul {
             display: flex;
             list-style: none;
-            gap: 1.2rem;
+            gap: 0.8rem;
             align-items: center;
         }
 
@@ -209,52 +289,120 @@
             color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem 0.9rem;
+            padding: 0.4rem 0.9rem;
             border-radius: 20px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.08);
         }
 
         nav a:hover, nav a.active {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.25);
             color: var(--white);
+        }
+
+        @media (max-width: 991px) {
+            .burger-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 260px;
+                height: 100vh;
+                background: #083320;
+                box-shadow: -5px 0 25px rgba(0,0,0,0.4);
+                padding: 2rem 1.2rem;
+                z-index: 1000;
+                transition: right 0.3s ease;
+            }
+
+            nav.open {
+                right: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+
+            nav a {
+                width: 100%;
+                padding: 0.8rem 1rem;
+                font-size: 1rem;
+            }
+
+            .nav-close-btn {
+                display: block !important;
+                background: transparent;
+                border: none;
+                color: #fff;
+                font-size: 1.5rem;
+                cursor: pointer;
+                text-align: left;
+            }
+        }
+
+        .nav-close-btn {
+            display: none;
+        }
+
+        .nav-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .nav-backdrop.show {
+            display: block;
         }
 
         .user-status {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .points-badge {
             background: linear-gradient(45deg, #f59e0b, var(--secondary));
             color: #000;
-            padding: 0.5rem 1.2rem;
+            padding: 0.4rem 0.9rem;
             border-radius: 30px;
             font-weight: 800;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            font-size: 0.85rem;
             box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
         }
 
         .user-profile-badge {
             background: rgba(255,255,255,0.15);
-            padding: 0.4rem 1rem;
+            padding: 0.35rem 0.8rem;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(15, 81, 50, 0.92), rgba(8, 51, 32, 0.95)), url('https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&q=80') center/cover;
             color: var(--white);
-            padding: 3.5rem 2rem;
+            padding: 3.5rem 1.5rem;
             text-align: center;
         }
 
@@ -265,7 +413,7 @@
 
         .hero h2 {
             font-family: 'Amiri', serif;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--secondary);
             margin-bottom: 0.8rem;
         }
@@ -278,23 +426,50 @@
             border-radius: 0 12px 12px 0;
             margin: 1.5rem auto;
             max-width: 750px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #fff;
+        }
+
+        /* Vision Section */
+        .vision-section {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem 1.5rem;
+            box-shadow: var(--shadow);
+            margin: 2rem auto;
+            border-right: 6px solid var(--primary);
+        }
+
+        .vision-title {
+            color: var(--primary);
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vision-text {
+            color: #334155;
+            font-size: 1.05rem;
+            line-height: 2;
         }
 
         /* Layout Container */
         .container {
             max-width: 1200px;
             margin: 2rem auto;
-            padding: 0 1.5rem;
+            padding: 0 1rem;
+            box-sizing: border-box;
         }
 
         /* Quran Section */
         .quran-card {
             background: var(--white);
             border-radius: var(--radius);
-            padding: 2rem;
+            padding: 1.8rem 1.2rem;
             box-shadow: var(--shadow);
             margin-bottom: 2.5rem;
             border-top: 5px solid var(--primary);
@@ -347,6 +522,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            text-decoration: none;
         }
 
         .btn:hover {
@@ -368,6 +544,58 @@
             font-size: 1.05rem;
         }
 
+        .btn-instapay {
+            background: #25093a;
+            color: #fff;
+        }
+
+        .btn-instapay:hover {
+            background: #3b105c;
+            color: #fff;
+        }
+
+        /* Lecture Plans Grid */
+        .lecture-plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .lecture-plan-card {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .lecture-plan-card.highlight {
+            border-color: var(--secondary);
+            background: var(--secondary-light);
+        }
+
+        .lecture-plan-card h4 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .lecture-plan-card .plan-price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin: 0.5rem 0;
+        }
+
+        .lecture-plan-card .plan-schedule {
+            color: #64748b;
+            font-size: 0.92rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
         /* Tabs Navigation for Quran View */
         .quran-tabs {
             display: flex;
@@ -378,7 +606,7 @@
         }
 
         .quran-tab {
-            padding: 0.8rem 1.5rem;
+            padding: 0.8rem 1.2rem;
             background: #f1f5f9;
             border: none;
             border-radius: 10px 10px 0 0;
@@ -404,7 +632,7 @@
             background: var(--secondary-light);
             border: 1px solid #e2d29b;
             border-radius: 12px;
-            padding: 2.5rem 1.5rem;
+            padding: 2rem 1.2rem;
             text-align: center;
             margin-bottom: 1.5rem;
             min-height: 250px;
@@ -412,8 +640,8 @@
 
         .quran-text {
             font-family: 'Amiri', serif;
-            font-size: 1.8rem;
-            line-height: 2.4;
+            font-size: 1.7rem;
+            line-height: 2.3;
             color: #2c3e50;
             margin-bottom: 1.5rem;
         }
@@ -436,7 +664,7 @@
             background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 1.5rem;
+            padding: 1.2rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
@@ -475,7 +703,7 @@
         /* Moral Tracker Section */
         .morals-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.2rem;
             margin-top: 1.5rem;
         }
@@ -516,14 +744,14 @@
         .wishlist-section {
             background: var(--white);
             border-radius: var(--radius);
-            padding: 2rem;
+            padding: 1.8rem 1.2rem;
             box-shadow: var(--shadow);
             margin-bottom: 2.5rem;
         }
 
         .add-wish-form {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) auto;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) auto;
             gap: 1rem;
             background: #f8fafc;
             padding: 1.2rem;
@@ -533,7 +761,7 @@
 
         .wishes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.5rem;
         }
 
@@ -582,7 +810,7 @@
         .forum-section {
             background: var(--white);
             border-radius: var(--radius);
-            padding: 2rem;
+            padding: 1.8rem 1.2rem;
             box-shadow: var(--shadow);
         }
 
@@ -593,14 +821,15 @@
         }
 
         .avatar-select {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             background: #e2e8f0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+            flex-shrink: 0;
         }
 
         textarea {
@@ -610,7 +839,7 @@
             border: 1px solid #cbd5e1;
             resize: none;
             height: 90px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             outline: none;
         }
 
@@ -646,12 +875,88 @@
             border-radius: 10px;
         }
 
+        body:not(.subscriber-active) #quran,
+        body:not(.subscriber-active) #morals,
+        body:not(.subscriber-active) #wishlist,
+        body:not(.subscriber-active) #community,
+        body:not(.subscriber-active) .user-status { display: none !important; }
+
+        /* Public lectures section */
+        .lectures-section {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.8rem 1.2rem;
+            box-shadow: var(--shadow);
+            margin: 2rem auto 2.5rem;
+            border-top: 5px solid var(--secondary);
+        }
+
+        .lectures-intro {
+            background: linear-gradient(135deg, #fdf6e2, #fffdf7);
+            border-right: 4px solid var(--secondary);
+            border-radius: 0 14px 14px 0;
+            padding: 1.2rem;
+            color: #334155;
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 1.4rem;
+        }
+
+        .lectures-lead {
+            color: var(--primary);
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: .8rem;
+        }
+
+        .lecture-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .lecture-feature {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .lecture-feature i {
+            color: var(--secondary);
+            font-size: 1.7rem;
+            margin-bottom: .65rem;
+        }
+
+        .lecture-feature h4 { color: var(--primary); margin-bottom: .45rem; }
+        .lecture-feature p { color: #64748b; font-size: .92rem; }
+
+        .lecture-actions {
+            display: flex;
+            justify-content: center;
+            gap: .8rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .lecture-note {
+            text-align: center;
+            color: #64748b;
+            font-size: .9rem;
+            margin-top: 1rem;
+        }
+
         footer {
             background: var(--dark);
             color: var(--white);
             text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .fb-link {
@@ -670,14 +975,24 @@
 </head>
 <body>
 
+    <!-- Backdrop for Drawer Navigation -->
+    <div class="nav-backdrop" id="navBackdrop" onclick="closeNavDrawer()"></div>
+
     <!-- Auth / Subscription Modal -->
-    <div class="auth-overlay" id="authModal">
+    <div class="auth-overlay" id="authModal" style="display:none;">
         <div class="auth-card">
             <div class="logo-icon" style="margin: 0 auto 1rem;"><i class="fa-solid fa-book-quran"></i></div>
             <h2>انضم لإسرة «قُرَّةَ أَعْيُنٍ»</h2>
             <p>سجّل حسابك واختر نظام الاشتراك للبدء في رحلة القرآن والأخلاق والتدبر</p>
 
-            <!-- Step 1: Registration Form -->
+            <div id="authMessage" role="status" style="display:none; margin:0.8rem 0; padding:0.7rem; border-radius:10px; background:#fff7ed; color:#9a3412;"></div>
+
+            <div id="authModeSwitch" style="display:flex; gap:0.5rem; margin:1rem 0;">
+                <button type="button" class="btn btn-secondary" style="flex:1" onclick="showAuthMode('signup')">إنشاء حساب</button>
+                <button type="button" class="btn btn-secondary" style="flex:1" onclick="showAuthMode('login')">تسجيل الدخول</button>
+            </div>
+
+            <!-- Registration Form -->
             <div id="stepRegistration">
                 <div class="form-group">
                     <label>اختر خطة الاشتراك:</label>
@@ -697,30 +1012,69 @@
 
                 <div class="form-group">
                     <label>الاسم الكامل / اسم المشترك:</label>
-                    <input type="text" id="userNameInput" class="form-control" placeholder="أدخل اسمك هنا">
+                    <input type="text" id="userNameInput" class="form-control" placeholder="أدخل اسمك هنا" autocomplete="name">
                 </div>
 
                 <div class="form-group">
-                    <label>رقم الواتساب (لتلقي كود التفعيل):</label>
-                    <input type="tel" id="whatsappInput" class="form-control" placeholder="مثال: 01012345678">
+                    <label>البريد الإلكتروني:</label>
+                    <input type="email" id="signupEmail" class="form-control" placeholder="name@example.com" autocomplete="email">
                 </div>
 
-                <button class="btn btn-full" onclick="sendWhatsAppCode()"><i class="fa-brands fa-whatsapp"></i> إرسال كود التفعيل عبر الواتساب</button>
+                <div class="form-group">
+                    <label>كلمة المرور:</label>
+                    <input type="password" id="signupPassword" class="form-control" placeholder="8 أحرف على الأقل" autocomplete="new-password">
+                </div>
+
+                <button class="btn btn-full" id="signupButton" onclick="signUpWithEmail()"><i class="fa-solid fa-user-plus"></i> إنشاء الحساب</button>
+                
+                <div style="margin-top: 1rem; border-top: 1px solid #e2e8f0; padding-top: 0.8rem;">
+                    <small style="color: #64748b;">يمكنك أيضاً تعبئة نموذج التسجيل مباشرة عبر جوجل:</small><br>
+                    <a href="https://forms.gle/zrwrqRLSQXDmexMz9" target="_blank" style="color: var(--primary); font-weight: 700; font-size: 0.88rem; text-decoration: underline;"><i class="fa-solid fa-file-signature"></i> رابط نموذج تسجيل المنصة</a>
+                </div>
             </div>
 
-            <!-- Step 2: OTP Verification -->
-            <div id="stepOtp" class="otp-box">
-                <p style="color: #15803d; font-weight: 700; margin-bottom: 1rem;">
-                    <i class="fa-solid fa-paper-plane"></i> تم إرسال كود التفعيل إلى رقم الواتساب الخاص بك!
-                </p>
-                
+            <div id="stepLogin" style="display:none;">
                 <div class="form-group">
-                    <label>أدخل كود التفعيل (رمز التحقق):</label>
-                    <input type="text" id="otpInput" class="form-control" placeholder="أدخل الكود المكون من 4 أرقام" style="text-align: center; font-size: 1.5rem; letter-spacing: 5px;">
+                    <label>البريد الإلكتروني:</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="name@example.com" autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور:</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="أدخل كلمة المرور" autocomplete="current-password">
+                </div>
+                <button class="btn btn-full" id="loginButton" onclick="signInWithEmail()"><i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول</button>
+                <button type="button" class="btn btn-secondary btn-full" style="margin-top:0.5rem;" onclick="resetPassword()">نسيت كلمة المرور؟</button>
+            </div>
+
+            <!-- شاشة انتظار التفعيل وطرق الدفع -->
+            <div id="stepPending" style="display:none; text-align:center;">
+                <p style="margin:0.8rem 0; color:#9a3412; font-weight:700;">حسابك مسجل، لكن الاشتراك لم يُفعّل بعد.</p>
+                
+                <div class="payment-box">
+                    <div class="payment-title"><i class="fa-solid fa-wallet"></i> طرق تحويل رسوم الاشتراك للتفعيل:</div>
+                    
+                    <div class="payment-item">
+                        <span><i class="fa-solid fa-mobile-screen-button" style="color:#e60000;"></i> فودافون كاش:</span>
+                        <div>
+                            <strong>01033253907</strong>
+                            <button class="btn btn-secondary" style="padding:0.2rem 0.5rem; font-size:0.75rem; margin-right:5px;" onclick="copyVoda()"><i class="fa-solid fa-copy"></i> نسخ</button>
+                        </div>
+                        <div class="voda-fee-note"><i class="fa-solid fa-circle-info"></i> يرجى إضافة 1% زيادة للتحويل بـ فودافون كاش كرسوم سحب.</div>
+                    </div>
+
+                    <div class="payment-item">
+                        <span><i class="fa-solid fa-bolt" style="color:#25093a;"></i> انستا باي (InstaPay):</span>
+                        <div>
+                            <strong>01033253907</strong>
+                            <button class="btn btn-secondary" style="padding:0.2rem 0.5rem; font-size:0.75rem; margin-right:5px;" onclick="copyInsta()"><i class="fa-solid fa-copy"></i> نسخ</button>
+                            <a href="https://ipn.eg/S/coyoussef/instapay/31C4dn" target="_blank" class="btn btn-instapay" style="padding:0.3rem 0.6rem; font-size:0.75rem; margin-top:5px; display:inline-block;"><i class="fa-solid fa-arrow-up-right-from-square"></i> تحويل مباشر عبر التطبيق</a>
+                        </div>
+                    </div>
                 </div>
 
-                <button class="btn btn-full" onclick="verifyOtp()"><i class="fa-solid fa-check-circle"></i> تأكيد وتفعيل الاشتراك</button>
-                <button class="btn btn-secondary btn-full" style="margin-top: 0.5rem;" onclick="backToReg()">تغيير رقم الهاتف</button>
+                <p style="font-size:0.85rem; color:#64748b; margin-bottom:1rem;">بعد التحويل، يرجى ملء نموذج تسجيل المنصة أو التواصل مع الإدارة لإرسال صورة التحويل وتفعيل الحساب فوراً.</p>
+                <a href="https://forms.gle/zrwrqRLSQXDmexMz9" target="_blank" class="btn btn-secondary btn-full" style="margin-bottom:0.5rem;"><i class="fa-solid fa-file-invoice"></i> إرسال إثبات الدفع عبر نموذج التسجيل</a>
+                <button class="btn btn-full" style="background:#475569;" onclick="signOutUser()">تسجيل الخروج</button>
             </div>
         </div>
     </div>
@@ -736,12 +1090,18 @@
                 </div>
             </a>
             
-            <nav>
+            <!-- Burger button for mobile -->
+            <button class="burger-btn" onclick="openNavDrawer()"><i class="fa-solid fa-bars"></i></button>
+
+            <nav id="sideNav">
+                <button class="nav-close-btn" onclick="closeNavDrawer()"><i class="fa-solid fa-xmark"></i></button>
                 <ul>
-                    <li><a href="#quran" class="active"><i class="fa-solid fa-book-open"></i> المصحف والتدبر</a></li>
-                    <li><a href="#morals"><i class="fa-solid fa-heart"></i> الأخلاق</a></li>
-                    <li><a href="#wishlist"><i class="fa-solid fa-gift"></i> الأماني</a></li>
-                    <li><a href="#community"><i class="fa-solid fa-users"></i> المنتدى</a></li>
+                    <li><a href="#vision" onclick="closeNavDrawer()"><i class="fa-solid fa-eye"></i> الرؤية والرسالة</a></li>
+                    <li><a href="#quran" class="active" onclick="closeNavDrawer()"><i class="fa-solid fa-book-open"></i> المصحف والتدبر</a></li>
+                    <li><a href="#morals" onclick="closeNavDrawer()"><i class="fa-solid fa-heart"></i> الأخلاق</a></li>
+                    <li><a href="#wishlist" onclick="closeNavDrawer()"><i class="fa-solid fa-gift"></i> الأماني</a></li>
+                    <li><a href="#community" onclick="closeNavDrawer()"><i class="fa-solid fa-users"></i> المنتدى</a></li>
+                    <li><a href="#lectures" onclick="closeNavDrawer()"><i class="fa-solid fa-chalkboard-user"></i> المحاضرات</a></li>
                 </ul>
             </nav>
 
@@ -749,7 +1109,7 @@
                 <div class="user-profile-badge" id="userProfileDisplay">
                     <i class="fa-solid fa-user-check"></i>
                     <span id="displayUserName">زائر</span>
-                    <span id="displayPlanType" style="background: var(--secondary); color:#000; padding:0.1rem 0.5rem; border-radius:10px; font-weight:700;">غير مشترك</span>
+                    <span id="displayPlanType" style="background: var(--secondary); color:#000; padding:0.1rem 0.4rem; border-radius:10px; font-weight:700;">غير مشترك</span>
                 </div>
 
                 <div class="points-badge">
@@ -757,7 +1117,7 @@
                     <span>نقاطي: <span id="userPoints">0</span></span>
                 </div>
 
-                <button class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
+                <button class="btn btn-secondary" style="padding: 0.35rem 0.7rem; font-size: 0.8rem;" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
             </div>
         </div>
     </header>
@@ -774,6 +1134,93 @@
                 <i class="fa-brands fa-facebook"></i> تابعنا على فيسبوك
             </a>
         </div>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section id="vision" class="container vision-section">
+        <div class="vision-title">
+            <i class="fa-solid fa-compass"></i> الرؤية والرسالة
+        </div>
+        <div class="vision-text">
+            نسعى إلى تقديم تجربة تعليمية تجمع بين الفهم والتحصيل الدراسي والانتفاع الحقيقي بما نتعلمه. من خلال موقعنا الإلكتروني ومحاضرات التربية الدينية أونلاين، نقدم محتوى تعليميًا يساعد الطالب على فهم الدروس واستيعاب معانيها، والاستعداد الجيد للامتحانات، مع الاهتمام بالقيم والمعاني التربوية التي تحملها المادة.<br>
+            <strong>نؤمن أن التربية الدينية ليست مجرد مادة ندرسها من أجل الامتحان، بل علم نتعلمه ليكون له أثر في أفكارنا وسلوكنا وحياتنا. هدفنا أن نفهم ما نتعلمه، ونعمل بما ينفعنا منه.</strong>
+        </div>
+    </section>
+
+    <!-- Public Online Lectures: available to every visitor -->
+    <section id="lectures" class="lectures-section container">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <div>
+                    <h3>محاضرات الأستاذ يوسف المباشرة</h3>
+                    <small style="color:#64748b;">لقاءات مباشرة للتعلم والحوار والتطبيق أونلاين</small>
+                </div>
+            </div>
+            <span style="background:var(--primary-soft); color:var(--primary); padding:.35rem .8rem; border-radius:20px; font-weight:700;">متاحة لجميع الزوار</span>
+        </div>
+
+        <div class="lectures-intro">
+            <div class="lectures-lead">عمرك فكرت إن فيه حاجات بتعملها كل يوم، وممكن تكون حرام وإنت مش واخد بالك؟</div>
+            <p>وإن فيه تصرفات متعود عليها وفاكر إنها عادية، لكنها محتاجة منك وقفة ومراجعة؟</p>
+            <p>الدين مش مجرد معلومات نعرفها أو كلام بنسمعه، الدين نظام نعيش بيه، ولو عملنا بيه حياتنا هتستقيم.</p>
+            <p>ومع الفتن اللي بنقابلها في حياتنا، من فتن السوشيال ميديا، والتساهل في الكلام والنظر، والشبهات في التعاملات، بقينا محتاجين نفهم ديننا صح، ونتعلم إزاي نطبقه في حياتنا ونواجه بيه التحديات اللي بنقابلها كل يوم.</p>
+            <p>علشان كده هتكون فيه محاضرات نتعلم فيها ديننا ونتعمق في فهمه، ونقرب من ربنا بالعلم والعمل.</p>
+        </div>
+
+        <!-- Lecture Plans Options -->
+        <h4 style="color:var(--primary); text-align:center; font-size:1.3rem; margin-top:1.5rem;">اختر نظام المحاضرات المفضل لك:</h4>
+        <div class="lecture-plans-grid">
+            <div class="lecture-plan-card">
+                <h4>محاضرات فردية (خاصة)</h4>
+                <div class="plan-price">150 ج.م / شهرياً</div>
+                <div class="plan-schedule"><i class="fa-solid fa-calendar-week"></i> حصتان في الأسبوع (طالب واحد)</div>
+                <p style="font-size:0.85rem; color:#64748b;">تركيز كامل ومتابعة شخصية مستمرة مع الطالب.</p>
+            </div>
+
+            <div class="lecture-plan-card highlight">
+                <span style="position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--secondary); color:#000; font-weight:800; padding:0.2rem 0.8rem; border-radius:12px; font-size:0.75rem;">الأكثر طلباً</span>
+                <h4>محاضرات المجموعات</h4>
+                <div class="plan-price">100 ج.م / شهرياً</div>
+                <div class="plan-schedule"><i class="fa-solid fa-users"></i> حصتان في الأسبوع (مجموعة)</div>
+                <p style="font-size:0.85rem; color:#64748b;">نقاش تفاعلي ومشاركة جماعية ممتعة بين الطلاب.</p>
+            </div>
+        </div>
+
+        <div class="lecture-features">
+            <article class="lecture-feature">
+                <i class="fa-solid fa-comments"></i>
+                <h4>نقاش ومشاركة</h4>
+                <p>مساحة للحوار وتبادل الأفكار حول موضوع المحاضرة.</p>
+            </article>
+            <article class="lecture-feature">
+                <i class="fa-solid fa-circle-question"></i>
+                <h4>أسئلتك لها مكان</h4>
+                <p>تقدر تطرح تساؤلاتك ونخصص وقتًا لمناقشتها والإجابة عنها.</p>
+            </article>
+            <article class="lecture-feature">
+                <i class="fa-solid fa-video"></i>
+                <h4>لقاءات مباشرة عبر الإنترنت</h4>
+                <p>تفاعل حي ومشاركة مباشرة، مش مجرد محتوى مسجل تشاهده وحدك.</p>
+            </article>
+        </div>
+
+        <div class="payment-box" style="max-width:700px; margin: 1.5rem auto;">
+            <div class="payment-title"><i class="fa-solid fa-credit-card"></i> طرق دفع رسوم المحاضرات:</div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; align-items:center;">
+                <span style="background:#fff; padding:0.5rem 1rem; border-radius:8px; border:1px solid #cbd5e1;"><i class="fa-solid fa-mobile-screen-button" style="color:#e60000;"></i> فودافون كاش: <strong>01033253907</strong> <button class="btn btn-secondary" style="padding:0.2rem 0.5rem; font-size:0.75rem; margin-right:5px;" onclick="copyVoda()"><i class="fa-solid fa-copy"></i> نسخ</button></span>
+                <span style="background:#fff; padding:0.5rem 1rem; border-radius:8px; border:1px solid #cbd5e1;"><i class="fa-solid fa-bolt" style="color:#25093a;"></i> انستا باي: <strong>01033253907</strong> <button class="btn btn-secondary" style="padding:0.2rem 0.5rem; font-size:0.75rem; margin-right:5px;" onclick="copyInsta()"><i class="fa-solid fa-copy"></i> نسخ</button></span>
+                <a href="https://ipn.eg/S/coyoussef/instapay/31C4dn" target="_blank" class="btn btn-instapay" style="padding:0.5rem 1rem; font-size:0.9rem;"><i class="fa-solid fa-bolt"></i> فتح تطبيق انستا باي</a>
+            </div>
+            <div class="voda-fee-note" style="margin-top:0.8rem;"><i class="fa-solid fa-circle-info"></i> عند تحويل رسوم المحاضرات عن طريق فودافون كاش يرجى إضافة 1% رسوم سحب.</div>
+        </div>
+
+        <div class="lecture-actions">
+            <!-- تم تحديث رابط نموذج جوجل إلى الرابط الجديد -->
+            <a class="btn btn-secondary" style="padding:0.8rem 1.8rem; font-size:1.05rem;" href="https://forms.gle/g6takJnEExV4ttgH9" target="_blank"><i class="fa-solid fa-pen-to-square"></i> حجز المحاضرات المباشرة الآن (نموذج جوجل)</a>
+            <button class="btn" type="button" onclick="openAccountModal()"><i class="fa-solid fa-user-lock"></i> دخول المشتركين للمنصة</button>
+        </div>
+        <p class="lecture-note">قسم المحاضرات متاح لجميع الزوار، واشتراك المحاضرات يكون مستقلًا عن اشتراك المنصة.</p>
     </section>
 
     <!-- Main Container -->
@@ -850,7 +1297,7 @@
             <div id="tafsirTab" class="tab-content">
                 <div class="tafsir-box">
                     <h4 style="margin-bottom: 0.8rem; font-size: 1.1rem;"><i class="fa-solid fa-graduation-cap"></i> التفسير الميسّر ومعاني الكلمات للصفحة:</h4>
-                    <p id="tafsirText" style="line-height: 1.8; font-size: 1.05rem;">جاري تحميل التفسير والمعاني...</p>
+                    <div id="tafsirText" style="line-height: 1.8; font-size: 1.05rem;">جاري تحميل التفسير والمعاني...</div>
                 </div>
             </div>
 
@@ -985,11 +1432,23 @@
         <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.5rem;">نحو جيل فريد يجمع بين نور القرآن ومكارم الأخلاق والتدبر الفهيم</p>
     </footer>
 
+    <!-- Supabase JavaScript client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <!-- JavaScript Logic -->
     <script>
+        // Drawer Navigation Logic
+        function openNavDrawer() {
+            document.getElementById('sideNav').classList.add('open');
+            document.getElementById('navBackdrop').classList.add('show');
+        }
+
+        function closeNavDrawer() {
+            document.getElementById('sideNav').classList.remove('open');
+            document.getElementById('navBackdrop').classList.remove('show');
+        }
+
         // State & Subscription Management
-        let userPlan = JSON.parse(localStorage.getItem('qurrat_user_plan')) || null;
-        let generatedOtp = null;
         let selectedPlanType = 'monthly';
         let selectedPlanPrice = 150;
 
@@ -1000,43 +1459,62 @@
             { id: 2, title: 'كتاب أول مرة أتدبر القرآن', points: 30, img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80' }
         ];
 
-        // Book Data extracted from "أول مرة أتدبر القرآن"
-        const tadabburData = {
-            1: {
-                axis: "تحديد معالم الدين وأصوله وفروعه، وتأسيس عقيدة العبودية لله.",
-                naming: "الفاتحة: لافتتاح المصحف بها. أم الكتاب: لاشتماؤها على جميع مقاصد الدين. السبع المثاني: لأنها تُثنى وتُكرر في كل ركعة.",
-                benefits: "• بدأت بالحمد لأن الله يبدأ عباده بالمن والعطاء قبل أن يسألوه.<br>• جمعت أصل عمل القلوب: الإخلاص (إياك نعبد) والتوكل (إياك نستعين).<br>• قدمت العبادة على الاستعانة لأن العبادة هي الوسيلة إليها."
-            },
-            2: {
-                axis: "الاستخلاف في الأرض بمنهج الله تعالى، وإعداد الأمة للقيام بالأمانة.",
-                naming: "البقرة: لقصة البقرة التي تؤكد وجوب الانقياد والاستسلام لأوامر الله. الزهراء: المضيئة. السنام: لأنها أعلى السور مكاناً. الفسطاط: كمركز الخيمة الرئيسي.",
-                benefits: "• تضمنت 3 تجارب استخلاف: آدم (التمهيد)، بني إسرائيل (الفشل والدروس)، إبراهيم (النموذج الناجح).<br>• تدرجت في إعداد النفس بالتقوى قبل ذكر أحكام الأسرة والتشريعات الجنائية والمالية.<br>• سورة البقرة هي السورة الوحيدة التي ذكرت أركان الإسلام كاملة."
-            },
-            3: {
-                axis: "الثبات على دين الله ومنهجه في مواجهة الأفكار الشبهات الخارجية والابتلاءات الداخلية.",
-                naming: "آل عمران: لأن بيت آل عمران كان رمزاً للثبات والصلاح وخدمة الدين. الزهراء: لأنها تنير الطريق مع سورة البقرة.",
-                benefits: "• القسم الأول يوضح الثبات أمام الأفكار الخارجية (حوار وفد نجران).<br>• القسم الثاني يوضح الثبات داخلياً وتصحيح النفوس (غزوة أحد).<br>• جعلت نموذج الثبات امرأتين: امرأة عمران ومريم بنت عمران، للتدليل على دور المرأة العظيم."
-            }
-        };
+        // Supabase Authentication & Subscription
+        const SUPABASE_URL = 'https://shecebaqbyflhpjzowso.supabase.co';
+        const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_hX4YiXc_VfhzADuW4zqn0Q_gNaGbLc4';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+        let currentUser = null;
+        let currentSubscription = null;
 
-        // App Initialization
-        document.addEventListener('DOMContentLoaded', () => {
-            checkAuthStatus();
+        document.addEventListener('DOMContentLoaded', async () => {
+            await checkAuthStatus();
             updatePointsDisplay();
             initQuranSelect();
             loadQuranPage(1);
             renderWishes();
         });
 
-        // Subscription & Auth Handlers
-        function checkAuthStatus() {
-            if (userPlan && userPlan.isVerified) {
-                document.getElementById('authModal').style.display = 'none';
-                document.getElementById('displayUserName').innerText = userPlan.name;
-                document.getElementById('displayPlanType').innerText = userPlan.type === 'yearly' ? 'اشتراك سنوي (1000ج)' : 'اشتراك شهري (150ج)';
-            } else {
-                document.getElementById('authModal').style.display = 'flex';
-            }
+        function copyVoda() {
+            navigator.clipboard.writeText('01033253907');
+            alert('تم نسخ رقم فودافون كاش (01033253907) بنجاح!');
+        }
+
+        function copyInsta() {
+            navigator.clipboard.writeText('01033253907');
+            alert('تم نسخ رقم InstaPay (01033253907) بنجاح!');
+        }
+
+        function setProtectedSectionsAccess(allowed) {
+            document.body.classList.toggle('subscriber-active', !!allowed);
+        }
+
+        function openAccountModal() {
+            const modal = document.getElementById('authModal');
+            modal.style.display = 'flex';
+            showAuthMode('signup');
+            clearAuthMessage();
+        }
+
+        function showAuthMessage(message, isError = false) {
+            const box = document.getElementById('authMessage');
+            box.textContent = message;
+            box.style.display = 'block';
+            box.style.background = isError ? '#fef2f2' : '#fff7ed';
+            box.style.color = isError ? '#b91c1c' : '#9a3412';
+        }
+
+        function clearAuthMessage() {
+            const box = document.getElementById('authMessage');
+            box.textContent = '';
+            box.style.display = 'none';
+        }
+
+        function showAuthMode(mode) {
+            clearAuthMessage();
+            document.getElementById('authModeSwitch').style.display = 'flex';
+            document.getElementById('stepRegistration').style.display = mode === 'signup' ? 'block' : 'none';
+            document.getElementById('stepLogin').style.display = mode === 'login' ? 'block' : 'none';
+            document.getElementById('stepPending').style.display = 'none';
         }
 
         function selectPlan(type, price, el) {
@@ -1046,57 +1524,146 @@
             el.classList.add('active');
         }
 
-        function sendWhatsAppCode() {
+        async function signUpWithEmail() {
+            clearAuthMessage();
             const name = document.getElementById('userNameInput').value.trim();
-            const phone = document.getElementById('whatsappInput').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const password = document.getElementById('signupPassword').value;
 
-            if (!name || !phone) {
-                alert('يرجى كتابة الاسم الكامل ورقم الواتساب للاستمرار.');
+            if (!name || !email || password.length < 8) {
+                showAuthMessage('اكتب الاسم والبريد الإلكتروني، واجعل كلمة المرور 8 أحرف على الأقل.', true);
                 return;
             }
 
-            // Generate Random 4-digit OTP
-            generatedOtp = Math.floor(1000 + Math.random() * 9000).toString();
+            const button = document.getElementById('signupButton');
+            button.disabled = true;
+            button.textContent = 'جارٍ إنشاء الحساب...';
 
-            // Store temporary info
-            userPlan = {
-                name: name,
-                phone: phone,
-                type: selectedPlanType,
-                price: selectedPlanPrice,
-                isVerified: false
-            };
+            try {
+                const { data, error } = await supabaseClient.auth.signUp({
+                    email,
+                    password,
+                    options: {
+                        data: { full_name: name, plan: selectedPlanType },
+                        emailRedirectTo: 'https://mryousef1.github.io/-/'
+                    }
+                });
+                if (error) throw error;
 
-            // Simulated SMS/WhatsApp Sending Notification
-            alert(`[محاكاة إرسال واتساب]\nتم إرسال كود التفعيل إلى الواتساب الخاص بالرقم (${phone}):\n\nرمز التحقق الخاص بك هو: [ ${generatedOtp} ]`);
+                document.getElementById('authModal').style.display = 'flex';
+                document.getElementById('authModeSwitch').style.display = 'flex';
+                document.getElementById('stepRegistration').style.display = 'none';
+                document.getElementById('stepLogin').style.display = 'none';
+                document.getElementById('stepPending').style.display = 'block';
+                showAuthMessage('تم تسجيل الدخول بنجاح، لكن اشتراكك ما زال في انتظار التفعيل.', false);
 
-            document.getElementById('stepRegistration').style.display = 'none';
-            document.getElementById('stepOtp').style.display = 'block';
-        }
-
-        function verifyOtp() {
-            const enteredOtp = document.getElementById('otpInput').value.trim();
-
-            if (enteredOtp === generatedOtp) {
-                userPlan.isVerified = true;
-                localStorage.setItem('qurrat_user_plan', JSON.stringify(userPlan));
-                alert(`تم تفعيل اشتراكك الـ (${userPlan.type === 'yearly' ? 'سنوي' : 'شهري'}) بنجاح! أهلاً بك يا ${userPlan.name} في منصة «قُرَّةَ أَعْيُنٍ».`);
-                checkAuthStatus();
-            } else {
-                alert('كود التفعيل غير صحيح! يرجى التأكد وإعادة المحاولة.');
+            } catch (error) {
+                showAuthMessage(error.message || 'تعذر إنشاء الحساب. حاول مرة أخرى.', true);
+            } finally {
+                button.disabled = false;
+                button.innerHTML = '<i class="fa-solid fa-user-plus"></i> إنشاء الحساب';
             }
         }
 
-        function backToReg() {
-            document.getElementById('stepOtp').style.display = 'none';
-            document.getElementById('stepRegistration').style.display = 'block';
+        async function signInWithEmail() {
+            clearAuthMessage();
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            if (!email || !password) {
+                showAuthMessage('اكتب البريد الإلكتروني وكلمة المرور.', true);
+                return;
+            }
+
+            const button = document.getElementById('loginButton');
+            button.disabled = true;
+            button.textContent = 'جارٍ تسجيل الدخول...';
+            try {
+                const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+                if (error) throw error;
+                await refreshUserAndSubscription(data.user);
+            } catch (error) {
+                showAuthMessage(error.message || 'تعذر تسجيل الدخول.', true);
+            } finally {
+                button.disabled = false;
+                button.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول';
+            }
+        }
+
+        async function resetPassword() {
+            const email = document.getElementById('loginEmail').value.trim();
+            if (!email) {
+                showAuthMessage('اكتب بريدك الإلكتروني أولًا، ثم اضغط نسيت كلمة المرور.');
+                return;
+            }
+            const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+                redirectTo: 'https://mryousef1.github.io/-/'
+            });
+            if (error) showAuthMessage(error.message, true);
+            else showAuthMessage('إذا كان البريد مسجلًا، ستصلك رسالة لاستعادة كلمة المرور.');
+        }
+
+        async function refreshUserAndSubscription(user) {
+            currentUser = user;
+            const { data, error } = await supabaseClient
+                .from('subscriptions')
+                .select('plan,status,starts_at,expires_at')
+                .eq('user_id', user.id)
+                .maybeSingle();
+
+            if (error) {
+                setProtectedSectionsAccess(false);
+                showAuthMessage('تم تسجيل الدخول، لكن تعذر قراءة حالة الاشتراك.', true);
+                document.getElementById('authModal').style.display = 'flex';
+                return;
+            }
+
+            currentSubscription = data;
+            if (data && data.status === 'active' && (!data.expires_at || new Date(data.expires_at) > new Date())) {
+                document.getElementById('authModal').style.display = 'none';
+                setProtectedSectionsAccess(true);
+                document.getElementById('displayUserName').innerText =
+                    user.user_metadata?.full_name || user.email || 'مشترك';
+                document.getElementById('displayPlanType').innerText =
+                    data.plan === 'yearly' ? 'اشتراك سنوي' : 'اشتراك شهري';
+            } else {
+                setProtectedSectionsAccess(false);
+                document.getElementById('authModal').style.display = 'flex';
+                document.getElementById('authModeSwitch').style.display = 'flex';
+                document.getElementById('stepRegistration').style.display = 'none';
+                document.getElementById('stepLogin').style.display = 'none';
+                document.getElementById('stepPending').style.display = 'block';
+                showAuthMessage('تم تسجيل الدخول بنجاح، لكن اشتراكك ما زال في انتظار التفعيل.', false);
+            }
+        }
+
+        async function checkAuthStatus() {
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            if (session?.user) {
+                await refreshUserAndSubscription(session.user);
+            } else {
+                currentUser = null;
+                currentSubscription = null;
+                document.getElementById('authModal').style.display = 'none';
+                setProtectedSectionsAccess(false);
+            }
+        }
+
+        async function signOutUser() {
+            const { error } = await supabaseClient.auth.signOut();
+            if (error) {
+                showAuthMessage(error.message, true);
+                return;
+            }
+            currentUser = null;
+            currentSubscription = null;
+            setProtectedSectionsAccess(false);
+            clearAuthMessage();
+            showAuthMode('login');
         }
 
         function logout() {
             if (confirm('هل ترغب في تسجيل الخروج أو تبديل الحساب؟')) {
-                localStorage.removeItem('qurrat_user_plan');
-                userPlan = null;
-                location.reload();
+                signOutUser();
             }
         }
 
@@ -1129,6 +1696,52 @@
             }
         }
 
+        // Supabase Protected RLS Tadabbur Fetching
+        async function fetchProtectedTadabbur(surahNumber, surahName) {
+            const axisEl = document.getElementById('tadabburMainAxis');
+            const namingEl = document.getElementById('tadabburNaming');
+            const benefitsEl = document.getElementById('tadabburBenefits');
+
+            axisEl.textContent = 'جارٍ تحميل تدبر السورة...';
+            namingEl.textContent = 'جارٍ التحميل...';
+            benefitsEl.textContent = 'جارٍ التحميل...';
+
+            if (!currentUser) {
+                axisEl.textContent = 'محتوى التدبر مخصص للمشتركين فقط. يرجى تسجيل الدخول ورعايتك للااشتراك.';
+                namingEl.textContent = 'محتوى محمي';
+                benefitsEl.textContent = 'محتوى محمي';
+                return;
+            }
+
+            try {
+                // RLS Policy controls visibility on Supabase level
+                const { data, error } = await supabaseClient
+                    .from('protected_content')
+                    .select('content')
+                    .eq('section', 'quran')
+                    .eq('content_key', `surah_${surahNumber}`)
+                    .maybeSingle();
+
+                if (error) throw error;
+
+                if (data && data.content) {
+                    axisEl.textContent = data.content.axis || '';
+                    namingEl.textContent = data.content.naming || '';
+                    benefitsEl.innerHTML = data.content.benefits || '';
+                } else {
+                    axisEl.textContent = 'اشتراكك حالياً غير نشط أو تم منعه بواسطة خادم الحماية. يرجى مراجعة تفعيل الحساب.';
+                    namingEl.textContent = 'في انتظار التفعيل';
+                    benefitsEl.textContent = 'في انتظار التفعيل';
+                }
+
+            } catch (err) {
+                console.error('RLS Authorization Error / Network Error:', err);
+                axisEl.textContent = 'تعذر تحميل بيانات التدبر الخاصة بسورة ' + surahName;
+                namingEl.textContent = 'غير متاح';
+                benefitsEl.textContent = 'غير متاح';
+            }
+        }
+
         async function loadQuranPage(pageNum) {
             currentPage = parseInt(pageNum);
             document.getElementById('pageSelect').value = currentPage;
@@ -1152,15 +1765,7 @@
                     });
                     document.getElementById('quranText').innerHTML = pageHtml;
 
-                    let tBook = tadabburData[surahNumber] || {
-                        axis: `تدبر وتأمل مقاصد ${surahName} والالتزام بأوامر الله ونواهيه.`,
-                        naming: `سميت بـ ${surahName} لتسليط الضوء على المقاصد والمفاهيم الإيمانية والتربوية الواردة فيها.`,
-                        benefits: "• الاستقامة على طاعة الله وتدبر الآيات يعود بالخير والبركة على العبد في الدنيا والآخرة.<br>• قراءة القرآن بالتدبر هي المقصود الأعظم للنفع والعمل."
-                    };
-
-                    document.getElementById('tadabburMainAxis').innerHTML = tBook.axis;
-                    document.getElementById('tadabburNaming').innerHTML = tBook.naming;
-                    document.getElementById('tadabburBenefits').innerHTML = tBook.benefits;
+                    await fetchProtectedTadabbur(surahNumber, surahName);
                 }
 
                 const audio = document.getElementById('quranAudio');
@@ -1168,7 +1773,21 @@
                 document.getElementById('audioSource').src = `https://everyayah.com/data/Husary_128kbps/PageAudio/Page${pagePadded}.mp3`;
                 audio.load();
 
-                document.getElementById('tafsirText').innerText = `تفسير ميسّر للصفحة ${currentPage}: تتناول هذه الآيات الكريمة قواعد إيمانية تدعو للتدبر والالتزام الأخلاقي والسلوكي القويم.`;
+                try {
+                    const tafsirRes = await fetch(`https://api.alquran.cloud/v1/page/${currentPage}/ar.muyassar`);
+                    const tafsirData = await tafsirRes.json();
+                    if (tafsirData.code === 200) {
+                        let tafsirHtml = '';
+                        tafsirData.data.ayahs.forEach(ayah => {
+                            tafsirHtml += `<div style="margin-bottom:0.8rem;"><strong>[آية ${ayah.numberInSurah}]:</strong> ${ayah.text}</div>`;
+                        });
+                        document.getElementById('tafsirText').innerHTML = tafsirHtml;
+                    } else {
+                        document.getElementById('tafsirText').innerText = `التفسير الميسّر للصفحة ${currentPage}: تتناول هذه الآيات أحكاماً وتوجيهات إيمانية تدعو للتدبر والعمل.`;
+                    }
+                } catch (tErr) {
+                    document.getElementById('tafsirText').innerText = `تفسير ميسّر للصفحة ${currentPage}: تتناول الآيات توجيهات وقواعد تربوية وسلوكية قيمة.`;
+                }
 
             } catch (err) {
                 document.getElementById('quranText').innerText = 'حدث خطأ في تحميل الصفحة. يرجى التأكد من اتصال الإنترنت.';
@@ -1264,7 +1883,7 @@
                 <div class="post-header">
                     <div class="avatar-select" style="width:35px; height:35px; font-size:1rem;"><i class="fa-solid fa-user"></i></div>
                     <div>
-                        <div class="post-author">${userPlan ? userPlan.name : 'مشترك'}</div>
+                        <div class="post-author">${currentUser?.user_metadata?.full_name || 'مشترك'}</div>
                         <span class="post-badge">إنجاز جديد</span>
                     </div>
                 </div>
