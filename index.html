@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مبادرة قُرَّةَ أَعْيُنٍ | منصة القرآن والأخلاق والتدبر</title>
+    <!-- Favicon / أيقونة التبويب -->
+    <link rel="icon" type="image/png" href="https://mryousef1.github.io/-/logo.png">
+    
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -52,34 +55,17 @@
 
         /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes zoomIn {
-            from {
-                opacity: 0;
-                transform: scale(0.92);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.92); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        .animate-fade {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .animate-zoom {
-            animation: zoomIn 0.4s ease-out forwards;
-        }
+        .animate-fade { animation: fadeInUp 0.6s ease-out forwards; }
+        .animate-zoom { animation: zoomIn 0.4s ease-out forwards; }
 
         /* Auth Modal Styles */
         .auth-overlay {
@@ -211,7 +197,17 @@
             box-shadow: 0 0 0 3px rgba(15, 81, 50, 0.15);
         }
 
-        /* Payment Details Box */
+        .free-account-notice {
+            background-color: #dcfce7;
+            color: #15803d;
+            border: 1px dashed #16a34a;
+            padding: 0.8rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
         .payment-box {
             background: #f8fafc;
             border: 1px dashed var(--primary-light);
@@ -262,7 +258,6 @@
             font-weight: 600;
         }
 
-        /* Header & Navigation Fixes */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, #083320 100%);
             color: var(--white);
@@ -293,18 +288,26 @@
             color: var(--white);
         }
 
-        .logo-icon {
-            width: 44px;
-            height: 44px;
-            background: var(--secondary);
+        .logo-img {
+            height: 52px;
+            width: 52px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: var(--primary);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            object-fit: cover;
+            border: 2px solid var(--secondary);
+            background: var(--white);
             flex-shrink: 0;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .modal-logo-img {
+            height: 90px;
+            width: 90px;
+            border-radius: 50%;
+            border: 3px solid var(--secondary);
+            background: var(--white);
+            margin: 0 auto 0.8rem;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
 
         .logo-text h1 {
@@ -320,7 +323,6 @@
             font-weight: 400;
         }
 
-        /* Burger Menu Button */
         .burger-btn {
             display: none;
             background: transparent;
@@ -331,7 +333,6 @@
             padding: 0.4rem;
         }
 
-        /* Navigation Desktop & Mobile Drawer */
         nav ul {
             display: flex;
             list-style: none;
@@ -358,10 +359,7 @@
         }
 
         @media (max-width: 991px) {
-            .burger-btn {
-                display: block;
-            }
-
+            .burger-btn { display: block; }
             nav {
                 position: fixed;
                 top: 0;
@@ -374,24 +372,14 @@
                 z-index: 1000;
                 transition: right 0.3s ease;
             }
-
-            nav.open {
-                right: 0;
-            }
-
+            nav.open { right: 0; }
             nav ul {
                 flex-direction: column;
                 align-items: stretch;
                 gap: 1rem;
                 margin-top: 2rem;
             }
-
-            nav a {
-                width: 100%;
-                padding: 0.8rem 1rem;
-                font-size: 1rem;
-            }
-
+            nav a { width: 100%; padding: 0.8rem 1rem; font-size: 1rem; }
             .nav-close-btn {
                 display: block !important;
                 background: transparent;
@@ -403,10 +391,7 @@
             }
         }
 
-        .nav-close-btn {
-            display: none;
-        }
-
+        .nav-close-btn { display: none; }
         .nav-backdrop {
             display: none;
             position: fixed;
@@ -417,10 +402,7 @@
             background: rgba(0,0,0,0.5);
             z-index: 999;
         }
-
-        .nav-backdrop.show {
-            display: block;
-        }
+        .nav-backdrop.show { display: block; }
 
         .user-status {
             display: flex;
@@ -442,6 +424,19 @@
             box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
         }
 
+        .bank-badge {
+            background: linear-gradient(45deg, #0284c7, #38bdf8);
+            color: #fff;
+            padding: 0.4rem 0.9rem;
+            border-radius: 30px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+        }
+
         .user-profile-badge {
             background: rgba(255,255,255,0.15);
             padding: 0.35rem 0.8rem;
@@ -460,11 +455,7 @@
             text-align: center;
         }
 
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
+        .hero-content { max-width: 900px; margin: 0 auto; }
         .hero h2 {
             font-family: 'Amiri', serif;
             font-size: 2.2rem;
@@ -485,7 +476,7 @@
             color: #fff;
         }
 
-        /* Vision Section */
+        /* Vision Section & Quran Cards */
         .vision-section {
             background: var(--white);
             border-radius: var(--radius);
@@ -505,10 +496,51 @@
             gap: 10px;
         }
 
-        .vision-text {
-            color: #334155;
-            font-size: 1.05rem;
-            line-height: 2;
+        .vision-text { color: #334155; font-size: 1.05rem; line-height: 2; }
+
+        .quran-verses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.8rem;
+        }
+
+        .quran-verse-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
+            border: 1px solid #e2d29b;
+            border-top: 4px solid var(--secondary);
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quran-verse-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+        }
+
+        .quran-verse-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.25rem;
+            line-height: 2.1;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .quran-verse-surah {
+            background: var(--secondary-light);
+            color: #854d0e;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin: 0 auto;
         }
 
         /* Layout Container */
@@ -517,6 +549,49 @@
             margin: 2rem auto;
             padding: 0 1rem;
             box-sizing: border-box;
+        }
+
+        /* Stats Table Section */
+        .stats-section {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.8rem 1.2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2.5rem;
+            border-top: 5px solid var(--accent);
+        }
+
+        .stats-table-wrapper {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .stats-table th, .stats-table td {
+            padding: 0.85rem 0.6rem;
+            border: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .stats-table th {
+            background: #f1f5f9;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .stats-table tr:nth-child(even) { background: #f8fafc; }
+
+        .stat-highlight {
+            background: var(--primary-soft);
+            color: var(--primary);
+            font-weight: 800;
+            border-radius: 6px;
+            padding: 0.2rem 0.5rem;
         }
 
         /* Quran Section */
@@ -547,16 +622,8 @@
             color: var(--primary);
         }
 
-        .section-title i {
-            font-size: 1.8rem;
-            color: var(--secondary);
-        }
-
-        .page-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .section-title i { font-size: 1.8rem; color: var(--secondary); }
+        .page-controls { display: flex; align-items: center; gap: 10px; }
 
         select, input, button {
             padding: 0.6rem 1rem;
@@ -584,32 +651,18 @@
             transform: translateY(-2px);
         }
 
-        .btn-secondary {
-            background: var(--secondary);
-            color: var(--dark);
-        }
-
-        .btn-secondary:hover {
-            background: #c29d2b;
-        }
-
-        .btn-full {
-            width: 100%;
-            padding: 0.8rem;
-            font-size: 1.05rem;
-        }
-
-        .btn-instapay {
-            background: #25093a;
+        .btn-danger {
+            background: #ef4444;
             color: #fff;
         }
+        .btn-danger:hover { background: #dc2626; }
 
-        .btn-instapay:hover {
-            background: #3b105c;
-            color: #fff;
-        }
+        .btn-secondary { background: var(--secondary); color: var(--dark); }
+        .btn-secondary:hover { background: #c29d2b; }
+        .btn-full { width: 100%; padding: 0.8rem; font-size: 1.05rem; }
+        .btn-instapay { background: #25093a; color: #fff; }
+        .btn-instapay:hover { background: #3b105c; color: #fff; }
 
-        /* Workshop & Interactive Learning Cards */
         .workshop-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -640,19 +693,9 @@
             margin: 0 auto 1rem;
         }
 
-        .workshop-card h4 {
-            color: var(--primary);
-            font-size: 1.15rem;
-            margin-bottom: 0.5rem;
-        }
+        .workshop-card h4 { color: var(--primary); font-size: 1.15rem; margin-bottom: 0.5rem; }
+        .workshop-card p { color: #64748b; font-size: 0.9rem; line-height: 1.7; }
 
-        .workshop-card p {
-            color: #64748b;
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        /* Lecture Plans Grid */
         .lecture-plans-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -674,12 +717,7 @@
             background: var(--secondary-light);
         }
 
-        .lecture-plan-card h4 {
-            color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
+        .lecture-plan-card h4 { color: var(--primary); font-size: 1.3rem; margin-bottom: 0.5rem; }
         .lecture-plan-card .plan-price {
             font-size: 1.6rem;
             font-weight: 800;
@@ -694,7 +732,6 @@
             font-weight: 600;
         }
 
-        /* Tabs Navigation for Quran View */
         .quran-tabs {
             display: flex;
             gap: 10px;
@@ -713,18 +750,9 @@
             color: #64748b;
         }
 
-        .quran-tab.active {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
+        .quran-tab.active { background: var(--primary); color: var(--white); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
 
         .quran-viewer {
             background: var(--secondary-light);
@@ -752,12 +780,8 @@
             margin-top: 1rem;
         }
 
-        audio {
-            width: 100%;
-            height: 40px;
-        }
+        audio { width: 100%; height: 40px; }
 
-        /* Tadabbur Section Style */
         .tadabbur-box {
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -772,11 +796,7 @@
             border-bottom: 1px dashed #cbd5e1;
         }
 
-        .tadabbur-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
+        .tadabbur-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
         .tadabbur-tag {
             display: inline-flex;
@@ -791,14 +811,8 @@
             margin-bottom: 0.5rem;
         }
 
-        .tafsir-box {
-            background: var(--primary-soft);
-            border-radius: 12px;
-            padding: 1.2rem;
-            color: #1b4332;
-        }
+        .tafsir-box { background: var(--primary-soft); border-radius: 12px; padding: 1.2rem; color: #1b4332; }
 
-        /* Moral Tracker Section */
         .morals-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -831,14 +845,8 @@
             margin: 0 auto 1rem;
         }
 
-        .moral-points {
-            color: #16a34a;
-            font-weight: 800;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
+        .moral-points { color: #16a34a; font-weight: 800; font-size: 0.9rem; margin-bottom: 1rem; }
 
-        /* Wishlist Section */
         .wishlist-section {
             background: var(--white);
             border-radius: var(--radius);
@@ -849,17 +857,18 @@
 
         .add-wish-form {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) auto;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
             background: #f8fafc;
             padding: 1.2rem;
             border-radius: 12px;
             margin-bottom: 2rem;
+            align-items: center;
         }
 
         .wishes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
         }
 
@@ -870,6 +879,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
         .wish-img {
@@ -887,11 +897,8 @@
             justify-content: space-between;
         }
 
-        .wish-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
+        .wish-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .wish-reason { font-size: 0.85rem; color: #64748b; margin-bottom: 0.8rem; background: #f1f5f9; padding: 0.4rem 0.6rem; border-radius: 8px; }
 
         .cost-tag {
             background: var(--secondary-light);
@@ -904,7 +911,25 @@
             margin-bottom: 1rem;
         }
 
-        /* Forum */
+        .delete-wish-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(239, 68, 68, 0.9);
+            color: #fff;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        .delete-wish-btn:hover { background: #dc2626; }
+
         .forum-section {
             background: var(--white);
             border-radius: var(--radius);
@@ -912,11 +937,7 @@
             box-shadow: var(--shadow);
         }
 
-        .post-box {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
+        .post-box { display: flex; gap: 1rem; margin-bottom: 2rem; }
 
         .avatar-select {
             width: 45px;
@@ -941,11 +962,7 @@
             outline: none;
         }
 
-        .posts-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
+        .posts-list { display: flex; flex-direction: column; gap: 1.2rem; }
 
         .post-card {
             background: #f8fafc;
@@ -954,17 +971,8 @@
             border: 1px solid #f1f5f9;
         }
 
-        .post-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 0.8rem;
-        }
-
-        .post-author {
-            font-weight: 700;
-        }
-
+        .post-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.8rem; }
+        .post-author { font-weight: 700; }
         .post-badge {
             background: var(--primary-soft);
             color: var(--primary);
@@ -976,10 +984,10 @@
         body:not(.subscriber-active) #quran,
         body:not(.subscriber-active) #morals,
         body:not(.subscriber-active) #wishlist,
+        body:not(.subscriber-active) #stats,
         body:not(.subscriber-active) #community,
         body:not(.subscriber-active) .user-status { display: none !important; }
 
-        /* Public lectures section */
         .lectures-section {
             background: var(--white);
             border-radius: var(--radius);
@@ -1023,12 +1031,7 @@
             text-align: center;
         }
 
-        .lecture-feature i {
-            color: var(--secondary);
-            font-size: 1.7rem;
-            margin-bottom: .65rem;
-        }
-
+        .lecture-feature i { color: var(--secondary); font-size: 1.7rem; margin-bottom: .65rem; }
         .lecture-feature h4 { color: var(--primary); margin-bottom: .45rem; }
         .lecture-feature p { color: #64748b; font-size: .92rem; }
 
@@ -1040,12 +1043,7 @@
             margin-top: 1.5rem;
         }
 
-        .lecture-note {
-            text-align: center;
-            color: #64748b;
-            font-size: .9rem;
-            margin-top: 1rem;
-        }
+        .lecture-note { text-align: center; color: #64748b; font-size: .9rem; margin-top: 1rem; }
 
         footer {
             background: var(--dark);
@@ -1079,11 +1077,11 @@
     <!-- Auth / Subscription Modal -->
     <div class="auth-overlay" id="authModal" style="display:none;">
         <div class="auth-card animate-zoom">
-            <!-- زر إغلاق صريح للرجوع للموقع -->
             <button class="close-modal-btn" onclick="closeAccountModal()"><i class="fa-solid fa-xmark"></i></button>
 
-            <div class="logo-icon" style="margin: 0 auto 1rem;"><i class="fa-solid fa-book-quran"></i></div>
-            <h2>انضم لإسرة «قُرَّةَ أَعْيُنٍ»</h2>
+            <!-- الأيقونة ثلاثية الأبعاد الكرتونية داخل النافذة المنبثقة -->
+            <img src="https://mryousef1.github.io/-/logo.png" alt="أيقونة قُرَّةَ أَعْيُنٍ" class="modal-logo-img" onerror="this.src='https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&q=80'">
+            <h2>انضم لأسرة «قُرَّةَ أَعْيُنٍ»</h2>
             <p>سجّل حسابك واختر نظام الاشتراك للبدء في رحلة القرآن والأخلاق والتدبر</p>
 
             <div id="authMessage" role="status" style="display:none; margin:0.8rem 0; padding:0.7rem; border-radius:10px; background:#fff7ed; color:#9a3412;"></div>
@@ -1095,7 +1093,11 @@
 
             <!-- Registration Form -->
             <div id="stepRegistration">
-                <div class="form-group">
+                <div id="freeAccountBadge" class="free-account-notice" style="display: none;">
+                    ✨ مرحباً بك! أنت تسجل الآن للحصول على حساب مجاني بالكامل بدون رسوم.
+                </div>
+
+                <div class="form-group" id="planSelectContainer">
                     <label>اختر خطة الاشتراك:</label>
                     <div class="plan-selector">
                         <div class="plan-box active" onclick="selectPlan('monthly', 150, this)">
@@ -1170,7 +1172,7 @@
                         <div>
                             <strong>01033253907</strong>
                             <button class="btn btn-secondary" style="padding:0.2rem 0.5rem; font-size:0.75rem; margin-right:5px;" onclick="copyInsta()"><i class="fa-solid fa-copy"></i> نسخ</button>
-                            <a href="https://ipn.eg/S/coyoussef/instapay/31C4dn" target="_blank" class="btn btn-instapay" style="padding:0.3rem 0.6rem; font-size:0.75rem; margin-top:5px; display:inline-block;"><i class="fa-solid fa-arrow-up-right-from-square"></i> تحويل مباشر عبر التطبيق</a>
+                            <a href="https://ipn.eg/S/mr.youssefmosad/instapay/9snuOG" target="_blank" class="btn btn-instapay" style="padding:0.3rem 0.6rem; font-size:0.75rem; margin-top:5px; display:inline-block;"><i class="fa-solid fa-arrow-up-right-from-square"></i> تحويل مباشر عبر التطبيق</a>
                         </div>
                     </div>
                 </div>
@@ -1186,14 +1188,13 @@
     <header>
         <div class="header-container">
             <a href="#" class="logo">
-                <div class="logo-icon"><i class="fa-solid fa-book-quran"></i></div>
+                <img src="https://mryousef1.github.io/-/logo.png" alt="أيقونة قُرَّةَ أَعْيُنٍ" class="logo-img" onerror="this.src='https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&q=80'">
                 <div class="logo-text">
                     <h1>قُرَّةَ أَعْيُنٍ</h1>
                     <span>منصة القرآن والأخلاق والتدبر</span>
                 </div>
             </a>
             
-            <!-- Burger button for mobile -->
             <button class="burger-btn" onclick="openNavDrawer()"><i class="fa-solid fa-bars"></i></button>
 
             <nav id="sideNav">
@@ -1203,6 +1204,7 @@
                     <li><a href="#quran" class="active" onclick="navigateToSection(event, 'quran')"><i class="fa-solid fa-book-open"></i> المصحف والتدبر</a></li>
                     <li><a href="#morals" onclick="navigateToSection(event, 'morals')"><i class="fa-solid fa-heart"></i> الأخلاق</a></li>
                     <li><a href="#wishlist" onclick="navigateToSection(event, 'wishlist')"><i class="fa-solid fa-gift"></i> الأماني</a></li>
+                    <li><a href="#stats" onclick="navigateToSection(event, 'stats')"><i class="fa-solid fa-chart-line"></i> سجل النقاط</a></li>
                     <li><a href="#community" onclick="navigateToSection(event, 'community')"><i class="fa-solid fa-users"></i> المنتدى</a></li>
                     <li><a href="#lectures" onclick="navigateToSection(event, 'lectures')"><i class="fa-solid fa-chalkboard-user"></i> المحاضرات</a></li>
                 </ul>
@@ -1215,9 +1217,14 @@
                     <span id="displayPlanType" style="background: var(--secondary); color:#000; padding:0.1rem 0.4rem; border-radius:10px; font-weight:700;">غير مشترك</span>
                 </div>
 
-                <div class="points-badge">
+                <div class="points-badge" title="النقاط المتاحة حالياً للاستبدال">
                     <i class="fa-solid fa-star"></i>
-                    <span>نقاطي: <span id="userPoints">0</span></span>
+                    <span>المتاح: <span id="userPoints">0</span></span>
+                </div>
+
+                <div class="bank-badge" title="بنك إجمالي النقاط الكلي المستحق للفيصل والتنافس">
+                    <i class="fa-solid fa-vault"></i>
+                    <span>بنك النقاط: <span id="totalPointsBank">0</span></span>
                 </div>
 
                 <button class="btn btn-secondary" style="padding: 0.35rem 0.7rem; font-size: 0.8rem;" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
@@ -1239,7 +1246,7 @@
         </div>
     </section>
 
-    <!-- Vision & Mission Section -->
+    <!-- Vision & Mission Section مع بطاقات الآيات الكريمة -->
     <section id="vision" class="container vision-section animate-fade">
         <div class="vision-title">
             <i class="fa-solid fa-compass"></i> الرؤية والرسالة
@@ -1248,9 +1255,32 @@
             نسعى إلى تقديم تجربة تعليمية تجمع بين الفهم والتحصيل الدراسي والانتفاع الحقيقي بما نتعلمه. من خلال موقعنا الإلكتروني ومحاضرات التربية الدينية أونلاين، نقدم محتوى تعليميًا يساعد الطالب على فهم الدروس واستيعاب معانيها، والاستعداد الجيد للامتحانات، مع الاهتمام بالقيم والمعاني التربوية التي تحملها المادة.<br>
             <strong>نؤمن أن التربية الدينية ليست مجرد مادة ندرسها من أجل الامتحان، بل علم نتعلمه ليكون له أثر في أفكارنا وسلوكنا وحياتنا. هدفنا أن نفهم ما نتعلمه، ونعمل بما ينفعنا منه.</strong>
         </div>
+
+        <div class="quran-verses-grid">
+            <div class="quran-verse-card">
+                <div class="quran-verse-text">
+                    «شَهِدَ اللَّهُ أَنَّهُ لَا إِلَٰهَ إِلَّا هُوَ وَالْمَلَائِكَةُ وَأُولُو الْعِلْمِ قَائِمًا بِالْقِسْطِ ۚ لَا إِلَٰهَ إِلَّا هُوَ الْعَزِيزُ الْحَكِيمُ»
+                </div>
+                <div><span class="quran-verse-surah"><i class="fa-solid fa-book-bookmark"></i> آل عمران: 18</span></div>
+            </div>
+
+            <div class="quran-verse-card">
+                <div class="quran-verse-text">
+                    «بَلْ هُوَ آيَاتٌ بَيِّنَاتٌ فِي صُدُورِ الَّذِينَ أُوتُوا الْعِلْمَ ۚ وَمَا يَجْحَدُ بِآيَاتِنَا إِلَّا الظَّالِمُونَ»
+                </div>
+                <div><span class="quran-verse-surah"><i class="fa-solid fa-book-bookmark"></i> العنكبوت: 49</span></div>
+            </div>
+
+            <div class="quran-verse-card">
+                <div class="quran-verse-text">
+                    «إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ ۗ إِنَّ اللَّهَ عَزِيزٌ غَفُورٌ»
+                </div>
+                <div><span class="quran-verse-surah"><i class="fa-solid fa-book-bookmark"></i> فاطر: 28</span></div>
+            </div>
+        </div>
     </section>
 
-    <!-- Public Online Lectures: available to every visitor -->
+    <!-- Public Online Lectures -->
     <section id="lectures" class="lectures-section container animate-fade">
         <div class="section-header">
             <div class="section-title">
@@ -1271,7 +1301,6 @@
             <p>علشان كده هتكون فيه محاضرات نتعلم فيها ديننا ونتعمق في فهمه، ونقرب من ربنا بالعلم والعمل.</p>
         </div>
 
-        <!-- بديل صور المساجد: ورش العمل والأنشطة التفاعلية -->
         <h4 style="color:var(--primary); text-align:center; font-size:1.2rem; margin-top:1.8rem;"><i class="fa-solid fa-lightbulb"></i> كيف نتدرّب ونطبّق داخل المحاضرة؟</h4>
         <div class="workshop-gallery">
             <div class="workshop-card">
@@ -1293,7 +1322,6 @@
             </div>
         </div>
 
-        <!-- Lecture Plans Options -->
         <h4 style="color:var(--primary); text-align:center; font-size:1.3rem; margin-top:1.5rem;">اختر نظام المحاضرات المفضل لك:</h4>
         <div class="lecture-plans-grid">
             <div class="lecture-plan-card">
@@ -1335,7 +1363,7 @@
             <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; align-items:center;">
                 <span style="background:#fff; padding:0.5rem 1rem; border-radius:8px; border:1px solid #cbd5e1;"><i class="fa-solid fa-mobile-screen-button" style="color:#e60000;"></i> فودافون كاش: <strong>01033253907</strong> <button class="btn btn-secondary" style="padding:0.2rem 0.5rem; font-size:0.75rem; margin-right:5px;" onclick="copyVoda()"><i class="fa-solid fa-copy"></i> نسخ</button></span>
                 <span style="background:#fff; padding:0.5rem 1rem; border-radius:8px; border:1px solid #cbd5e1;"><i class="fa-solid fa-bolt" style="color:#25093a;"></i> انستا باي: <strong>01033253907</strong> <button class="btn btn-secondary" style="padding:0.2rem 0.5rem; font-size:0.75rem; margin-right:5px;" onclick="copyInsta()"><i class="fa-solid fa-copy"></i> نسخ</button></span>
-                <a href="https://ipn.eg/S/coyoussef/instapay/31C4dn" target="_blank" class="btn btn-instapay" style="padding:0.5rem 1rem; font-size:0.9rem;"><i class="fa-solid fa-bolt"></i> فتح تطبيق انستا باي</a>
+                <a href="https://ipn.eg/S/mr.youssefmosad/instapay/9snuOG" target="_blank" class="btn btn-instapay" style="padding:0.5rem 1rem; font-size:0.9rem;"><i class="fa-solid fa-bolt"></i> فتح تطبيق انستا باي</a>
             </div>
             <div class="voda-fee-note" style="margin-top:0.8rem;"><i class="fa-solid fa-circle-info"></i> عند تحويل رسوم المحاضرات عن طريق فودافون كاش يرجى إضافة 1% رسوم سحب.</div>
         </div>
@@ -1494,17 +1522,31 @@
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
                     <div>
                         <h3>قائمة الأمنيات والمكافآت</h3>
-                        <small style="color: #64748b;">يحدد ولي الأمر المكافآت والنقاط المطلوبة، ويستبدلها الأبناء بإنجازاتهم</small>
+                        <small style="color: #64748b;">حدد الهدية والسبب وصورتها، واستبدلها بنقاط إنجازك (بنك النقاط يظل كلياً للترتيب والمنافسة)</small>
                     </div>
                 </div>
             </div>
 
-            <!-- Form for Parents -->
             <div class="add-wish-form">
-                <input type="text" id="wishTitle" placeholder="اسم المكافأة (مثال: كتاب/لعبة/رحلة)">
-                <input type="number" id="wishPoints" placeholder="النقاط المطلوبة">
-                <input type="text" id="wishImg" placeholder="رابط صورة المكافأة (اختياري)">
-                <button class="btn btn-secondary" onclick="addWish()"><i class="fa-solid fa-plus"></i> إضافة مكافأة</button>
+                <div>
+                    <label style="font-size:0.8rem; font-weight:700;">اسم الهدية / المكافأة:</label>
+                    <input type="text" id="wishTitle" class="form-control" placeholder="مثال: مصحف مذهب / رحلة / لعبة">
+                </div>
+                <div>
+                    <label style="font-size:0.8rem; font-weight:700;">سبب الهدية / الإنجاز المطلوب:</label>
+                    <input type="text" id="wishReason" class="form-control" placeholder="مثال: حفظ وفهم الجزء الأول من القرآن">
+                </div>
+                <div>
+                    <label style="font-size:0.8rem; font-weight:700;">النقاط المطلوبة:</label>
+                    <input type="number" id="wishPoints" class="form-control" placeholder="مثال: 50">
+                </div>
+                <div>
+                    <label style="font-size:0.8rem; font-weight:700;">رفع صورة الهدية:</label>
+                    <input type="file" id="wishImgFile" accept="image/*" class="form-control" style="padding:0.4rem;">
+                </div>
+                <div style="grid-column: 1 / -1; text-align: left; margin-top:0.5rem;">
+                    <button class="btn btn-secondary" style="width:100%;" onclick="addWish()"><i class="fa-solid fa-plus"></i> إضافة الهدية لقائمة الأمنيات</button>
+                </div>
             </div>
 
             <div class="wishes-grid" id="wishesContainer">
@@ -1512,7 +1554,39 @@
             </div>
         </section>
 
-        <!-- 4. Forum / Community -->
+        <!-- 4. Stats & Progress Table Section -->
+        <section id="stats" class="stats-section animate-fade">
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <div>
+                        <h3>سجل النقاط ولوحة المنافسة والتحدي</h3>
+                        <small style="color: #64748b;">تتبع إنجازاتك اليومية والأسبوعية والشهرية وتنافس مع زملائك في المنصة</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-table-wrapper">
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>اسم الطالب</th>
+                            <th>نقاط اليوم</th>
+                            <th>نقاط الأمس</th>
+                            <th>الأسبوع الحالي</th>
+                            <th>الأسابيع الماضية</th>
+                            <th>الشهر الحالي</th>
+                            <th>إجمالي السنة (البنك)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="statsTableBody">
+                        <!-- Dynamic stats row loaded via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 5. Forum / Community -->
         <section id="community" class="forum-section animate-fade">
             <div class="section-header">
                 <div class="section-title">
@@ -1561,7 +1635,6 @@
 
     <!-- JavaScript Logic -->
     <script>
-        // Smooth Navigation & Drawer Control
         function navigateToSection(e, sectionId) {
             e.preventDefault();
             closeNavDrawer();
@@ -1590,31 +1663,114 @@
             document.getElementById('authModal').style.display = 'none';
         }
 
-        // State & Subscription Management
         let selectedPlanType = 'monthly';
         let selectedPlanPrice = 150;
 
+        // Points & Stats tracking
         let points = parseInt(localStorage.getItem('qurrat_points')) || 0;
+        let totalBank = parseInt(localStorage.getItem('qurrat_total_bank')) || points;
+
+        let stats = JSON.parse(localStorage.getItem('qurrat_stats')) || {
+            today: 0,
+            yesterday: 0,
+            currentWeek: 0,
+            pastWeeks: 0,
+            currentMonth: 0,
+            yearlyBank: totalBank
+        };
+
         let currentPage = 1;
         let wishes = JSON.parse(localStorage.getItem('qurrat_wishes')) || [
-            { id: 1, title: 'رحلة ترفيهية أسبوعية', points: 50, img: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=400&q=80' },
-            { id: 2, title: 'كتاب أول مرة أتدبر القرآن', points: 30, img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80' }
+            { 
+                id: 1, 
+                title: 'رحلة ترفيهية أسبوعية', 
+                reason: 'المواظبة على السلوكيات والتفوق الأسبوعي',
+                points: 50, 
+                img: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=400&q=80' 
+            },
+            { 
+                id: 2, 
+                title: 'كتاب أول مرة أتدبر القرآن', 
+                reason: 'حفظ وفهم الجزء الأول من القرآن الكريم',
+                points: 30, 
+                img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80' 
+            }
         ];
 
-        // Supabase Authentication & Subscription
         const SUPABASE_URL = 'https://shecebaqbyflhpjzowso.supabase.co';
         const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_hX4YiXc_VfhzADuW4zqn0Q_gNaGbLc4';
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+        
+        const SECRET_FREE_CODE = "BARAKA2026";
+        
         let currentUser = null;
         let currentSubscription = null;
+        let isEligibleForFree = false;
 
         document.addEventListener('DOMContentLoaded', async () => {
+            checkUrlForFreePlan();
             await checkAuthStatus();
+            await handleUrlActivation(); // فحص روابط التفعيل التلقائية عند التحميل
             updatePointsDisplay();
             initQuranSelect();
             loadQuranPage(1);
             renderWishes();
+            renderStatsTable();
         });
+
+        function checkUrlForFreePlan() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const planParam = urlParams.get('plan');
+            const codeParam = urlParams.get('code');
+
+            if (planParam === 'free' && codeParam === SECRET_FREE_CODE) {
+                isEligibleForFree = true;
+                selectedPlanType = 'مجاني';
+            }
+        }
+
+        /* دالة التفعيل التلقائي عبر رابط الاشتراك الشهري أو السنوي */
+        async function handleUrlActivation() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const activateType = urlParams.get('activate'); // 'monthly' or 'yearly'
+
+            if (activateType && currentUser) {
+                const now = new Date();
+                const daysToAdd = activateType === 'yearly' ? 365 : 30;
+                const expiresAt = new Date(now.getTime() + daysToAdd * 24 * 60 * 60 * 1000);
+                const planName = activateType === 'yearly' ? 'اشتراك سنوي' : 'اشتراك شهري';
+
+                try {
+                    // تحديث بيانات المستخدم في Supabase تلقائياً
+                    const { error: userError } = await supabaseClient.auth.updateUser({
+                        data: { 
+                            plan_type: planName,
+                            is_active: true
+                        }
+                    });
+
+                    // تحديث/إدراج جدول الاشتراكات Subscriptions
+                    const { error: subError } = await supabaseClient
+                        .from('subscriptions')
+                        .upsert({
+                            user_id: currentUser.id,
+                            plan: activateType,
+                            status: 'active',
+                            starts_at: now.toISOString(),
+                            expires_at: expiresAt.toISOString()
+                        });
+
+                    if (!userError) {
+                        alert(`🎉 مبارك! تم تفعيل حسابك بنجاح بـ (${planName}). ينتهي اشتراكك في: ${expiresAt.toLocaleDateString('ar-EG')}`);
+                        // إزالة رابط التفعيل من المتصفح لعدم تكراره
+                        window.history.replaceState({}, document.title, window.location.pathname);
+                        await refreshUserAndSubscription(currentUser);
+                    }
+                } catch (err) {
+                    console.error('Error auto activating account:', err);
+                }
+            }
+        }
 
         function copyVoda() {
             navigator.clipboard.writeText('01033253907');
@@ -1657,9 +1813,15 @@
             document.getElementById('stepRegistration').style.display = mode === 'signup' ? 'block' : 'none';
             document.getElementById('stepLogin').style.display = mode === 'login' ? 'block' : 'none';
             document.getElementById('stepPending').style.display = 'none';
+
+            if (mode === 'signup' && isEligibleForFree) {
+                document.getElementById('freeAccountBadge').style.display = 'block';
+                document.getElementById('planSelectContainer').style.display = 'none';
+            }
         }
 
         function selectPlan(type, price, el) {
+            if (isEligibleForFree) return;
             selectedPlanType = type;
             selectedPlanPrice = price;
             document.querySelectorAll('.plan-box').forEach(box => box.classList.remove('active'));
@@ -1681,23 +1843,38 @@
             button.disabled = true;
             button.textContent = 'جارٍ إنشاء الحساب...';
 
+            const userPlan = isEligibleForFree ? 'مجاني' : selectedPlanType;
+            const userActiveState = isEligibleForFree ? true : false;
+
             try {
                 const { data, error } = await supabaseClient.auth.signUp({
                     email,
                     password,
                     options: {
-                        data: { full_name: name, plan: selectedPlanType },
+                        data: { 
+                            full_name: name, 
+                            plan_type: userPlan,
+                            is_active: userActiveState
+                        },
                         emailRedirectTo: 'https://mryousef1.github.io/-/'
                     }
                 });
                 if (error) throw error;
 
-                document.getElementById('authModal').style.display = 'flex';
-                document.getElementById('authModeSwitch').style.display = 'flex';
-                document.getElementById('stepRegistration').style.display = 'none';
-                document.getElementById('stepLogin').style.display = 'none';
-                document.getElementById('stepPending').style.display = 'block';
-                showAuthMessage('تم تسجيل الدخول بنجاح، لكن اشتراكك ما زال في انتظار التفعيل.', false);
+                if (isEligibleForFree) {
+                    alert('تم إنشاء حسابك المجاني وتفعيله بنجاح! مرحباً بك في المنصة.');
+                    document.getElementById('authModal').style.display = 'none';
+                    if (data.user) {
+                        await refreshUserAndSubscription(data.user);
+                    }
+                } else {
+                    document.getElementById('authModal').style.display = 'flex';
+                    document.getElementById('authModeSwitch').style.display = 'flex';
+                    document.getElementById('stepRegistration').style.display = 'none';
+                    document.getElementById('stepLogin').style.display = 'none';
+                    document.getElementById('stepPending').style.display = 'block';
+                    showAuthMessage('تم تسجيل الحساب بنجاح، لكن اشتراكك ما زال في انتظار التفعيل.', false);
+                }
 
             } catch (error) {
                 showAuthMessage(error.message || 'تعذر إنشاء الحساب. حاول مرة أخرى.', true);
@@ -1746,27 +1923,26 @@
 
         async function refreshUserAndSubscription(user) {
             currentUser = user;
+            
+            const userMeta = user.user_metadata || {};
+            const isFreeAccount = (userMeta.plan_type === 'مجاني' || userMeta.is_active === true);
+
             const { data, error } = await supabaseClient
                 .from('subscriptions')
                 .select('plan,status,starts_at,expires_at')
                 .eq('user_id', user.id)
                 .maybeSingle();
 
-            if (error) {
-                setProtectedSectionsAccess(false);
-                showAuthMessage('تم تسجيل الدخول، لكن تعذر قراءة حالة الاشتراك.', true);
-                document.getElementById('authModal').style.display = 'flex';
-                return;
-            }
+            const isSubActive = data && data.status === 'active' && (!data.expires_at || new Date(data.expires_at) > new Date());
 
-            currentSubscription = data;
-            if (data && data.status === 'active' && (!data.expires_at || new Date(data.expires_at) > new Date())) {
+            if (isFreeAccount || isSubActive) {
                 document.getElementById('authModal').style.display = 'none';
                 setProtectedSectionsAccess(true);
-                document.getElementById('displayUserName').innerText =
-                    user.user_metadata?.full_name || user.email || 'مشترك';
-                document.getElementById('displayPlanType').innerText =
-                    data.plan === 'yearly' ? 'اشتراك سنوي' : 'اشتراك شهري';
+                document.getElementById('displayUserName').innerText = userMeta.full_name || user.email || 'مشترك';
+                
+                const displayPlan = userMeta.plan_type || (data?.plan === 'yearly' ? 'اشتراك سنوي' : 'اشتراك شهري');
+                document.getElementById('displayPlanType').innerText = displayPlan;
+                renderStatsTable();
             } else {
                 setProtectedSectionsAccess(false);
                 document.getElementById('authModal').style.display = 'flex';
@@ -1787,6 +1963,10 @@
                 currentSubscription = null;
                 document.getElementById('authModal').style.display = 'none';
                 setProtectedSectionsAccess(false);
+
+                if (isEligibleForFree) {
+                    openAccountModal();
+                }
             }
         }
 
@@ -1809,15 +1989,40 @@
             }
         }
 
-        // App General Features
         function updatePointsDisplay() {
             document.getElementById('userPoints').innerText = points;
+            document.getElementById('totalPointsBank').innerText = totalBank;
             localStorage.setItem('qurrat_points', points);
+            localStorage.setItem('qurrat_total_bank', totalBank);
+            renderStatsTable();
         }
 
         function addPoints(pts) {
             points += pts;
+            totalBank += pts;
+            stats.today += pts;
+            stats.currentWeek += pts;
+            stats.currentMonth += pts;
+            stats.yearlyBank = totalBank;
+            localStorage.setItem('qurrat_stats', JSON.stringify(stats));
             updatePointsDisplay();
+        }
+
+        function renderStatsTable() {
+            const tbody = document.getElementById('statsTableBody');
+            const userName = currentUser?.user_metadata?.full_name || 'مشترك المنصة';
+            
+            tbody.innerHTML = `
+                <tr>
+                    <td><strong>${userName}</strong></td>
+                    <td><span class="stat-highlight">+${stats.today}</span></td>
+                    <td>${stats.yesterday}</td>
+                    <td>${stats.currentWeek}</td>
+                    <td>${stats.pastWeeks}</td>
+                    <td>${stats.currentMonth}</td>
+                    <td><strong style="color:var(--accent); font-size:1.1rem;">${totalBank}</strong></td>
+                </tr>
+            `;
         }
 
         function switchTab(tabId, btn) {
@@ -1838,7 +2043,6 @@
             }
         }
 
-        // Supabase Protected RLS Tadabbur Fetching
         async function fetchProtectedTadabbur(surahNumber, surahName) {
             const axisEl = document.getElementById('tadabburMainAxis');
             const namingEl = document.getElementById('tadabburNaming');
@@ -1856,7 +2060,6 @@
             }
 
             try {
-                // RLS Policy controls visibility on Supabase level
                 const { data, error } = await supabaseClient
                     .from('protected_content')
                     .select('content')
@@ -1871,9 +2074,9 @@
                     namingEl.textContent = data.content.naming || '';
                     benefitsEl.innerHTML = data.content.benefits || '';
                 } else {
-                    axisEl.textContent = 'اشتراكك حالياً غير نشط أو تم منعه بواسطة خادم الحماية. يرجى مراجعة تفعيل الحساب.';
-                    namingEl.textContent = 'في انتظار التفعيل';
-                    benefitsEl.textContent = 'في انتظار التفعيل';
+                    axisEl.textContent = 'محتوى التدبر مخصص لأفراد المنصة.';
+                    namingEl.textContent = 'متاح للمشتركين';
+                    benefitsEl.textContent = 'متاح للمشتركين';
                 }
 
             } catch (err) {
@@ -1943,10 +2146,9 @@
             }
         }
 
-        // الانتقال المباشر للصفحة التالية عند الضغط على زر أتممت
         function completeQuranDay() {
             addPoints(10);
-            alert(`ما شاء الله! أتممت القراءة والتفسير والتدبر للصفحة ${currentPage}. تم إضافة 10 نقاط لرصيدك، والانتقال للصفحة التالية.`);
+            alert(`ما شاء الله! أتممت القراءة والتفسير والتدبر للصفحة ${currentPage}. تم إضافة 10 نقاط لرصيدك وللبنك، والانتقال للصفحة التالية.`);
             
             if (currentPage < 604) {
                 loadQuranPage(currentPage + 1);
@@ -1956,7 +2158,7 @@
 
         function claimMoral(name) {
             addPoints(2);
-            alert(`ممتاز! أثابك الله على التزامك بخُلُق (${name}). تم إضافة نقطتين لرصيدك.`);
+            alert(`ممتاز! أثابك الله على التزامك بخُلُق (${name}). تم إضافة نقطتين لرصيدك وللبنك.`);
         }
 
         function renderWishes() {
@@ -1968,10 +2170,12 @@
                 const card = document.createElement('div');
                 card.className = 'wish-card';
                 card.innerHTML = `
+                    <button class="delete-wish-btn" onclick="deleteWish(${w.id})" title="حذف الهدية"><i class="fa-solid fa-trash"></i></button>
                     <div class="wish-img" style="background-image: url('${w.img}')"></div>
                     <div class="wish-body">
                         <div>
                             <div class="wish-title">${w.title}</div>
+                            <div class="wish-reason"><i class="fa-solid fa-bullseye"></i> <strong>السبب:</strong> ${w.reason || 'إنجاز هام في المنصة'}</div>
                             <span class="cost-tag"><i class="fa-solid fa-star"></i> ${w.points} نقطة</span>
                         </div>
                         <button class="btn ${canRedeem ? '' : 'btn-secondary'}" 
@@ -1987,35 +2191,57 @@
         }
 
         function addWish() {
-            const title = document.getElementById('wishTitle').value;
+            const title = document.getElementById('wishTitle').value.trim();
+            const reason = document.getElementById('wishReason').value.trim();
             const pts = parseInt(document.getElementById('wishPoints').value);
-            const img = document.getElementById('wishImg').value;
+            const fileInput = document.getElementById('wishImgFile');
 
             if (!title || !pts) {
-                alert('يرجى كتابة اسم المكافأة وعدد النقاط.');
+                alert('يرجى كتابة اسم الهدية وعدد النقاط المطلوب.');
                 return;
             }
 
-            wishes.push({
-                id: Date.now(),
-                title: title,
-                points: pts,
-                img: img || 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=400&q=80'
-            });
+            const createWishObj = (imgUrl) => {
+                wishes.push({
+                    id: Date.now(),
+                    title: title,
+                    reason: reason || 'مكافأة اجتهاد وتفوق',
+                    points: pts,
+                    img: imgUrl || 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=400&q=80'
+                });
 
-            document.getElementById('wishTitle').value = '';
-            document.getElementById('wishPoints').value = '';
-            document.getElementById('wishImg').value = '';
+                document.getElementById('wishTitle').value = '';
+                document.getElementById('wishReason').value = '';
+                document.getElementById('wishPoints').value = '';
+                document.getElementById('wishImgFile').value = '';
 
-            renderWishes();
-            alert('تمت إضافة المكافأة بنجاح إلى قائمة الأمنيات!');
+                renderWishes();
+                alert('تمت إضافة الهدية بنجاح إلى قائمة الأمنيات!');
+            };
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    createWishObj(e.target.result);
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                createWishObj('');
+            }
+        }
+
+        function deleteWish(id) {
+            if (confirm('هل أنت تأكد من حذف هذه الهدية من القائمة؟')) {
+                wishes = wishes.filter(w => w.id !== id);
+                renderWishes();
+            }
         }
 
         function redeemWish(id, cost) {
             if (points >= cost) {
                 points -= cost;
                 updatePointsDisplay();
-                alert('مبارك! تم استبدال المكافأة بنجاح. تواصل مع ولي أمرك لاستلامها.');
+                alert('مبارك! تم استبدال الهدية بنجاح. رصيدك المتاح تم خصمه، وبنك النقاط الكلي يظل ثابتًا للترتيب والمنافسة!');
                 renderWishes();
             }
         }
