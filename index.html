@@ -25,6 +25,8 @@
             --white: #ffffff;
             --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
             --radius: 16px;
+            --border-color: #e2e8f0;
+            --text-muted: #64748b;
         }
 
         * {
@@ -497,6 +499,9 @@
         }
 
         .vision-text { color: #334155; font-size: 1.05rem; line-height: 2; }
+        .vision-list { list-style: none; margin: 1rem 0; padding-right: 0; }
+        .vision-list li { position: relative; padding-right: 1.5rem; margin-bottom: 0.8rem; line-height: 1.8; }
+        .vision-list li::before { content: "•"; color: var(--primary); font-size: 1.5rem; position: absolute; right: 0; top: -2px; }
 
         .quran-verses-grid {
             display: grid;
@@ -541,6 +546,152 @@
             font-size: 0.85rem;
             display: inline-block;
             margin: 0 auto;
+        }
+
+        /* Controls Section for Search & Filter */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .controls {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .search-box {
+            flex: 1;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            background: var(--white);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(15, 81, 50, 0.15);
+        }
+
+        .filter-box select {
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            background-color: #fff;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Cards Overview Grid */
+        .surah-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 1.5rem;
+        }
+
+        .surah-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .surah-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .surah-badge {
+            background: #ccfbf1;
+            color: var(--primary);
+            font-weight: bold;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .juz-tag {
+            background: #f1f5f9;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .surah-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .main-theme {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .points-list {
+            list-style-type: none;
+            margin-bottom: 16px;
+        }
+
+        .points-list li {
+            font-size: 0.85rem;
+            color: var(--dark);
+            padding: 4px 0;
+            position: relative;
+            padding-right: 16px;
+            line-height: 1.6;
+        }
+
+        .points-list li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            right: 0;
+            top: -2px;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 48px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
         }
 
         /* Layout Container */
@@ -648,6 +799,25 @@
 
         .btn:hover {
             background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-spotify {
+            background-color: #1DB954;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
+        }
+
+        .btn-spotify:hover {
+            background-color: #1aa34a;
+            color: #ffffff;
             transform: translateY(-2px);
         }
 
@@ -771,16 +941,6 @@
             color: #2c3e50;
             margin-bottom: 1.5rem;
         }
-
-        .audio-player-box {
-            background: var(--white);
-            padding: 1rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            margin-top: 1rem;
-        }
-
-        audio { width: 100%; height: 40px; }
 
         .tadabbur-box {
             background: #ffffff;
@@ -982,6 +1142,7 @@
         }
 
         body:not(.subscriber-active) #quran,
+        body:not(.subscriber-active) #surahsOverview,
         body:not(.subscriber-active) #morals,
         body:not(.subscriber-active) #wishlist,
         body:not(.subscriber-active) #stats,
@@ -1202,6 +1363,7 @@
                 <ul>
                     <li><a href="#vision" onclick="navigateToSection(event, 'vision')"><i class="fa-solid fa-eye"></i> الرؤية والرسالة</a></li>
                     <li><a href="#quran" class="active" onclick="navigateToSection(event, 'quran')"><i class="fa-solid fa-book-open"></i> المصحف والتدبر</a></li>
+                    <li><a href="#surahsOverview" onclick="navigateToSection(event, 'surahsOverview')"><i class="fa-solid fa-layer-group"></i> دليل السور والتدبر</a></li>
                     <li><a href="#morals" onclick="navigateToSection(event, 'morals')"><i class="fa-solid fa-heart"></i> الأخلاق</a></li>
                     <li><a href="#wishlist" onclick="navigateToSection(event, 'wishlist')"><i class="fa-solid fa-gift"></i> الأماني</a></li>
                     <li><a href="#stats" onclick="navigateToSection(event, 'stats')"><i class="fa-solid fa-chart-line"></i> سجل النقاط</a></li>
@@ -1252,8 +1414,16 @@
             <i class="fa-solid fa-compass"></i> الرؤية والرسالة
         </div>
         <div class="vision-text">
-            نسعى إلى تقديم تجربة تعليمية تجمع بين الفهم والتحصيل الدراسي والانتفاع الحقيقي بما نتعلمه. من خلال موقعنا الإلكتروني ومحاضرات التربية الدينية أونلاين، نقدم محتوى تعليميًا يساعد الطالب على فهم الدروس واستيعاب معانيها، والاستعداد الجيد للامتحانات، مع الاهتمام بالقيم والمعاني التربوية التي تحملها المادة.<br>
-            <strong>نؤمن أن التربية الدينية ليست مجرد مادة ندرسها من أجل الامتحان، بل علم نتعلمه ليكون له أثر في أفكارنا وسلوكنا وحياتنا. هدفنا أن نفهم ما نتعلمه، ونعمل بما ينفعنا منه.</strong>
+            من خلال «قُرَّةَ أَعْيُنٍ» بنقدم للقلب مجموعة من المساحات اللي يقدر من خلالها:
+            <ul class="vision-list">
+                <li>يحفظ القرآن الكريم، ويطّالع على التدبرات والمعاني المرتبطة بسوره وآياته.</li>
+                <li>يتعلم الأخلاق والقيم، ويتعرف على ما يعينه على التحلي بها.</li>
+                <li>يكتب أمانيه ويشاركها.</li>
+                <li>يشارك أفكاره ومنشوراته ويتفاعل مع الآخرين من خلال المنتدى.</li>
+            </ul>
+            وكل ده لأننا مش بنسعى لمجرد تقديم معلومات أو إتاحة محتوى للقراءة، لكن بنسعى إن العلم اللي بنتعلمه يكون له أثر في أفكارنا وسلوكنا وحياتنا.
+            <br><br>
+            <strong>فالعلم نتعلمه ليكون له أثر في أفكارنا وسلوكنا وحياتنا، لا أن يكون مجرد معلومات نعرفها ثم نمضي.</strong>
         </div>
 
         <div class="quran-verses-grid">
@@ -1372,7 +1542,7 @@
             <a class="btn btn-secondary" style="padding:0.8rem 1.8rem; font-size:1.05rem;" href="https://forms.gle/g6takJnEExV4ttgH9" target="_blank"><i class="fa-solid fa-pen-to-square"></i> حجز المحاضرات المباشرة الآن (نموذج جوجل)</a>
             <button class="btn" type="button" onclick="openAccountModal()"><i class="fa-solid fa-user-lock"></i> دخول المشتركين للمنصة</button>
         </div>
-        <p class="lecture-note">قسم المحاضرات متاح لجميع الزوار، واشتراك المحاضرات يكون مستقلًا عن اشتراك المنصة.</p>
+        <p class="lecture-note">قسم المحاضرات متاح لجميع الزوار، وااشتراك المحاضرات يكون مستقلًا عن اشتراك المنصة.</p>
     </section>
 
     <!-- Main Container -->
@@ -1384,12 +1554,15 @@
                 <div class="section-title">
                     <i class="fa-solid fa-book-quran"></i>
                     <div>
-                        <h3 id="surahTitleDisplay">المصحف المعلم والتدبر</h3>
+                        <h3 id="surahTitleDisplay">المصحف والتدبر</h3>
                         <small style="color: #64748b;">جدول التعلم: 3 أيام في الأسبوع (يوم بعد يوم)</small>
                     </div>
                 </div>
 
                 <div class="page-controls">
+                    <a href="https://open.spotify.com/show/7joQwcuX9mXWmuDAJKFlQU?si=77eeb725a86a4bb1" target="_blank" class="btn-spotify" title="استمع لدروس التفسير والتدبر على سبوتيفاي">
+                        <i class="fa-brands fa-spotify"></i> بودكاست التفسير والتدبر
+                    </a>
                     <button class="btn" onclick="changePage(-1)"><i class="fa-solid fa-chevron-right"></i> السابقة</button>
                     <select id="pageSelect" onchange="loadQuranPage(this.value)">
                         <!-- Pages 1 to 604 generated via JS -->
@@ -1400,23 +1573,15 @@
 
             <!-- Tabs Navigation -->
             <div class="quran-tabs">
-                <button class="quran-tab active" onclick="switchTab('quranTextTab', this)"><i class="fa-solid fa-book-open"></i> تلاوة الصفحة</button>
+                <button class="quran-tab active" onclick="switchTab('quranTextTab', this)"><i class="fa-solid fa-book-open"></i> قراءة الصفحة</button>
                 <button class="quran-tab" onclick="switchTab('tadabburTab', this)"><i class="fa-solid fa-feather-pointed"></i> تدبر السورة (من كتاب أول مرة أتدبر القرآن)</button>
                 <button class="quran-tab" onclick="switchTab('tafsirTab', this)"><i class="fa-solid fa-lightbulb"></i> المعاني والتفسير الميسّر</button>
             </div>
 
-            <!-- Tab 1: Quran Text & Audio -->
+            <!-- Tab 1: Quran Text -->
             <div id="quranTextTab" class="tab-content active">
                 <div class="quran-viewer">
                     <div id="quranText" class="quran-text">جاري تحميل الآيات المباركة...</div>
-                    
-                    <div class="audio-player-box">
-                        <p style="margin-bottom: 0.5rem; font-weight: 700; color: var(--primary);">تلاوة تعليمية معلّمة للصفحة:</p>
-                        <audio id="quranAudio" controls>
-                            <source id="audioSource" src="" type="audio/mp3">
-                            متصفحك لا يدعم تشغيل الصوت.
-                        </audio>
-                    </div>
                 </div>
             </div>
 
@@ -1425,22 +1590,24 @@
                 <div class="tadabbur-box">
                     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; border-bottom: 2px solid var(--primary-soft); padding-bottom: 0.5rem; flex-wrap:wrap; gap:10px;">
                         <h4 style="color: var(--primary); font-size: 1.2rem;"><i class="fa-solid fa-book-bookmark"></i> دليلك لتدبر السورة من كتاب: «أول مرة أتدبر القرآن»</h4>
-                        <span style="font-size: 0.85rem; color: #64748b; background: #f1f5f9; padding: 0.2rem 0.6rem; border-radius: 6px;">إعداد: أ. عادل خليل</span>
+                        <a href="https://open.spotify.com/show/7joQwcuX9mXWmuDAJKFlQU?si=77eeb725a86a4bb1" target="_blank" class="btn-spotify" style="font-size:0.85rem; padding:0.3rem 0.8rem;">
+                            <i class="fa-brands fa-spotify"></i> الاستماع على Spotify
+                        </a>
                     </div>
 
                     <div class="tadabbur-item">
                         <div class="tadabbur-tag"><i class="fa-solid fa-bullseye"></i> المحور الرئيسي والمقصد العام للسورة</div>
-                        <p id="tadabburMainAxis" style="font-size: 1.05rem; font-weight: 700; color: #1e293b;">جاري التحميل...</p>
+                        <p id="tadabburMainAxis" style="font-size: 1.05rem; font-weight: 700; color: #1e293b; line-height: 1.8;">جاري التحميل...</p>
                     </div>
 
                     <div class="tadabbur-item">
-                        <div class="tadabbur-tag"><i class="fa-solid fa-tags"></i> مناسبة تسمية السورة وأسماؤها</div>
-                        <p id="tadabburNaming" style="color: #334155;">جاري التحميل...</p>
+                        <div class="tadabbur-tag"><i class="fa-solid fa-tags"></i> مناسبة تسمية السورة وتفاصيلها</div>
+                        <p id="tadabburNaming" style="color: #334155; font-size: 1rem; font-weight: 600;">جاري التحميل...</p>
                     </div>
 
                     <div class="tadabbur-item">
-                        <div class="tadabbur-tag"><i class="fa-solid fa-gem"></i> لطائف وفوائد عملية حول السورة</div>
-                        <p id="tadabburBenefits" style="color: #334155; line-height: 1.8;">جاري التحميل...</p>
+                        <div class="tadabbur-tag"><i class="fa-solid fa-gem"></i> لطائف ومحاور هدايات السورة العملية</div>
+                        <div id="tadabburBenefits" style="color: #334155; line-height: 1.9; font-size: 1rem;">جاري التحميل...</div>
                     </div>
                 </div>
             </div>
@@ -1455,12 +1622,46 @@
 
             <div style="text-align: center; margin-top: 1.5rem;">
                 <button class="btn btn-secondary" style="padding: 0.8rem 2rem; font-size: 1.1rem;" onclick="completeQuranDay()">
-                    <i class="fa-solid fa-check-circle"></i> أتممت القراءة والتلاوة والتدبر اليوم (+10 نقاط والانتقال للصفحة التالية)
+                    <i class="fa-solid fa-check-circle"></i> أتممت القراءة والتفسير والتدبر اليوم (+10 نقاط والانتقال للصفحة التالية)
                 </button>
             </div>
         </section>
 
-        <!-- 2. Moral Tracker Section -->
+        <!-- 2. Surahs Cards Overview & Filter Section -->
+        <section id="surahsOverview" class="quran-card animate-fade">
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <div>
+                        <h3>دليل ومقاصد سور القرآن الكريم</h3>
+                        <small style="color: #64748b;">مستنبط من كتاب «أول مرة أتدبر القرآن»</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls: Live Search & Juz Filter -->
+            <div class="controls">
+                <div class="search-box">
+                    <input 
+                      type="text" 
+                      id="searchInput" 
+                      class="search-input" 
+                      placeholder="ابحث باسم السورة، المحور الرئيسي، أو الموضوع..." 
+                      oninput="filterSurahs()"
+                    >
+                </div>
+                <div class="filter-box">
+                    <select id="juzSelect" onchange="filterSurahs()">
+                        <option value="all">جميع الأجزاء (1 - 30)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Cards Grid -->
+            <div id="surahGrid" class="surah-grid"></div>
+        </section>
+
+        <!-- 3. Moral Tracker Section -->
         <section id="morals" style="margin-bottom: 2.5rem;" class="animate-fade">
             <div class="section-header">
                 <div class="section-title">
@@ -1515,7 +1716,7 @@
             </div>
         </section>
 
-        <!-- 3. Wishlist Section -->
+        <!-- 4. Wishlist Section -->
         <section id="wishlist" class="wishlist-section animate-fade">
             <div class="section-header">
                 <div class="section-title">
@@ -1554,7 +1755,7 @@
             </div>
         </section>
 
-        <!-- 4. Stats & Progress Table Section -->
+        <!-- 5. Stats & Progress Table Section -->
         <section id="stats" class="stats-section animate-fade">
             <div class="section-header">
                 <div class="section-title">
@@ -1586,7 +1787,7 @@
             </div>
         </section>
 
-        <!-- 5. Forum / Community -->
+        <!-- 6. Forum / Community -->
         <section id="community" class="forum-section animate-fade">
             <div class="section-header">
                 <div class="section-title">
@@ -1706,6 +1907,7 @@
         let currentUser = null;
         let currentSubscription = null;
         let isEligibleForFree = false;
+        let surahsData = [];
 
         document.addEventListener('DOMContentLoaded', async () => {
             checkUrlForFreePlan();
@@ -1713,10 +1915,107 @@
             await handleUrlActivation(); // فحص روابط التفعيل التلقائية عند التحميل
             updatePointsDisplay();
             initQuranSelect();
-            loadQuranPage(1);
             renderWishes();
             renderStatsTable();
+            
+            // تهيئة وتفعيل بطاقات السور والفلترة
+            initJuzFilter();
+            await fetchSurahsFromSupabase();
+            loadQuranPage(1);
         });
+
+        // 1. إنشاء خيارات الأجزاء الـ 30 لقائمة الفلترة
+        function initJuzFilter() {
+            const select = document.getElementById('juzSelect');
+            if (!select) return;
+            for (let i = 1; i <= 30; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `الجزء ${i}`;
+                select.appendChild(option);
+            }
+        }
+
+        // 2. جلب بيانات السور ومقاصدها بالكامل من Supabase
+        async function fetchSurahsFromSupabase() {
+            const grid = document.getElementById('surahGrid');
+            if (grid) {
+                grid.innerHTML = '<div class="no-results">جاري تحميل بطاقات ومقاصد السور...</div>';
+            }
+
+            try {
+                const { data, error } = await supabaseClient
+                    .from('surahs')
+                    .select('*')
+                    .order('surah_number', { ascending: true });
+
+                if (error) throw error;
+
+                surahsData = data.map(item => ({
+                    number: item.surah_number,
+                    name: item.surah_name,
+                    juz: item.juz,
+                    theme: item.main_theme,
+                    points: item.points || []
+                }));
+
+                renderSurahCards(surahsData);
+            } catch (error) {
+                console.error('خطأ أثناء جلب بطاقات السور:', error);
+                if (grid) {
+                    grid.innerHTML = '<div class="no-results">تعذر تحميل بيانات بطاقات السور، يرجى التأكد من اتصال قاعدة البيانات.</div>';
+                }
+            }
+        }
+
+        // 3. عرض بطاقات السور بالكامل
+        function renderSurahCards(surahs) {
+            const grid = document.getElementById('surahGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            if (surahs.length === 0) {
+                grid.innerHTML = '<div class="no-results">لم يتم العثور على نتائج تطابق بحثك.</div>';
+                return;
+            }
+
+            surahs.forEach(surah => {
+                const card = document.createElement('div');
+                card.className = 'surah-card';
+                card.innerHTML = `
+                    <div>
+                        <div class="card-header">
+                            <div class="surah-badge">${surah.number}</div>
+                            <span class="juz-tag">الجزء ${surah.juz}</span>
+                        </div>
+                        <div class="surah-title">سورة ${surah.name}</div>
+                        <div class="main-theme"><strong>المحور:</strong> ${surah.theme}</div>
+                        <ul class="points-list">
+                            ${surah.points.map(p => `<li>${p}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 4. التصفية المباشرة بحسب البحث والأجزاء
+        function filterSurahs() {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            const selectedJuz = document.getElementById('juzSelect').value;
+
+            const filtered = surahsData.filter(surah => {
+                const matchesQuery = surah.name.toLowerCase().includes(query) ||
+                                     surah.theme.toLowerCase().includes(query) ||
+                                     surah.points.some(p => p.toLowerCase().includes(query));
+
+                const matchesJuz = selectedJuz === 'all' || surah.juz == selectedJuz;
+
+                return matchesQuery && matchesJuz;
+            });
+
+            renderSurahCards(filtered);
+        }
 
         function checkUrlForFreePlan() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -1732,7 +2031,7 @@
         /* دالة التفعيل التلقائي عبر رابط الاشتراك الشهري أو السنوي */
         async function handleUrlActivation() {
             const urlParams = new URLSearchParams(window.location.search);
-            const activateType = urlParams.get('activate'); // 'monthly' or 'yearly'
+            const activateType = urlParams.get('activate');
 
             if (activateType && currentUser) {
                 const now = new Date();
@@ -1741,7 +2040,6 @@
                 const planName = activateType === 'yearly' ? 'اشتراك سنوي' : 'اشتراك شهري';
 
                 try {
-                    // تحديث بيانات المستخدم في Supabase تلقائياً
                     const { error: userError } = await supabaseClient.auth.updateUser({
                         data: { 
                             plan_type: planName,
@@ -1749,7 +2047,6 @@
                         }
                     });
 
-                    // تحديث/إدراج جدول الاشتراكات Subscriptions
                     const { error: subError } = await supabaseClient
                         .from('subscriptions')
                         .upsert({
@@ -1762,7 +2059,6 @@
 
                     if (!userError) {
                         alert(`🎉 مبارك! تم تفعيل حسابك بنجاح بـ (${planName}). ينتهي اشتراكك في: ${expiresAt.toLocaleDateString('ar-EG')}`);
-                        // إزالة رابط التفعيل من المتصفح لعدم تكراره
                         window.history.replaceState({}, document.title, window.location.pathname);
                         await refreshUserAndSubscription(currentUser);
                     }
@@ -2043,6 +2339,7 @@
             }
         }
 
+        // دالة قراءة تدبر السورة المعدلة والخالية تماماً من أخطاء السلاسل النصية
         async function fetchProtectedTadabbur(surahNumber, surahName) {
             const axisEl = document.getElementById('tadabburMainAxis');
             const namingEl = document.getElementById('tadabburNaming');
@@ -2052,38 +2349,44 @@
             namingEl.textContent = 'جارٍ التحميل...';
             benefitsEl.textContent = 'جارٍ التحميل...';
 
-            if (!currentUser) {
-                axisEl.textContent = 'محتوى التدبر مخصص للمشتركين فقط. يرجى تسجيل الدخول ورعايتك للاشتراك.';
-                namingEl.textContent = 'محتوى محمي';
-                benefitsEl.textContent = 'محتوى محمي';
-                return;
+            let surahObj = surahsData.find(s => s.number == surahNumber);
+
+            if (!surahObj) {
+                try {
+                    const { data, error } = await supabaseClient
+                        .from('surahs')
+                        .select('*')
+                        .eq('surah_number', surahNumber)
+                        .maybeSingle();
+
+                    if (data) {
+                        surahObj = {
+                            number: data.surah_number,
+                            name: data.surah_name,
+                            juz: data.juz,
+                            theme: data.main_theme,
+                            points: data.points || []
+                        };
+                    }
+                } catch (err) {
+                    console.error('Error fetching surah:', err);
+                }
             }
 
-            try {
-                const { data, error } = await supabaseClient
-                    .from('protected_content')
-                    .select('content')
-                    .eq('section', 'quran')
-                    .eq('content_key', `surah_${surahNumber}`)
-                    .maybeSingle();
-
-                if (error) throw error;
-
-                if (data && data.content) {
-                    axisEl.textContent = data.content.axis || '';
-                    namingEl.textContent = data.content.naming || '';
-                    benefitsEl.innerHTML = data.content.benefits || '';
+            if (surahObj) {
+                axisEl.textContent = surahObj.theme || 'المحور العام يتضمن هدايات وتوجيهات السورة الإيمانية.';
+                namingEl.textContent = `سُميت «سورة ${surahObj.name}» بهذا الاسم لورود هذا اللفظ ومقاصده الرئيسية فيها، وتقع في الجزء ${surahObj.juz} من المصحف الشريف.`;
+                
+                if (surahObj.points && surahObj.points.length > 0) {
+                    const pointsHtml = surahObj.points.map(pt => `<li style="margin-bottom:8px; line-height:1.7;">${pt}</li>`).join('');
+                    benefitsEl.innerHTML = `<ul style="padding-right: 20px; list-style-type: square;">${pointsHtml}</ul>`;
                 } else {
-                    axisEl.textContent = 'محتوى التدبر مخصص لأفراد المنصة.';
-                    namingEl.textContent = 'متاح للمشتركين';
-                    benefitsEl.textContent = 'متاح للمشتركين';
+                    benefitsEl.textContent = 'جميع فوائد ومقاصد السورة موضحة في المحور الرئيسي أعلاه.';
                 }
-
-            } catch (err) {
-                console.error('RLS Authorization Error / Network Error:', err);
-                axisEl.textContent = 'تعذر تحميل بيانات التدبر الخاصة بسورة ' + surahName;
-                namingEl.textContent = 'غير متاح';
-                benefitsEl.textContent = 'غير متاح';
+            } else {
+                axisEl.textContent = 'جاري استخراج وتحديث بيانات تدبر سورة ' + surahName;
+                namingEl.textContent = 'سورة ' + surahName;
+                benefitsEl.textContent = 'تتبع هدايات السورة ومقاصدها العامة.';
             }
         }
 
@@ -2112,11 +2415,6 @@
 
                     await fetchProtectedTadabbur(surahNumber, surahName);
                 }
-
-                const audio = document.getElementById('quranAudio');
-                const pagePadded = String(currentPage).padStart(3, '0');
-                document.getElementById('audioSource').src = `https://everyayah.com/data/Husary_128kbps/PageAudio/Page${pagePadded}.mp3`;
-                audio.load();
 
                 try {
                     const tafsirRes = await fetch(`https://api.alquran.cloud/v1/page/${currentPage}/ar.muyassar`);
