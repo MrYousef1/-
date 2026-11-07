@@ -66,6 +66,12 @@
             to { opacity: 1; transform: scale(1); }
         }
 
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.8); }
+            100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+        }
+
         .animate-fade { animation: fadeInUp 0.6s ease-out forwards; }
         .animate-zoom { animation: zoomIn 0.4s ease-out forwards; }
 
@@ -1017,6 +1023,7 @@
 
         .moral-points { color: #16a34a; font-weight: 800; font-size: 0.9rem; margin-bottom: 1rem; }
 
+        /* Wishlist Section */
         .wishlist-section {
             background: var(--white);
             border-radius: var(--radius);
@@ -1100,6 +1107,136 @@
 
         .delete-wish-btn:hover { background: #dc2626; }
 
+        /* Jannah Wishes Section / غرفة خير وأمنيات الجنة */
+        .jannah-section {
+            background: linear-gradient(135deg, #091e3a 0%, #112a46 50%, #1a365d 100%);
+            color: #ffffff;
+            border-radius: var(--radius);
+            padding: 2.2rem 1.5rem;
+            box-shadow: 0 15px 35px rgba(9, 30, 58, 0.3);
+            margin-bottom: 2.5rem;
+            border: 2px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .jannah-section::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(2, 132, 199, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .jannah-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .jannah-header h3 {
+            font-family: 'Amiri', serif;
+            font-size: 2.3rem;
+            color: var(--secondary);
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+            margin-bottom: 0.5rem;
+        }
+
+        .jannah-header p {
+            font-size: 1.05rem;
+            color: #e2e8f0;
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .jannah-verse-box {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(8px);
+            border-right: 4px solid var(--secondary);
+            padding: 1rem 1.2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.2rem auto;
+            max-width: 800px;
+            text-align: center;
+            font-family: 'Amiri', serif;
+            font-size: 1.25rem;
+            color: #fef08a;
+        }
+
+        .jannah-form {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--dark);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .jannah-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .jannah-card {
+            background: rgba(255, 255, 255, 0.92);
+            color: var(--dark);
+            border-radius: 14px;
+            padding: 1.4rem;
+            border-top: 5px solid var(--secondary);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .jannah-card-type {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            margin-bottom: 0.6rem;
+        }
+
+        .type-material { background: #e0f2fe; color: #0369a1; }
+        .type-spiritual { background: #fef3c7; color: #92400e; }
+
+        .jannah-card-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .jannah-card-desc {
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .jannah-card-duaa {
+            font-family: 'Amiri', serif;
+            font-size: 0.98rem;
+            color: var(--primary);
+            background: var(--primary-soft);
+            padding: 0.6rem 0.8rem;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
         .forum-section {
             background: var(--white);
             border-radius: var(--radius);
@@ -1155,6 +1292,7 @@
         body:not(.subscriber-active) #surahsOverview,
         body:not(.subscriber-active) #morals,
         body:not(.subscriber-active) #wishlist,
+        body:not(.subscriber-active) #jannahRoom,
         body:not(.subscriber-active) #stats,
         body:not(.subscriber-active) #community,
         body:not(.subscriber-active) .user-status { display: none !important; }
@@ -1238,6 +1376,25 @@
             gap: 8px;
             margin-top: 1rem;
         }
+
+        /* لوحة الشرف الشهرية - منافسة هجرية */
+        .leaderboard-panel{margin:1.25rem 0 2rem;padding:1.25rem;border-radius:24px;background:linear-gradient(135deg,#102f27,#17634b 58%,#238568);color:#fff;box-shadow:0 16px 35px rgba(15,60,45,.18);overflow:hidden}
+        .leaderboard-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:1rem}
+        .leaderboard-heading h4{font-size:1.25rem;margin:0 0 .25rem}.leaderboard-heading p{margin:0;color:#d1fae5;font-size:.88rem}
+        .hijri-period{background:#f5c84c;color:#382b08;padding:.45rem .8rem;border-radius:999px;font-weight:900;white-space:nowrap}
+        .podium{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;align-items:end;margin:1.2rem auto;max-width:720px}
+        .podium-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:.8rem .45rem;text-align:center;min-width:0}
+        .podium-card.first{background:linear-gradient(145deg,#ffe28a,#e6a923);color:#3b2b06;transform:translateY(-9px)}
+        .podium-card .medal{font-size:1.8rem;display:block;margin-bottom:.2rem}.podium-card strong{display:block;overflow-wrap:anywhere;font-size:.9rem}.podium-card small{display:block;opacity:.85;margin-top:.25rem}
+        .leaderboard-list{display:grid;gap:.5rem;max-width:820px;margin:0 auto}.leaderboard-row{display:grid;grid-template-columns:42px 1fr auto;align-items:center;gap:.7rem;background:rgba(255,255,255,.1);padding:.65rem .8rem;border-radius:14px}
+        .leaderboard-rank{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.16);display:grid;place-items:center;font-weight:900}.leaderboard-row.me{outline:2px solid #f5c84c;background:rgba(245,200,76,.14)}
+        .leaderboard-points{font-weight:900;color:#ffe28a;white-space:nowrap}.leaderboard-note{text-align:center;color:#d1fae5;font-size:.82rem;margin:.9rem 0 0}
+        .leaderboard-empty{text-align:center;padding:1.4rem;color:#e5f5ed;background:rgba(255,255,255,.08);border-radius:15px}
+        .leaderboard-refresh{border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:.45rem .75rem;cursor:pointer;font-weight:800}
+        .leaderboard-admin{margin-top:1rem;padding:1rem;border-radius:16px;background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.2)}
+        .leaderboard-admin h5{margin:0 0 .75rem;font-size:1rem}.review-request{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.7rem;background:rgba(255,255,255,.1);border-radius:12px;margin:.5rem 0;flex-wrap:wrap}
+        .review-actions{display:flex;gap:.4rem}.review-actions button{border:0;border-radius:8px;padding:.4rem .65rem;cursor:pointer;font-weight:800}.approve-review{background:#bbf7d0;color:#14532d}.reject-review{background:#fee2e2;color:#991b1b}
+        @media(max-width:520px){.leaderboard-panel{padding:1rem .7rem}.podium{gap:.35rem}.podium-card{padding:.65rem .25rem}.podium-card strong{font-size:.78rem}.leaderboard-row{grid-template-columns:34px 1fr auto;padding:.6rem}.leaderboard-rank{width:30px;height:30px}}
     </style>
 </head>
 <body>
@@ -1253,7 +1410,7 @@
             <!-- الأيقونة داخل النافذة المنبثقة -->
             <img src="https://mryousef1.github.io/-/logo.png" alt="أيقونة قُرَّةَ أَعْيُنٍ" class="modal-logo-img" onerror="this.src='https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&q=80'">
             <h2>انضم لأسرة «قُرَّةَ أَعْيُنٍ»</h2>
-            <p>سجّل حسابك واختر نظام الاشتراك للبدء في رحلة القرآن والأخلاق والتدبر</p>
+            <p>أنشئ حسابك المجاني أو سجّل الدخول لمتابعة رحلتك في القرآن والأخلاق والتدبر</p>
 
             <div id="authMessage" role="status" style="display:none; margin:0.8rem 0; padding:0.7rem; border-radius:10px; background:#fff7ed; color:#9a3412;"></div>
 
@@ -1264,24 +1421,8 @@
 
             <!-- Registration Form -->
             <div id="stepRegistration">
-                <div id="freeAccountBadge" class="free-account-notice" style="display: none;">
-                    ✨ مرحباً بك! أنت تسجل الآن للحصول على حساب مجاني بالكامل بدون رسوم.
-                </div>
-
-                <div class="form-group" id="planSelectContainer">
-                    <label>اختر خطة الاشتراك:</label>
-                    <div class="plan-selector">
-                        <div class="plan-box active" onclick="selectPlan('monthly', 150, this)">
-                            <h4>اشتراك شهري</h4>
-                            <div class="price">150 ج.م</div>
-                            <small style="color: #64748b;">شهرياً</small>
-                        </div>
-                        <div class="plan-box" onclick="selectPlan('yearly', 1000, this)">
-                            <h4>اشتراك سنوي</h4>
-                            <div class="price">1000 ج.م</div>
-                            <small style="color: #16a34a; font-weight:700;">توفير 800 ج.م</small>
-                        </div>
-                    </div>
+                <div id="freeAccountBadge" class="free-account-notice">
+                    ✨ إنشاء الحساب وتسجيل الدخول مجانيان بالكامل، ولا توجد رسوم اشتراك.
                 </div>
 
                 <div class="form-group">
@@ -1301,11 +1442,6 @@
 
                 <button class="btn btn-full" id="signupButton" onclick="signUpWithEmail()"><i class="fa-solid fa-user-plus"></i> إنشاء الحساب</button>
                 <button type="button" class="btn btn-secondary btn-full" style="margin-top: 0.5rem;" onclick="closeAccountModal()"><i class="fa-solid fa-arrow-right-from-bracket"></i> العودة للموقع كزائر</button>
-
-                <div style="margin-top: 1rem; border-top: 1px solid #e2e8f0; padding-top: 0.8rem;">
-                    <small style="color: #64748b;">يمكنك أيضاً تعبئة نموذج التسجيل مباشرة عبر جوجل:</small><br>
-                    <a href="https://forms.gle/zrwrqRLSQXDmexMz9" target="_blank" style="color: var(--primary); font-weight: 700; font-size: 0.88rem; text-decoration: underline;"><i class="fa-solid fa-file-signature"></i> رابط نموذج تسجيل المنصة</a>
-                </div>
             </div>
 
             <div id="stepLogin" style="display:none;">
@@ -1322,35 +1458,11 @@
                 <button type="button" class="btn btn-secondary btn-full" style="margin-top: 0.5rem;" onclick="closeAccountModal()"><i class="fa-solid fa-arrow-right-from-bracket"></i> العودة للموقع كزائر</button>
             </div>
 
-            <!-- شاشة انتظار التفعيل وطرق الدفع -->
+            <!-- تأكيد البريد الإلكتروني -->
             <div id="stepPending" style="display:none; text-align:center;">
-                <p style="margin:0.8rem 0; color:#9a3412; font-weight:700;">حسابك مسجل، لكن الاشتراك لم يُفعّل بعد.</p>
-                
-                <div class="payment-box">
-                    <div class="payment-title"><i class="fa-solid fa-wallet"></i> طرق تحويل رسوم الاشتراك للتفعيل:</div>
-                    
-                    <div class="payment-item">
-                        <span><i class="fa-solid fa-mobile-screen-button" style="color:#e60000;"></i> فودافون كاش:</span>
-                        <div>
-                            <strong>01033253907</strong>
-                            <button class="btn btn-secondary" style="padding:0.2rem 0.5rem; font-size:0.75rem; margin-right:5px;" onclick="copyVoda()"><i class="fa-solid fa-copy"></i> نسخ</button>
-                        </div>
-                        <div class="voda-fee-note"><i class="fa-solid fa-circle-info"></i> يرجى إضافة 1% زيادة للتحويل بـ فودافون كاش كرسوم سحب.</div>
-                    </div>
-
-                    <div class="payment-item">
-                        <span><i class="fa-solid fa-bolt" style="color:#25093a;"></i> انستا باي (InstaPay):</span>
-                        <div>
-                            <strong>01033253907</strong>
-                            <button class="btn btn-secondary" style="padding:0.2rem 0.5rem; font-size:0.75rem; margin-right:5px;" onclick="copyInsta()"><i class="fa-solid fa-copy"></i> نسخ</button>
-                            <a href="https://ipn.eg/S/mr.youssefmosad/instapay/9snuOG" target="_blank" class="btn btn-instapay" style="padding:0.3rem 0.6rem; font-size:0.75rem; margin-top:5px; display:inline-block;"><i class="fa-solid fa-arrow-up-right-from-square"></i> تحويل مباشر عبر التطبيق</a>
-                        </div>
-                    </div>
-                </div>
-
-                <p style="font-size:0.85rem; color:#64748b; margin-bottom:1rem;">بعد التحويل، يرجى ملء نموذج تسجيل المنصة أو التواصل مع الإدارة لإرسال صورة التحويل وتفعيل الحساب فوراً.</p>
-                <a href="https://forms.gle/zrwrqRLSQXDmexMz9" target="_blank" class="btn btn-secondary btn-full" style="margin-bottom:0.5rem;"><i class="fa-solid fa-file-invoice"></i> إرسال إثبات الدفع عبر نموذج التسجيل</a>
-                <button class="btn btn-full" style="background:#475569;" onclick="signOutUser()">تسجيل الخروج</button>
+                <p style="margin:0.8rem 0; color:#166534; font-weight:700;">تم إنشاء حسابك المجاني بنجاح.</p>
+                <p style="font-size:0.9rem; color:#64748b;">إذا كان تأكيد البريد الإلكتروني مطلوبًا، افتح رسالة Supabase واضغط رابط التأكيد، ثم ارجع إلى الموقع وسجّل الدخول.</p>
+                <button class="btn btn-full" style="background:#475569;" onclick="showAuthMode('login')">الانتقال إلى تسجيل الدخول</button>
             </div>
         </div>
     </div>
@@ -1376,6 +1488,7 @@
                     <li><a href="#surahsOverview" onclick="navigateToSection(event, 'surahsOverview')"><i class="fa-solid fa-layer-group"></i> دليل السور والتدبر</a></li>
                     <li><a href="#morals" onclick="navigateToSection(event, 'morals')"><i class="fa-solid fa-heart"></i> الأخلاق</a></li>
                     <li><a href="#wishlist" onclick="navigateToSection(event, 'wishlist')"><i class="fa-solid fa-gift"></i> الأماني</a></li>
+                    <li><a href="#jannahRoom" onclick="navigateToSection(event, 'jannahRoom')"><i class="fa-solid fa-cloud-moon"></i> أماني الجنة (غرفة خير)</a></li>
                     <li><a href="#stats" onclick="navigateToSection(event, 'stats')"><i class="fa-solid fa-chart-line"></i> سجل النقاط</a></li>
                     <li><a href="#community" onclick="navigateToSection(event, 'community')"><i class="fa-solid fa-users"></i> المنتدى</a></li>
                     <li><a href="#lectures" onclick="navigateToSection(event, 'lectures')"><i class="fa-solid fa-chalkboard-user"></i> المحاضرات</a></li>
@@ -1394,9 +1507,9 @@
                     <span>المتاح: <span id="userPoints">0</span></span>
                 </div>
 
-                <div class="bank-badge" title="بنك إجمالي النقاط الكلي المستحق للفيصل والتنافس">
+                <div class="bank-badge" title="رصيدك الشخصي المحفوظ على هذا الجهاز؛ ترتيب المسابقة يظهر في لوحة الشرف">
                     <i class="fa-solid fa-vault"></i>
-                    <span>بنك النقاط: <span id="totalPointsBank">0</span></span>
+                    <span>رصيدك: <span id="totalPointsBank">0</span></span>
                 </div>
 
                 <button class="btn btn-secondary" style="padding: 0.35rem 0.7rem; font-size: 0.8rem;" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
@@ -1502,21 +1615,20 @@
             </div>
         </div>
 
-        <h4 style="color:var(--primary); text-align:center; font-size:1.3rem; margin-top:1.5rem;">اختر نظام المحاضرات المفضل لك:</h4>
+        <h4 style="color:var(--primary); text-align:center; font-size:1.3rem; margin-top:1.5rem;">المحاضرات متاحة مجانًا لفئتين:</h4>
         <div class="lecture-plans-grid">
             <div class="lecture-plan-card">
-                <h4>محاضرات فردية (خاصة)</h4>
-                <div class="plan-price">150 ج.م / شهرياً</div>
-                <div class="plan-schedule"><i class="fa-solid fa-calendar-week"></i> حصتان في الأسبوع (طالب واحد)</div>
-                <p style="font-size:0.85rem; color:#64748b;">تركيز كامل ومتابعة شخصية مستمرة مع الطالب.</p>
+                <h4><i class="fa-solid fa-school"></i> طلاب المدارس</h4>
+                <div class="plan-schedule">محاضرات تربوية ودينية مناسبة لطلاب المدارس</div>
+                <p style="font-size:0.9rem; color:#64748b; margin-bottom:1rem;">لقاءات أونلاين للحوار والفهم والإجابة عن الأسئلة، مع تطبيقات تناسب المرحلة الدراسية.</p>
+                <a class="btn btn-secondary" href="https://forms.gle/g6takJnEExV4ttgH9" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square"></i> رابط تسجيل المحاضرات</a>
             </div>
 
             <div class="lecture-plan-card highlight">
-                <span style="position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--secondary); color:#000; font-weight:800; padding:0.2rem 0.8rem; border-radius:12px; font-size:0.75rem;">الأكثر طلباً</span>
-                <h4>محاضرات المجموعات</h4>
-                <div class="plan-price">100 ج.م / شهرياً</div>
-                <div class="plan-schedule"><i class="fa-solid fa-users"></i> حصتان في الأسبوع (مجموعة)</div>
-                <p style="font-size:0.85rem; color:#64748b;">نقاش تفاعلي ومشاركة جماعية ممتعة بين الطلاب.</p>
+                <h4><i class="fa-solid fa-graduation-cap"></i> طلاب الجامعة والخريجون</h4>
+                <div class="plan-schedule">محاضرات دينية وتربوية للشباب</div>
+                <p style="font-size:0.9rem; color:#64748b; margin-bottom:1rem;">مساحة للنقاش المتعمق وطرح التساؤلات وربط العلم بالمواقف والتحديات اليومية.</p>
+                <a class="btn btn-secondary" href="https://forms.gle/g6takJnEExV4ttgH9" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square"></i> رابط تسجيل المحاضرات</a>
             </div>
         </div>
 
@@ -1538,21 +1650,11 @@
             </article>
         </div>
 
-        <div class="payment-box" style="max-width:700px; margin: 1.5rem auto;">
-            <div class="payment-title"><i class="fa-solid fa-credit-card"></i> طرق دفع رسوم المحاضرات:</div>
-            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; align-items:center;">
-                <span style="background:#fff; padding:0.5rem 1rem; border-radius:8px; border:1px solid #cbd5e1;"><i class="fa-solid fa-mobile-screen-button" style="color:#e60000;"></i> فودافون كاش: <strong>01033253907</strong> <button class="btn btn-secondary" style="padding:0.2rem 0.5rem; font-size:0.75rem; margin-right:5px;" onclick="copyVoda()"><i class="fa-solid fa-copy"></i> نسخ</button></span>
-                <span style="background:#fff; padding:0.5rem 1rem; border-radius:8px; border:1px solid #cbd5e1;"><i class="fa-solid fa-bolt" style="color:#25093a;"></i> انستا باي: <strong>01033253907</strong> <button class="btn btn-secondary" style="padding:0.2rem 0.5rem; font-size:0.75rem; margin-right:5px;" onclick="copyInsta()"><i class="fa-solid fa-copy"></i> نسخ</button></span>
-                <a href="https://ipn.eg/S/mr.youssefmosad/instapay/9snuOG" target="_blank" class="btn btn-instapay" style="padding:0.5rem 1rem; font-size:0.9rem;"><i class="fa-solid fa-bolt"></i> فتح تطبيق انستا باي</a>
-            </div>
-            <div class="voda-fee-note" style="margin-top:0.8rem;"><i class="fa-solid fa-circle-info"></i> عند تحويل رسوم المحاضرات عن طريق فودافون كاش يرجى إضافة 1% رسوم سحب.</div>
-        </div>
-
         <div class="lecture-actions">
             <a class="btn btn-secondary" style="padding:0.8rem 1.8rem; font-size:1.05rem;" href="https://forms.gle/g6takJnEExV4ttgH9" target="_blank"><i class="fa-solid fa-pen-to-square"></i> حجز المحاضرات المباشرة الآن (نموذج جوجل)</a>
-            <button class="btn" type="button" onclick="openAccountModal()"><i class="fa-solid fa-user-lock"></i> دخول المشتركين للمنصة</button>
+            <button class="btn" type="button" onclick="openAccountModal()"><i class="fa-solid fa-user-lock"></i> إنشاء حساب / تسجيل الدخول</button>
         </div>
-        <p class="lecture-note">قسم المحاضرات متاح لجميع الزوار، وااشتراك المحاضرات يكون مستقلًا عن اشتراك المنصة.</p>
+        <p class="lecture-note">المحاضرات مجانية، والتسجيل من الرابط المخصص للفئة المناسبة لك.</p>
     </section>
 
     <!-- Main Container -->
@@ -1740,7 +1842,7 @@
                 <div class="section-title">
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
                     <div>
-                        <h3>قائمة الأمنيات والمكافآت</h3>
+                        <h3>قائمة الأمنيات والمكافآت (في الدنيا)</h3>
                         <small style="color: #64748b;">حدد الهدية والسبب وصورتها، واستبدلها بنقاط إنجازك (بنك النقاط يظل كلياً للترتيب والمنافسة)</small>
                     </div>
                 </div>
@@ -1773,7 +1875,44 @@
             </div>
         </section>
 
-        <!-- 5. Stats & Progress Table Section -->
+        <!-- 5. Jannah Room Section / غرفة خير وأمنيات الجنة -->
+        <section id="jannahRoom" class="jannah-section animate-fade">
+            <div class="jannah-header">
+                <h3><i class="fa-solid fa-cloud-moon"></i> غُرْفَةُ خَيْرٍ وَأَمَانِي الجَنَّةِ</h3>
+                <p>مساحة لكل قلب يريد أن يحلم ويعيش مع نعيم الجنة الموعود.. تمنَّ كل ما تشتهيه نفسك هنا، سواء كان شيئاً مادياً أو معنوياً، فلن تنفد خزائن الله جل وعلا!</p>
+                
+                <div class="jannah-verse-box">
+                    «وَفِيهَا مَا تَشْتَهِيهِ الْأَنفُسُ وَتَلَذُّ الْأَعْيُنُ ۖ وَأَنتُمْ فِيهَا خَالِدُونَ»
+                </div>
+            </div>
+
+            <div class="jannah-form">
+                <div>
+                    <label style="font-size:0.85rem; font-weight:800; color:#1e293b;">نوع الأمنية:</label>
+                    <select id="jannahType" class="form-control">
+                        <option value="معنوي">أمنية معنوية (رؤية الله، لقاء الرسول ﷺ، زوال الهم...)</option>
+                        <option value="مادي">أمنية مادية (قصر، شجرة ذهب، خيل تطير، طعام...)</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-size:0.85rem; font-weight:800; color:#1e293b;">ما الذي يت مناه قلبك في الجنة؟</label>
+                    <input type="text" id="jannahTitle" class="form-control" placeholder="مثال: النظر لوجه الله الكريم / قصر من لؤلؤة واحدة">
+                </div>
+                <div>
+                    <label style="font-size:0.85rem; font-weight:800; color:#1e293b;">صف أحاسيسك وأمنيتك بالتفصيل:</label>
+                    <input type="text" id="jannahDesc" class="form-control" placeholder="اكتب التفاصيل التي تحلم برؤيتها والشعور بها هناك...">
+                </div>
+                <div style="grid-column: 1 / -1;">
+                    <button class="btn btn-secondary btn-full" onclick="addJannahWish()" style="font-size:1.05rem; padding:0.8rem;"><i class="fa-solid fa-wand-magic-sparkles"></i> سجل أمنيتك في غرفة أمنيات الجنة</button>
+                </div>
+            </div>
+
+            <div class="jannah-grid" id="jannahGrid">
+                <!-- Dynamic Jannah wishes loaded here -->
+            </div>
+        </section>
+
+        <!-- 6. Stats & Progress Table Section -->
         <section id="stats" class="stats-section animate-fade">
             <div class="section-header">
                 <div class="section-title">
@@ -1783,6 +1922,16 @@
                         <small style="color: #64748b;">تتبع إنجازاتك اليومية والأسبوعية والشهرية وتنافس مع زملائك في المنصة</small>
                     </div>
                 </div>
+            </div>
+
+            <div class="leaderboard-panel" aria-live="polite">
+                <div class="leaderboard-heading">
+                    <div><h4><i class="fa-solid fa-trophy"></i> لوحة شرف قُرَّةَ أَعْيُنٍ</h4><p>نافس بالعلم والعمل، واستحقاق النقاط بعد مراجعة المعلم</p></div>
+                    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap"><span class="hijri-period" id="leaderboardPeriod">المسابقة الهجرية</span><button class="leaderboard-refresh" onclick="loadMonthlyLeaderboard()"><i class="fa-solid fa-rotate"></i> تحديث</button></div>
+                </div>
+                <div id="leaderboardContent"><div class="leaderboard-empty">جارٍ تحميل ترتيب المتنافسين...</div></div>
+                <div id="leaderboardAdminPanel" class="leaderboard-admin" style="display:none"><h5><i class="fa-solid fa-clipboard-check"></i> مراجعة طلبات اعتماد النقاط</h5><div id="leaderboardReviewRequests">جارٍ التحميل...</div></div>
+                <p class="leaderboard-note">تُضاف نقاط المسابقة بعد اعتماد إنجاز الحفظ والاستيعاب والتفسير والتدبر في المحاضرات المباشرة.</p>
             </div>
 
             <div class="stats-table-wrapper">
@@ -1805,7 +1954,7 @@
             </div>
         </section>
 
-        <!-- 6. Forum / Community -->
+        <!-- 7. Forum / Community -->
         <section id="community" class="forum-section animate-fade">
             <div class="section-header">
                 <div class="section-title">
@@ -1861,7 +2010,7 @@
             { number: 3, name: "آل عمران", type: "مدنية", juz: 3, theme: "الثبات على الدين بعد تحقيق التوحيد، ودحض الشبهات والتحذير من أسباب الهزيمة النفسية والمادية.", naming: "لورود ذكر قصة آل عمران (عمران والد مريم) وما ظهر فيهم من آيات القدرة والإيمان." },
             { number: 4, name: "النساء", type: "مدنية", juz: 4, theme: "إقامة العدل والرحمة والمواساة بين الناس، وتنظيم البيت والمسلم والمجتمع على أسس الحق والعدالة.", naming: "لكثرة ما ورد فيها من الأحكام والشرائع التي تخص النساء، وتنظيم حقوقهن وحقوق المستضعفين واليتامى." },
             { number: 5, name: "المائدة", type: "مدنية", juz: 6, theme: "الوفاء بالعهود والعقود مع الله ومع العباد، وبيان تمام الدين والشرائع الحلال والحرام.", naming: "لورود قصة المائدة التي طلب الحواريون من عيسى عليه السلام أن ينزلها الله عليهم من السماء لتكون عاداً لهم وآية." },
-            { number: 6, name: "الأنعام", type: "مكية", juz: 7, theme: "إثبات عقيدة التوحيد والنبوة والبعث، وإقامة الحجة والبراهين على المشركين بأدلة الكون والخلق.", naming: "لكثرة ما ذكر فيها من أحكام الأنعام (الإبل والبقر والغنم) وإبطال عقائد المشركين والجاهليين حول تحريمها أو تحليلها افتراءً." },
+            { number: 6, name: "الأنعام", type: "مكية", juz: 7, theme: "إثبات عقيدة التوحيد والنبوة والبعث، وإقامة الحجة والبراهين على المشركين بأدلة الكون والخلق.", naming: "لكثرة ما ذكر فيها من أحكام الأنعام (الإبل والبقر وغنم) وإبطال عقائد المشركين والجاهليين حول تحريمها أو تحليلها افتراءً." },
             { number: 7, name: "الأعراف", type: "مكية", juz: 8, theme: "بيّنة الصراع الأبدي بين الحق والباطل، وحتمية حسم الصراع لصالح أنبياء الله ورسله، والتحذير من اغترار الأمم بالمهلة.", naming: "لذكر الأعراف فيها، وهو السور الفاصل بين الجنة والنار والذي يقف عليه رجال استوت حسناتهم وسيئاتهم." },
             { number: 8, name: "الأنفال", type: "مدنية", juz: 9, theme: "بيان قوانين النصر والهزيمة المادية والروحية، وأخلاقيات الحرب والسلم والتأكيد على أن النصر من عند الله وحده.", naming: "لافتتاحها بالسؤال عن الأنفال وهي الغنائم وكيفية توزيعها بعد غزوة بدر الكبرى." },
             { number: 9, name: "التوبة", type: "مدنية", juz: 10, theme: "التمايز والتطهير النهائي للمجتمع المسلم من النفاق والشرك، وحسم العلاقة مع المشركين وأهل الكتاب.", naming: "لتصريحها بتوبة الله على النبي والمهاجرين والأنصار والثلاثة الذين خُلّفوا، وتسميتها ببراءة لبراءتها من المشركين والمنافقين." },
@@ -2003,55 +2152,39 @@
         let selectedPlanType = 'monthly';
         let selectedPlanPrice = 150;
 
-        // Points & Stats tracking
-        let points = parseInt(localStorage.getItem('qurrat_points')) || 0;
-        let totalBank = parseInt(localStorage.getItem('qurrat_total_bank')) || points;
-
-        let stats = JSON.parse(localStorage.getItem('qurrat_stats')) || {
-            today: 0,
-            yesterday: 0,
-            currentWeek: 0,
-            pastWeeks: 0,
-            currentMonth: 0,
-            yearlyBank: totalBank
-        };
-
-        let currentPage = 1;
-        let wishes = JSON.parse(localStorage.getItem('qurrat_wishes')) || [
-            { 
-                id: 1, 
-                title: 'رحلة ترفيهية أسبوعية', 
-                reason: 'المواظبة على السلوكيات والتفوق الأسبوعي',
-                points: 50, 
-                img: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=400&q=80' 
-            },
-            { 
-                id: 2, 
-                title: 'كتاب أول مرة أتدبر القرآن', 
-                reason: 'حفظ وفهم الجزء الأول من القرآن الكريم',
-                points: 30, 
-                img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80' 
-            }
+        // بيانات مستقلة لكل حساب: لا نقرأ أو نكتب أي بيانات شخصية بمفتاح مشترك.
+        const DEFAULT_STATS = { today: 0, yesterday: 0, currentWeek: 0, pastWeeks: 0, currentMonth: 0, yearlyBank: 0 };
+        const DEFAULT_WISHES = [
+            { id: 1, title: 'رحلة ترفيهية أسبوعية', reason: 'المواظبة على السلوكيات والتفوق الأسبوعي', points: 50, img: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=400&q=80' },
+            { id: 2, title: 'كتاب أول مرة أتدبر القرآن', reason: 'حفظ وفهم الجزء الأول من القرآن الكريم', points: 30, img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80' }
         ];
+        const DEFAULT_JANNAH_WISHES = [
+            { id: 101, type: 'معنوي', title: 'رؤية وجه الله الكريم ورفقة سيدنا محمد ﷺ', desc: 'أن نكون في أعلى درجات الفردوس الأعلى مع النبيين والصديقين والشهداء، وألا ننحرم من لذة النظر لوجه ربي الكريم.', duaa: 'اللهم ارزقنا الفردوس الأعلى برفقة نبيك الحبيب ﷺ بدون حساب ولا سابق عذاب.' },
+            { id: 102, type: 'مادي', title: 'قصر من لؤلؤ ومروج من ياقوت وخيل تطير', desc: 'قصر واسع غرفه من زبرجد ولؤلؤ تجري تحته الأنهار العذبة، وخيل أبلق له جناحان يطير بي حيث أشاء في الجنة.', duaa: 'اللهم اجعلنا من ورثة جنات النعيم.' }
+        ];
+        let points = 0;
+        let totalBank = 0;
+        let stats = { ...DEFAULT_STATS };
+        let currentPage = 1;
+        let wishes = DEFAULT_WISHES.map(item => ({ ...item }));
+        let jannahWishes = DEFAULT_JANNAH_WISHES.map(item => ({ ...item }));
 
         const SUPABASE_URL = 'https://shecebaqbyflhpjzowso.supabase.co';
         const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_hX4YiXc_VfhzADuW4zqn0Q_gNaGbLc4';
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
         
-        const SECRET_FREE_CODE = "BARAKA2026";
-        
         let currentUser = null;
         let currentSubscription = null;
-        let isEligibleForFree = false;
+        let activeContest = null;
+        let leaderboardRows = [];
         let surahsData = ALL_SURAHS_DB;
 
         document.addEventListener('DOMContentLoaded', async () => {
-            checkUrlForFreePlan();
             await checkAuthStatus();
-            await handleUrlActivation(); // فحص روابط التفعيل التلقائية عند التحميل
             updatePointsDisplay();
             initQuranSelect();
             renderWishes();
+            renderJannahWishes();
             renderStatsTable();
             
             // تهيئة وتفعيل بطاقات السور والفلترة
@@ -2123,57 +2256,6 @@
             renderSurahCards(filtered);
         }
 
-        function checkUrlForFreePlan() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const planParam = urlParams.get('plan');
-            const codeParam = urlParams.get('code');
-
-            if (planParam === 'free' && codeParam === SECRET_FREE_CODE) {
-                isEligibleForFree = true;
-                selectedPlanType = 'مجاني';
-            }
-        }
-
-        /* دالة التفعيل التلقائي عبر رابط الاشتراك الشهري أو السنوي */
-        async function handleUrlActivation() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const activateType = urlParams.get('activate');
-
-            if (activateType && currentUser) {
-                const now = new Date();
-                const daysToAdd = activateType === 'yearly' ? 365 : 30;
-                const expiresAt = new Date(now.getTime() + daysToAdd * 24 * 60 * 60 * 1000);
-                const planName = activateType === 'yearly' ? 'اشتراك سنوي' : 'اشتراك شهري';
-
-                try {
-                    const { error: userError } = await supabaseClient.auth.updateUser({
-                        data: { 
-                            plan_type: planName,
-                            is_active: true
-                        }
-                    });
-
-                    const { error: subError } = await supabaseClient
-                        .from('subscriptions')
-                        .upsert({
-                            user_id: currentUser.id,
-                            plan: activateType,
-                            status: 'active',
-                            starts_at: now.toISOString(),
-                            expires_at: expiresAt.toISOString()
-                        });
-
-                    if (!userError) {
-                        alert(`🎉 مبارك! تم تفعيل حسابك بنجاح بـ (${planName}). ينتهي اشتراكك في: ${expiresAt.toLocaleDateString('ar-EG')}`);
-                        window.history.replaceState({}, document.title, window.location.pathname);
-                        await refreshUserAndSubscription(currentUser);
-                    }
-                } catch (err) {
-                    console.error('Error auto activating account:', err);
-                }
-            }
-        }
-
         function copyVoda() {
             navigator.clipboard.writeText('01033253907');
             alert('تم نسخ رقم فودافون كاش (01033253907) بنجاح!');
@@ -2215,19 +2297,6 @@
             document.getElementById('stepRegistration').style.display = mode === 'signup' ? 'block' : 'none';
             document.getElementById('stepLogin').style.display = mode === 'login' ? 'block' : 'none';
             document.getElementById('stepPending').style.display = 'none';
-
-            if (mode === 'signup' && isEligibleForFree) {
-                document.getElementById('freeAccountBadge').style.display = 'block';
-                document.getElementById('planSelectContainer').style.display = 'none';
-            }
-        }
-
-        function selectPlan(type, price, el) {
-            if (isEligibleForFree) return;
-            selectedPlanType = type;
-            selectedPlanPrice = price;
-            document.querySelectorAll('.plan-box').forEach(box => box.classList.remove('active'));
-            el.classList.add('active');
         }
 
         async function signUpWithEmail() {
@@ -2245,39 +2314,25 @@
             button.disabled = true;
             button.textContent = 'جارٍ إنشاء الحساب...';
 
-            const userPlan = isEligibleForFree ? 'مجاني' : selectedPlanType;
-            const userActiveState = isEligibleForFree ? true : false;
-
             try {
                 const { data, error } = await supabaseClient.auth.signUp({
                     email,
                     password,
                     options: {
-                        data: { 
-                            full_name: name, 
-                            plan_type: userPlan,
-                            is_active: userActiveState
-                        },
+                        data: { full_name: name, plan_type: 'مجاني', account_type: 'free' },
                         emailRedirectTo: 'https://mryousef1.github.io/-/'
                     }
                 });
                 if (error) throw error;
 
-                if (isEligibleForFree) {
-                    alert('تم إنشاء حسابك المجاني وتفعيله بنجاح! مرحباً بك في المنصة.');
-                    document.getElementById('authModal').style.display = 'none';
-                    if (data.user) {
-                        await refreshUserAndSubscription(data.user);
-                    }
+                if (data.session && data.user) {
+                    await refreshUserAndSubscription(data.user);
+                    showAuthMessage('تم إنشاء حسابك المجاني وتسجيل دخولك بنجاح.', false);
                 } else {
-                    document.getElementById('authModal').style.display = 'flex';
-                    document.getElementById('authModeSwitch').style.display = 'flex';
                     document.getElementById('stepRegistration').style.display = 'none';
-                    document.getElementById('stepLogin').style.display = 'none';
                     document.getElementById('stepPending').style.display = 'block';
-                    showAuthMessage('تم تسجيل الحساب بنجاح، لكن اشتراكك ما زال في انتظار التفعيل.', false);
+                    showAuthMessage('تم إنشاء الحساب. افتح رسالة التأكيد المرسلة إلى بريدك الإلكتروني، ثم سجّل الدخول.', false);
                 }
-
             } catch (error) {
                 showAuthMessage(error.message || 'تعذر إنشاء الحساب. حاول مرة أخرى.', true);
             } finally {
@@ -2323,37 +2378,56 @@
             else showAuthMessage('إذا كان البريد مسجلًا، ستصلك رسالة لاستعادة كلمة المرور.');
         }
 
+        function accountStorageKey(name, userId = currentUser?.id) {
+            return userId ? `qurrat_user_${userId}_${name}` : null;
+        }
+
+        function saveAccountData(name, value) {
+            const key = accountStorageKey(name);
+            if (key) localStorage.setItem(key, JSON.stringify(value));
+        }
+
+        function loadAccountData(userId) {
+            const read = (name, fallback) => {
+                try {
+                    const raw = localStorage.getItem(accountStorageKey(name, userId));
+                    return raw === null ? fallback : JSON.parse(raw);
+                } catch (_) { return fallback; }
+            };
+            points = Number(read('points', 0)) || 0;
+            totalBank = Number(read('total_bank', points)) || 0;
+            stats = { ...DEFAULT_STATS, ...read('stats', {}) };
+            wishes = read('wishes', DEFAULT_WISHES.map(item => ({ ...item })));
+            jannahWishes = read('jannah_wishes', DEFAULT_JANNAH_WISHES.map(item => ({ ...item })));
+            stats.yearlyBank = Number(stats.yearlyBank) || totalBank;
+            updatePointsDisplay();
+            renderWishes();
+            renderJannahWishes();
+            renderStatsTable();
+        }
+
+        function resetGuestData() {
+            points = 0;
+            totalBank = 0;
+            stats = { ...DEFAULT_STATS };
+            wishes = DEFAULT_WISHES.map(item => ({ ...item }));
+            jannahWishes = DEFAULT_JANNAH_WISHES.map(item => ({ ...item }));
+            updatePointsDisplay();
+            renderWishes();
+            renderJannahWishes();
+            renderStatsTable();
+        }
+
         async function refreshUserAndSubscription(user) {
             currentUser = user;
-            
-            const userMeta = user.user_metadata || {};
-            const isFreeAccount = (userMeta.plan_type === 'مجاني' || userMeta.is_active === true);
-
-            const { data, error } = await supabaseClient
-                .from('subscriptions')
-                .select('plan,status,starts_at,expires_at')
-                .eq('user_id', user.id)
-                .maybeSingle();
-
-            const isSubActive = data && data.status === 'active' && (!data.expires_at || new Date(data.expires_at) > new Date());
-
-            if (isFreeAccount || isSubActive) {
-                document.getElementById('authModal').style.display = 'none';
-                setProtectedSectionsAccess(true);
-                document.getElementById('displayUserName').innerText = userMeta.full_name || user.email || 'مشترك';
-                
-                const displayPlan = userMeta.plan_type || (data?.plan === 'yearly' ? 'اشتراك سنوي' : 'اشتراك شهري');
-                document.getElementById('displayPlanType').innerText = displayPlan;
-                renderStatsTable();
-            } else {
-                setProtectedSectionsAccess(false);
-                document.getElementById('authModal').style.display = 'flex';
-                document.getElementById('authModeSwitch').style.display = 'flex';
-                document.getElementById('stepRegistration').style.display = 'none';
-                document.getElementById('stepLogin').style.display = 'none';
-                document.getElementById('stepPending').style.display = 'block';
-                showAuthMessage('تم تسجيل الدخول بنجاح، لكن اشتراكك ما زال في انتظار التفعيل.', false);
-            }
+            loadAccountData(user.id);
+            currentSubscription = { plan: 'مجاني', status: 'active' };
+            document.getElementById('authModal').style.display = 'none';
+            setProtectedSectionsAccess(true);
+            document.getElementById('displayUserName').innerText = user.user_metadata?.full_name || user.email || 'مستخدم المنصة';
+            document.getElementById('displayPlanType').innerText = 'حساب مجاني';
+            renderStatsTable();
+            await loadMonthlyLeaderboard();
         }
 
         async function checkAuthStatus() {
@@ -2363,12 +2437,10 @@
             } else {
                 currentUser = null;
                 currentSubscription = null;
-                document.getElementById('authModal').style.display = 'none';
+                resetGuestData();
                 setProtectedSectionsAccess(false);
-
-                if (isEligibleForFree) {
-                    openAccountModal();
-                }
+                document.getElementById('displayUserName').innerText = 'زائر';
+                document.getElementById('displayPlanType').innerText = 'حساب مجاني';
             }
         }
 
@@ -2380,34 +2452,140 @@
             }
             currentUser = null;
             currentSubscription = null;
+            resetGuestData();
             setProtectedSectionsAccess(false);
-            clearAuthMessage();
-            showAuthMode('login');
+            document.getElementById('authModal').style.display = 'none';
+            document.getElementById('displayUserName').innerText = 'زائر';
+            document.getElementById('displayPlanType').innerText = 'حساب مجاني';
         }
 
         function logout() {
+
             if (confirm('هل ترغب في تسجيل الخروج أو تبديل الحساب؟')) {
                 signOutUser();
             }
         }
 
+        function escapeLeaderboardText(value) {
+            return String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+        }
+
+        async function loadMonthlyLeaderboard() {
+            const host = document.getElementById('leaderboardContent');
+            if (!host) return;
+            if (!currentUser) {
+                host.innerHTML = '<div class="leaderboard-empty">سجّل الدخول لمشاهدة لوحة الشرف والمشاركة في المنافسة.</div>';
+                return;
+            }
+            host.innerHTML = '<div class="leaderboard-empty">جارٍ تحميل لوحة الشرف...</div>';
+            try {
+                const { data: setting, error: settingError } = await supabaseClient
+                    .from('leaderboard_settings').select('period_key, period_label').eq('id', 1).maybeSingle();
+                if (settingError) throw settingError;
+                activeContest = setting;
+                document.getElementById('leaderboardPeriod').textContent = setting?.period_label || 'لم تُحدد المسابقة الحالية';
+                if (!setting?.period_key) {
+                    host.innerHTML = '<div class="leaderboard-empty">لم يحدد المشرف الشهر الهجري الحالي بعد.</div>';
+                    return;
+                }
+                const { data, error } = await supabaseClient.from('monthly_leaderboard')
+                    .select('user_id, display_name, points')
+                    .eq('period_key', setting.period_key)
+                    .order('points', { ascending: false }).order('updated_at', { ascending: true }).limit(10);
+                if (error) throw error;
+                leaderboardRows = data || [];
+                renderMonthlyLeaderboard();
+                const { data: adminMarker } = await supabaseClient.from('leaderboard_admins').select('user_id').eq('user_id', currentUser.id).maybeSingle();
+                const adminPanel = document.getElementById('leaderboardAdminPanel');
+                if (adminPanel) adminPanel.style.display = adminMarker ? 'block' : 'none';
+                if (adminMarker) await loadPendingPointReviews();
+            } catch (error) {
+                console.error('Leaderboard load error:', error);
+                host.innerHTML = '<div class="leaderboard-empty">تعذر تحميل لوحة الشرف. تأكد من تنفيذ إعدادات Supabase الموضحة مع ملف الموقع.</div>';
+            }
+        }
+
+        function renderMonthlyLeaderboard() {
+            const host = document.getElementById('leaderboardContent');
+            const rows = leaderboardRows || [];
+            if (!rows.length) {
+                host.innerHTML = '<div class="leaderboard-empty">المنافسة بدأت! كن أول من يحصل على نقاط معتمدة هذا الشهر.</div>';
+                return;
+            }
+            const medals = ['🥇','🥈','🥉'];
+            const podiumOrder = [1,0,2].filter(i => rows[i]);
+            const podium = podiumOrder.map(i => {
+                const r = rows[i];
+                return `<div class="podium-card ${i===0?'first':''}"><span class="medal">${medals[i]}</span><strong>${escapeLeaderboardText(r.display_name || 'متعلم')}</strong><small>${Number(r.points)||0} نقطة</small></div>`;
+            }).join('');
+            const rest = rows.slice(3).map((r,i) => `<div class="leaderboard-row ${r.user_id===currentUser?.id?'me':''}"><span class="leaderboard-rank">${i+4}</span><strong>${escapeLeaderboardText(r.display_name || 'متعلم')}${r.user_id===currentUser?.id?' (أنت)':''}</strong><span class="leaderboard-points">${Number(r.points)||0} ⭐</span></div>`).join('');
+            host.innerHTML = `<div class="podium">${podium}</div><div class="leaderboard-list">${rest}</div>`;
+        }
+
+        async function loadPendingPointReviews() {
+            const host = document.getElementById('leaderboardReviewRequests');
+            if (!host) return;
+            const { data, error } = await supabaseClient.from('point_review_requests')
+                .select('id, display_name, points_requested, reason, created_at')
+                .eq('status', 'pending').order('created_at', { ascending: true }).limit(100);
+            if (error) {
+                host.textContent = 'تعذر تحميل الطلبات: ' + error.message;
+                return;
+            }
+            if (!data?.length) {
+                host.innerHTML = '<div class="leaderboard-empty">لا توجد طلبات معلقة حاليًا.</div>';
+                return;
+            }
+            host.innerHTML = data.map(req => `<div class="review-request"><div><strong>${escapeLeaderboardText(req.display_name)}</strong> — ${Number(req.points_requested)} نقطة<br><small>${escapeLeaderboardText(req.reason)}</small></div><div class="review-actions"><button class="approve-review" onclick="reviewPointRequest('${req.id}','approve')">اعتماد</button><button class="reject-review" onclick="reviewPointRequest('${req.id}','reject')">رفض</button></div></div>`).join('');
+        }
+
+        async function reviewPointRequest(requestId, action) {
+            const rpcName = action === 'approve' ? 'approve_point_review_request' : 'reject_point_review_request';
+            const { error } = await supabaseClient.rpc(rpcName, { p_request_id: requestId });
+            if (error) {
+                alert('تعذر تنفيذ المراجعة: ' + error.message);
+                return;
+            }
+            await loadMonthlyLeaderboard();
+        }
+
+        async function submitPointsForReview(amount, reason) {
+            if (!currentUser) {
+                alert('سجّل الدخول أولًا حتى يُسجل إنجازك باسم حسابك.');
+                return false;
+            }
+            if (!activeContest?.period_key) await loadMonthlyLeaderboard();
+            if (!activeContest?.period_key) {
+                alert('لم يحدد المشرف الشهر الهجري الحالي بعد. حاول لاحقًا.');
+                return false;
+            }
+            const { error } = await supabaseClient.from('point_review_requests').insert({
+                user_id: currentUser.id,
+                display_name: currentUser.user_metadata?.full_name || currentUser.email || 'متعلم',
+                points_requested: amount,
+                reason,
+                period_key: activeContest.period_key
+            });
+            if (error) {
+                console.error(error);
+                alert('تعذر إرسال الإنجاز للمراجعة. حاول مرة أخرى.');
+                return false;
+            }
+            alert('تم تسجيل إنجازك وإرساله للمراجعة. ستضاف نقاط المسابقة بعد التحقق منها في المحاضرة المباشرة.');
+            return true;
+        }
+
         function updatePointsDisplay() {
             document.getElementById('userPoints').innerText = points;
             document.getElementById('totalPointsBank').innerText = totalBank;
-            localStorage.setItem('qurrat_points', points);
-            localStorage.setItem('qurrat_total_bank', totalBank);
+            saveAccountData('points', points);
+            saveAccountData('total_bank', totalBank);
             renderStatsTable();
         }
 
-        function addPoints(pts) {
-            points += pts;
-            totalBank += pts;
-            stats.today += pts;
-            stats.currentWeek += pts;
-            stats.currentMonth += pts;
-            stats.yearlyBank = totalBank;
-            localStorage.setItem('qurrat_stats', JSON.stringify(stats));
-            updatePointsDisplay();
+        function addPoints(pts, reason = 'إنجاز تعليمي') {
+            // لا تُضاف نقاط المنافسة مباشرة من المتصفح؛ تُرسل للمراجعة أولًا.
+            return submitPointsForReview(pts, reason);
         }
 
         function renderStatsTable() {
@@ -2522,10 +2700,9 @@
             }
         }
 
-        function completeQuranDay() {
-            addPoints(10);
-            alert(`ما شاء الله! أتممت القراءة والتفسير والتدبر للصفحة ${currentPage}. تم إضافة 10 نقاط لرصيدك وللبنك، والانتقال للصفحة التالية.`);
-            
+        async function completeQuranDay() {
+            const submitted = await addPoints(10, `طلب اعتماد إنجاز الصفحة ${currentPage} في الحفظ والفهم والتفسير والتدبر`);
+            if (!submitted) return;
             if (currentPage < 604) {
                 loadQuranPage(currentPage + 1);
                 document.getElementById('quran').scrollIntoView({ behavior: 'smooth' });
@@ -2533,8 +2710,7 @@
         }
 
         function claimMoral(name) {
-            addPoints(2);
-            alert(`ممتاز! أثابك الله على التزامك بخُلُق (${name}). تم إضافة نقطتين لرصيدك وللبنك.`);
+            addPoints(2, `طلب اعتماد الالتزام بخُلُق: ${name}`);
         }
 
         function renderWishes() {
@@ -2563,7 +2739,7 @@
                 `;
                 container.appendChild(card);
             });
-            localStorage.setItem('qurrat_wishes', JSON.stringify(wishes));
+            saveAccountData('wishes', wishes);
         }
 
         function addWish() {
@@ -2619,6 +2795,75 @@
                 updatePointsDisplay();
                 alert('مبارك! تم استبدال الهدية بنجاح. رصيدك المتاح تم خصمه، وبنك النقاط الكلي يظل ثابتًا للترتيب والمنافسة!');
                 renderWishes();
+            }
+        }
+
+        /* ووظائف غرفة أمنيات الجنة / غرفة خير */
+        function renderJannahWishes() {
+            const grid = document.getElementById('jannahGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            jannahWishes.forEach(jw => {
+                const isMaterial = jw.type === 'مادي';
+                const card = document.createElement('div');
+                card.className = 'jannah-card animate-zoom';
+                card.innerHTML = `
+                    <button class="delete-wish-btn" onclick="deleteJannahWish(${jw.id})" title="حذف الأمنية"><i class="fa-solid fa-trash"></i></button>
+                    <div>
+                        <span class="jannah-card-type ${isMaterial ? 'type-material' : 'type-spiritual'}">
+                            ${isMaterial ? '✨ أمنية مادية في الجنة' : '🕊️ أمنية معنوية وإيمانية'}
+                        </span>
+                        <div class="jannah-card-title">${jw.title}</div>
+                        <div class="jannah-card-desc">${jw.desc}</div>
+                    </div>
+                    <div class="jannah-card-duaa">
+                        <i class="fa-solid fa-hands-praying"></i> ${jw.duaa || 'اللهم بلغنا إياها برحمتك وفضلك يا كريم.'}
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            saveAccountData('jannah_wishes', jannahWishes);
+        }
+
+        function addJannahWish() {
+            const type = document.getElementById('jannahType').value;
+            const title = document.getElementById('jannahTitle').value.trim();
+            const desc = document.getElementById('jannahDesc').value.trim();
+
+            if (!title) {
+                alert('يرجى أمنيتك التي تحلم بها في الجنة أولاً.');
+                return;
+            }
+
+            const duaaList = [
+                'اللهم اجعلنا من أهل الفردوس الأعلى ونولنا ما نتمنى.',
+                'اللهم اجمعنا فيها مع النبيين والصديقين والشهداء.',
+                'اللهم ارزقنا نعيم الجنة ولذة النظر لوجهك الكريم.',
+                'ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار.'
+            ];
+
+            const randomDuaa = duaaList[Math.floor(Math.random() * duaaList.length)];
+
+            jannahWishes.unshift({
+                id: Date.now(),
+                type: type,
+                title: title,
+                desc: desc || 'أمنية زكية يتمناها القلب ويحلم بنعيمها في دار الخلد.',
+                duaa: randomDuaa
+            });
+
+            document.getElementById('jannahTitle').value = '';
+            document.getElementById('jannahDesc').value = '';
+
+            renderJannahWishes();
+            alert('✨ ما شاء الله! تم تسجيل أمنيتك في غرفة الجنة.. نسأل الله أن يجمعك بها في الفردوس الأعلى!');
+        }
+
+        function deleteJannahWish(id) {
+            if (confirm('هل ترغب في حذف هذه الأمنية من غرفة الجنة؟')) {
+                jannahWishes = jannahWishes.filter(jw => jw.id !== id);
+                renderJannahWishes();
             }
         }
 
