@@ -1288,14 +1288,14 @@
             border-radius: 10px;
         }
 
-        body:not(.subscriber-active) #quran,
-        body:not(.subscriber-active) #surahsOverview,
-        body:not(.subscriber-active) #morals,
-        body:not(.subscriber-active) #wishlist,
-        body:not(.subscriber-active) #jannahRoom,
-        body:not(.subscriber-active) #stats,
-        body:not(.subscriber-active) #community,
+        /* المحتوى متاح للزوار؛ شريط بيانات الحساب يظهر بعد تسجيل الدخول فقط */
         body:not(.subscriber-active) .user-status { display: none !important; }
+        /* الأقسام التعليمية والحسابية لا تظهر إلا بعد تسجيل الدخول */
+        body:not(.subscriber-active) .protected-content { display: none !important; }
+        body:not(.subscriber-active) .protected-nav-item { display: none !important; }
+        .guest-content-prompt{max-width:900px;margin:1rem auto 2rem;padding:1rem 1.2rem;border-radius:16px;background:#f0fdf4;border:1px solid #bbf7d0;color:#14532d;text-align:center;line-height:1.9}
+        .guest-content-prompt button{border:0;border-radius:999px;padding:.65rem 1.2rem;background:#14532d;color:#fff;font-weight:800;cursor:pointer;margin:.3rem}
+
 
         .lectures-section {
             background: var(--white);
@@ -1395,6 +1395,30 @@
         .leaderboard-admin h5{margin:0 0 .75rem;font-size:1rem}.review-request{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.7rem;background:rgba(255,255,255,.1);border-radius:12px;margin:.5rem 0;flex-wrap:wrap}
         .review-actions{display:flex;gap:.4rem}.review-actions button{border:0;border-radius:8px;padding:.4rem .65rem;cursor:pointer;font-weight:800}.approve-review{background:#bbf7d0;color:#14532d}.reject-review{background:#fee2e2;color:#991b1b}
         @media(max-width:520px){.leaderboard-panel{padding:1rem .7rem}.podium{gap:.35rem}.podium-card{padding:.65rem .25rem}.podium-card strong{font-size:.78rem}.leaderboard-row{grid-template-columns:34px 1fr auto;padding:.6rem}.leaderboard-rank{width:30px;height:30px}}
+
+        /* واجهة اكتشاف المحتوى على طريقة بطاقات المشاهدة */
+        .quick-auth-bar{display:flex;justify-content:center;gap:.7rem;align-items:center;padding:.85rem 1rem;background:#102b22}
+        .quick-auth-bar button{border:0;border-radius:999px;padding:.7rem 1.35rem;font-weight:900;cursor:pointer;font-size:.95rem}
+        .quick-auth-bar .quick-signup{background:var(--secondary);color:#172016}
+        .quick-auth-bar .quick-login{background:#fff;color:#173c2c}
+        .top-leaderboard-wrap{max-width:1200px;margin:1.2rem auto .8rem;padding:0 1rem}
+        .top-leaderboard-wrap .leaderboard-panel{margin:0}
+        .content-showcase{max-width:1200px;margin:1rem auto 2rem;padding:0 1rem}
+        .showcase-main{position:relative;min-height:340px;border-radius:26px;overflow:hidden;color:#fff;background:radial-gradient(circle at 18% 20%,rgba(212,175,55,.34),transparent 28%),linear-gradient(120deg,#071d17,#0f5132 58%,#173b30);display:flex;align-items:center;padding:clamp(1.5rem,5vw,3.5rem);box-shadow:0 18px 45px rgba(8,51,32,.2)}
+        .showcase-main:after{content:'قُرَّةَ أَعْيُنٍ';position:absolute;left:3%;bottom:-25px;font-family:'Amiri',serif;font-size:clamp(3rem,9vw,7rem);font-weight:bold;color:rgba(255,255,255,.055);pointer-events:none}
+        .showcase-copy{max-width:690px;position:relative;z-index:1}
+        .showcase-kicker{display:inline-block;color:#f7d978;font-weight:900;margin-bottom:.7rem;letter-spacing:.03em}
+        .showcase-copy h2{font-family:'Amiri',serif;font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.35;margin:0 0 .7rem;color:#fff}
+        .showcase-copy p{font-size:clamp(1rem,2vw,1.2rem);line-height:1.9;color:#e4f4eb;max-width:650px;margin-bottom:1.25rem}
+        .showcase-cta{display:inline-flex;align-items:center;gap:.6rem;background:#fff;color:#153b2a;text-decoration:none;padding:.8rem 1.5rem;border-radius:999px;font-weight:900}
+        .showcase-choices{display:flex;gap:.85rem;overflow-x:auto;padding:1rem .2rem .65rem;scrollbar-width:thin}
+        .showcase-choice{flex:0 0 112px;display:flex;flex-direction:column;align-items:center;gap:.45rem;background:transparent;border:0;color:#334155;cursor:pointer;font-weight:800;font-size:.83rem;text-align:center}
+        .showcase-choice .choice-icon{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#e9f5ed,#cfe5d6);border:3px solid #fff;box-shadow:0 5px 16px rgba(15,81,50,.15);color:#0f5132;font-size:1.65rem}
+        .showcase-choice[aria-pressed="true"] .choice-icon{outline:3px solid var(--secondary);transform:scale(1.06);background:linear-gradient(145deg,#fff6d8,#f2df9e)}
+        .showcase-choice[aria-pressed="true"]{color:#0f5132}
+        .showcase-choice:hover .choice-icon{transform:translateY(-3px)}
+        @media(max-width:700px){.quick-auth-bar{padding:.65rem .5rem}.quick-auth-bar button{padding:.65rem 1rem;font-size:.88rem}.showcase-main{min-height:310px;border-radius:19px;padding:1.35rem}.showcase-choice{flex-basis:88px;font-size:.75rem}.showcase-choice .choice-icon{width:66px;height:66px;font-size:1.35rem}.top-leaderboard-wrap{padding:0 .65rem}}
+
     </style>
 </head>
 <body>
@@ -1467,6 +1491,12 @@
         </div>
     </div>
 
+    <!-- أزرار الحساب ظاهرة من أول الصفحة -->
+    <div class="quick-auth-bar">
+        <button class="quick-signup" onclick="openAccountModal(); showAuthMode('signup')"><i class="fa-solid fa-user-plus"></i> إنشاء حساب مجاني</button>
+        <button class="quick-login" onclick="openAccountModal(); showAuthMode('login')"><i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول</button>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="header-container">
@@ -1484,13 +1514,13 @@
                 <button class="nav-close-btn" onclick="closeNavDrawer()"><i class="fa-solid fa-xmark"></i></button>
                 <ul>
                     <li><a href="#vision" onclick="navigateToSection(event, 'vision')"><i class="fa-solid fa-eye"></i> الرؤية والرسالة</a></li>
-                    <li><a href="#quran" class="active" onclick="navigateToSection(event, 'quran')"><i class="fa-solid fa-book-open"></i> المصحف والتدبر</a></li>
-                    <li><a href="#surahsOverview" onclick="navigateToSection(event, 'surahsOverview')"><i class="fa-solid fa-layer-group"></i> دليل السور والتدبر</a></li>
-                    <li><a href="#morals" onclick="navigateToSection(event, 'morals')"><i class="fa-solid fa-heart"></i> الأخلاق</a></li>
-                    <li><a href="#wishlist" onclick="navigateToSection(event, 'wishlist')"><i class="fa-solid fa-gift"></i> الأماني</a></li>
-                    <li><a href="#jannahRoom" onclick="navigateToSection(event, 'jannahRoom')"><i class="fa-solid fa-cloud-moon"></i> غرفة خَيْرٌ وَأَبْقَىٰ</a></li>
-                    <li><a href="#stats" onclick="navigateToSection(event, 'stats')"><i class="fa-solid fa-chart-line"></i> سجل النقاط</a></li>
-                    <li><a href="#community" onclick="navigateToSection(event, 'community')"><i class="fa-solid fa-users"></i> المنتدى</a></li>
+                    <li class="protected-nav-item"><a href="#quran" class="active" onclick="navigateToSection(event, 'quran')"><i class="fa-solid fa-book-open"></i> المصحف والتدبر</a></li>
+                    <li class="protected-nav-item"><a href="#surahsOverview" onclick="navigateToSection(event, 'surahsOverview')"><i class="fa-solid fa-layer-group"></i> دليل السور والتدبر</a></li>
+                    <li class="protected-nav-item"><a href="#morals" onclick="navigateToSection(event, 'morals')"><i class="fa-solid fa-heart"></i> الأخلاق</a></li>
+                    <li class="protected-nav-item"><a href="#wishlist" onclick="navigateToSection(event, 'wishlist')"><i class="fa-solid fa-gift"></i> الأماني</a></li>
+                    <li class="protected-nav-item"><a href="#jannahRoom" onclick="navigateToSection(event, 'jannahRoom')"><i class="fa-solid fa-cloud-moon"></i> غرفة خَيْرٌ وَأَبْقَىٰ</a></li>
+                    <li class="protected-nav-item"><a href="#stats" onclick="navigateToSection(event, 'stats')"><i class="fa-solid fa-chart-line"></i> سجل النقاط</a></li>
+                    <li class="protected-nav-item"><a href="#community" onclick="navigateToSection(event, 'community')"><i class="fa-solid fa-users"></i> المنتدى</a></li>
                     <li><a href="#lectures" onclick="navigateToSection(event, 'lectures')"><i class="fa-solid fa-chalkboard-user"></i> المحاضرات</a></li>
                 </ul>
             </nav>
@@ -1516,6 +1546,48 @@
             </div>
         </div>
     </header>
+
+    <!-- لوحة المسابقة في أعلى الصفحة لتكون حافزًا ظاهرًا -->
+    <div class="top-leaderboard-wrap">
+        <div class="leaderboard-panel" aria-live="polite">
+            <div class="leaderboard-heading">
+                <div><h4><i class="fa-solid fa-trophy"></i> المتنافسون في الصدارة</h4><p>اجتهد في الحفظ والفهم والتدبر؛ فقد يكون اسمك بين العشرة الأوائل</p></div>
+                <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap"><span class="hijri-period" id="leaderboardPeriod">المسابقة الهجرية</span><button class="leaderboard-refresh" onclick="loadMonthlyLeaderboard()"><i class="fa-solid fa-rotate"></i> تحديث</button></div>
+            </div>
+            <div id="leaderboardContent"><div class="leaderboard-empty">جارٍ تحميل ترتيب المتنافسين...</div></div>
+            <div id="leaderboardAdminPanel" class="leaderboard-admin" style="display:none"><h5><i class="fa-solid fa-clipboard-check"></i> مراجعة طلبات اعتماد النقاط</h5><div id="leaderboardReviewRequests">جارٍ التحميل...</div></div>
+            <p class="leaderboard-note">تُضاف نقاط المسابقة بعد اعتماد إنجاز الحفظ والاستيعاب والتفسير والتدبر في المحاضرات المباشرة.</p>
+        </div>
+    </div>
+
+    <!-- استكشف محتوى المنصة: موضوع كبير وبطاقات دائرية للتبديل -->
+    <section class="content-showcase" aria-label="استكشف محتوى قرة أعين">
+        <div class="showcase-main" id="showcaseMain">
+            <div class="showcase-copy">
+                <span class="showcase-kicker" id="showcaseKicker">ابدأ رحلتك</span>
+                <h2 id="showcaseTitle">القرآن الكريم… تلاوة وفهم وتدبر</h2>
+                <p id="showcaseDescription">اكتشف معاني الآيات، وتأمل هدايات السور، واجعل ما تتعلمه أثرًا في فكرك وسلوكك.</p>
+                <a class="showcase-cta" id="showcaseLink" href="#quran">اكتشف المحتوى <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+        </div>
+        <div class="showcase-choices" id="showcaseChoices" aria-label="موضوعات المنصة">
+            <button class="showcase-choice" type="button" aria-pressed="true" data-index="0"><span class="choice-icon"><i class="fa-solid fa-book-quran"></i></span><span>القرآن والتدبر</span></button>
+            <button class="showcase-choice" type="button" aria-pressed="false" data-index="1"><span class="choice-icon"><i class="fa-solid fa-layer-group"></i></span><span>دليل السور</span></button>
+            <button class="showcase-choice" type="button" aria-pressed="false" data-index="2"><span class="choice-icon"><i class="fa-solid fa-heart"></i></span><span>الأخلاق</span></button>
+            <button class="showcase-choice" type="button" aria-pressed="false" data-index="3"><span class="choice-icon"><i class="fa-solid fa-seedling"></i></span><span>مصاحبة القرآن</span></button>
+            <button class="showcase-choice" type="button" aria-pressed="false" data-index="4"><span class="choice-icon"><i class="fa-solid fa-gift"></i></span><span>أمانيك</span></button>
+            <button class="showcase-choice" type="button" aria-pressed="false" data-index="5"><span class="choice-icon"><i class="fa-solid fa-star-and-crescent"></i></span><span>خير وأبقى</span></button>
+            <button class="showcase-choice" type="button" aria-pressed="false" data-index="6"><span class="choice-icon"><i class="fa-solid fa-chalkboard-user"></i></span><span>المحاضرات</span></button>
+            <button class="showcase-choice" type="button" aria-pressed="false" data-index="7"><span class="choice-icon"><i class="fa-solid fa-users"></i></span><span>المنتدى</span></button>
+        </div>
+    </section>
+
+    <div class="guest-content-prompt" id="guestContentPrompt">
+        <strong>رحلتك داخل المنصة تبدأ بحساب مجاني</strong><br>
+        أنشئ حسابك أو سجّل الدخول لتفتح المصحف والتفسير والتدبر وبقية المساحات التعليمية، وتتابع إنجازك ونقاطك.
+        <div><button type="button" onclick="openAccountModal(); showAuthMode('signup')">إنشاء حساب مجاني</button>
+        <button type="button" onclick="openAccountModal(); showAuthMode('login')">تسجيل الدخول</button></div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero animate-fade">
@@ -1661,7 +1733,7 @@
     <div class="container">
 
         <!-- 1. Quran & Tadabbur Section -->
-        <section id="quran" class="quran-card animate-fade">
+        <section id="quran" class="protected-content quran-card animate-fade">
             <div class="section-header">
                 <div class="section-title">
                     <i class="fa-solid fa-book-quran"></i>
@@ -1748,7 +1820,7 @@
         </section>
 
         <!-- 2. Surahs Cards Overview & Filter Section -->
-        <section id="surahsOverview" class="quran-card animate-fade">
+        <section id="surahsOverview" class="protected-content quran-card animate-fade">
             <div class="section-header">
                 <div class="section-title">
                     <i class="fa-solid fa-layer-group"></i>
@@ -1782,7 +1854,7 @@
         </section>
 
         <!-- 3. Moral Tracker Section -->
-        <section id="morals" style="margin-bottom: 2.5rem;" class="animate-fade">
+        <section id="morals" style="margin-bottom: 2.5rem;" class="protected-content animate-fade">
             <div class="section-header">
                 <div class="section-title">
                     <i class="fa-solid fa-award"></i>
@@ -1837,7 +1909,7 @@
         </section>
 
         <!-- 4. Wishlist Section -->
-        <section id="wishlist" class="wishlist-section animate-fade">
+        <section id="wishlist" class="protected-content wishlist-section animate-fade">
             <div class="section-header">
                 <div class="section-title">
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -1877,7 +1949,7 @@
 
         <!-- 5. Jannah Room Section / غرفة خير وأمنيات الجنة -->
         <!-- فضل مصاحبة القرآن الكريم -->
-        <section id="quranCompanionship" class="container quran-card animate-fade">
+        <section id="quranCompanionship" class="protected-content container quran-card animate-fade">
             <div class="section-header">
                 <div class="section-title">
                     <i class="fa-solid fa-book-quran"></i>
@@ -1909,7 +1981,7 @@
             <p style="font-size:.82rem;color:#64748b;margin-top:1rem;line-height:1.8;">هذه معانٍ وآثار يُرجى أن تتحقق بمصاحبة القرآن، وليست كل عبارة منها نصًّا حديثيًّا مستقلًّا أو وعدًا لازمًا لكل فرد.</p>
         </section>
 
-        <section id="jannahRoom" class="jannah-section animate-fade">
+        <section id="jannahRoom" class="protected-content jannah-section animate-fade">
             <div class="jannah-header">
                 <h3><i class="fa-solid fa-cloud-moon"></i> غُرْفَةُ «خَيْرٌ وَأَبْقَىٰ»</h3>
                 <p>مساحة لكل قلب يريد أن يحلم ويعيش مع نعيم الجنة الموعود.. تمنَّ كل ما تشتهيه نفسك هنا، سواء كان شيئاً مادياً أو معنوياً، فلن تنفد خزائن الله جل وعلا!</p>
@@ -1946,7 +2018,7 @@
         </section>
 
         <!-- 6. Stats & Progress Table Section -->
-        <section id="stats" class="stats-section animate-fade">
+        <section id="stats" class="protected-content stats-section animate-fade">
             <div class="section-header">
                 <div class="section-title">
                     <i class="fa-solid fa-chart-line"></i>
@@ -1955,16 +2027,6 @@
                         <small style="color: #64748b;">تتبع إنجازاتك اليومية والأسبوعية والشهرية وتنافس مع زملائك في المنصة</small>
                     </div>
                 </div>
-            </div>
-
-            <div class="leaderboard-panel" aria-live="polite">
-                <div class="leaderboard-heading">
-                    <div><h4><i class="fa-solid fa-trophy"></i> لوحة شرف قُرَّةَ أَعْيُنٍ</h4><p>نافس بالعلم والعمل، واستحقاق النقاط بعد مراجعة المعلم</p></div>
-                    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap"><span class="hijri-period" id="leaderboardPeriod">المسابقة الهجرية</span><button class="leaderboard-refresh" onclick="loadMonthlyLeaderboard()"><i class="fa-solid fa-rotate"></i> تحديث</button></div>
-                </div>
-                <div id="leaderboardContent"><div class="leaderboard-empty">جارٍ تحميل ترتيب المتنافسين...</div></div>
-                <div id="leaderboardAdminPanel" class="leaderboard-admin" style="display:none"><h5><i class="fa-solid fa-clipboard-check"></i> مراجعة طلبات اعتماد النقاط</h5><div id="leaderboardReviewRequests">جارٍ التحميل...</div></div>
-                <p class="leaderboard-note">تُضاف نقاط المسابقة بعد اعتماد إنجاز الحفظ والاستيعاب والتفسير والتدبر في المحاضرات المباشرة.</p>
             </div>
 
             <div class="stats-table-wrapper">
@@ -1988,7 +2050,7 @@
         </section>
 
         <!-- 7. Forum / Community -->
-        <section id="community" class="forum-section animate-fade">
+        <section id="community" class="protected-content forum-section animate-fade">
             <div class="section-header">
                 <div class="section-title">
                     <i class="fa-solid fa-comments"></i>
@@ -2223,7 +2285,7 @@
             // تهيئة وتفعيل بطاقات السور والفلترة
             initJuzFilter();
             renderSurahCards(surahsData);
-            loadQuranPage(1);
+            // لا نحمّل المصحف أو التفسير قبل تسجيل الدخول.
         });
 
         // 1. إنشاء خيارات الأجزاء الـ 30 لقائمة الفلترة
@@ -2463,6 +2525,8 @@
             renderStatsTable();
             await loadUserWallet();
             await loadMonthlyLeaderboard();
+            document.getElementById('guestContentPrompt').style.display = 'none';
+            await loadQuranPage(currentPage || 1);
         }
 
         async function checkAuthStatus() {
@@ -2474,8 +2538,10 @@
                 currentSubscription = null;
                 resetGuestData();
                 setProtectedSectionsAccess(false);
+                document.getElementById('guestContentPrompt').style.display = 'block';
                 document.getElementById('displayUserName').innerText = 'زائر';
                 document.getElementById('displayPlanType').innerText = 'حساب مجاني';
+                await loadMonthlyLeaderboard();
             }
         }
 
@@ -2489,6 +2555,7 @@
             currentSubscription = null;
             resetGuestData();
             setProtectedSectionsAccess(false);
+            document.getElementById('guestContentPrompt').style.display = 'block';
             document.getElementById('authModal').style.display = 'none';
             document.getElementById('displayUserName').innerText = 'زائر';
             document.getElementById('displayPlanType').innerText = 'حساب مجاني';
@@ -2524,10 +2591,6 @@
         async function loadMonthlyLeaderboard() {
             const host = document.getElementById('leaderboardContent');
             if (!host) return;
-            if (!currentUser) {
-                host.innerHTML = '<div class="leaderboard-empty">سجّل الدخول لمشاهدة لوحة الشرف والمشاركة في المنافسة.</div>';
-                return;
-            }
             host.innerHTML = '<div class="leaderboard-empty">جارٍ تحميل لوحة الشرف...</div>';
             try {
                 const { data: setting, error: settingError } = await supabaseClient
@@ -2546,7 +2609,11 @@
                 if (error) throw error;
                 leaderboardRows = data || [];
                 renderMonthlyLeaderboard();
-                const { data: adminMarker } = await supabaseClient.from('leaderboard_admins').select('user_id').eq('user_id', currentUser.id).maybeSingle();
+                let adminMarker = null;
+                if (currentUser) {
+                    const { data } = await supabaseClient.from('leaderboard_admins').select('user_id').eq('user_id', currentUser.id).maybeSingle();
+                    adminMarker = data;
+                }
                 const adminPanel = document.getElementById('leaderboardAdminPanel');
                 if (adminPanel) adminPanel.style.display = adminMarker ? 'block' : 'none';
                 if (adminMarker) await loadPendingPointReviews();
@@ -2697,50 +2764,47 @@
             }
         }
 
-        async function loadQuranPage(pageNum) {
-            currentPage = parseInt(pageNum);
-            document.getElementById('pageSelect').value = currentPage;
-            
-            document.getElementById('quranText').innerText = 'جاري جلب الآيات الكريمة...';
-            document.getElementById('tafsirText').innerText = 'جاري تحميل التفسير...';
-
+        async function fetchWithTimeout(url, timeoutMs = 12000) {
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), timeoutMs);
             try {
-                const res = await fetch(`https://api.alquran.cloud/v1/page/${currentPage}/quran-uthmani`);
-                const data = await res.json();
-                
-                if (data.code === 200) {
-                    let pageHtml = '';
-                    let surahNumber = data.data.ayahs[0].surah.number;
-                    let surahName = data.data.ayahs[0].surah.name;
-                    
-                    document.getElementById('surahTitleDisplay').innerText = `المصحف والتدبر - ${surahName} (صفحة ${currentPage})`;
+                const response = await fetch(url, { signal: controller.signal, cache: 'no-store' });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return await response.json();
+            } finally { clearTimeout(timer); }
+        }
 
-                    data.data.ayahs.forEach(ayah => {
-                        pageHtml += `${ayah.text} <span style="color: var(--secondary); font-size: 1.2rem;">﴿${ayah.numberInSurah}﴾</span> `;
-                    });
-                    document.getElementById('quranText').innerHTML = pageHtml;
-
-                    await fetchProtectedTadabbur(surahNumber, surahName);
-                }
-
+        async function loadQuranPage(pageNum) {
+            if (!currentUser) return;
+            currentPage = Math.min(604, Math.max(1, parseInt(pageNum, 10) || 1));
+            const quranEl = document.getElementById('quranText');
+            const tafsirEl = document.getElementById('tafsirText');
+            document.getElementById('pageSelect').value = currentPage;
+            quranEl.textContent = 'جارٍ تحميل آيات الصفحة...';
+            tafsirEl.textContent = 'جارٍ تحميل التفسير الميسّر...';
+            try {
+                const data = await fetchWithTimeout(`https://api.alquran.cloud/v1/page/${currentPage}/quran-uthmani`);
+                if (data.code !== 200 || !data.data?.ayahs?.length) throw new Error('بيانات الآيات غير مكتملة');
+                const ayahs = data.data.ayahs;
+                const firstSurah = ayahs[0].surah;
+                document.getElementById('surahTitleDisplay').textContent = `المصحف والتدبر - ${firstSurah.name} (صفحة ${currentPage})`;
+                quranEl.innerHTML = ayahs.map(ayah => `${escapeLeaderboardText(ayah.text)} <span style="color: var(--secondary); font-size: 1.2rem;">﴿${ayah.numberInSurah}﴾</span>`).join(' ');
+                await fetchProtectedTadabbur(firstSurah.number, firstSurah.name);
                 try {
-                    const tafsirRes = await fetch(`https://api.alquran.cloud/v1/page/${currentPage}/ar.muyassar`);
-                    const tafsirData = await tafsirRes.json();
-                    if (tafsirData.code === 200) {
-                        let tafsirHtml = '';
-                        tafsirData.data.ayahs.forEach(ayah => {
-                            tafsirHtml += `<div style="margin-bottom:0.8rem;"><strong>[آية ${ayah.numberInSurah}]:</strong> ${ayah.text}</div>`;
-                        });
-                        document.getElementById('tafsirText').innerHTML = tafsirHtml;
-                    } else {
-                        document.getElementById('tafsirText').innerText = `التفسير الميسّر للصفحة ${currentPage}: تتناول هذه الآيات أحكاماً وتوجيهات إيمانية تدعو للتدبر والعمل.`;
-                    }
-                } catch (tErr) {
-                    document.getElementById('tafsirText').innerText = `تفسير ميسّر للصفحة ${currentPage}: تتناول الآيات توجيهات وقواعد تربوية وسلوكية قيمة.`;
+                    const tafsirData = await fetchWithTimeout(`https://api.alquran.cloud/v1/page/${currentPage}/ar.muyassar`);
+                    if (tafsirData.code !== 200 || !tafsirData.data?.ayahs?.length) throw new Error('التفسير غير متاح');
+                    tafsirEl.innerHTML = tafsirData.data.ayahs.map(ayah => `<div style="margin-bottom:0.8rem;"><strong>[آية ${ayah.numberInSurah}]:</strong> ${escapeLeaderboardText(ayah.text)}</div>`).join('');
+                } catch (tafsirError) {
+                    tafsirEl.textContent = 'تعذر تحميل التفسير الميسّر حاليًا. تحقق من الاتصال ثم أعد المحاولة.';
                 }
-
-            } catch (err) {
-                document.getElementById('quranText').innerText = 'حدث خطأ في تحميل الصفحة. يرجى التأكد من اتصال الإنترنت.';
+            } catch (error) {
+                const reason = error.name === 'AbortError' ? 'استغرق الاتصال وقتًا أطول من اللازم.' : 'تعذر الاتصال بمصدر الآيات.';
+                quranEl.textContent = `${reason} اضغط إعادة المحاولة بعد التأكد من اتصال الإنترنت.`;
+                tafsirEl.textContent = 'لم يُحمّل التفسير لأن بيانات الصفحة القرآنية لم تصل بعد.';
+                document.getElementById('tadabburMainAxis').textContent = 'تعذر تحميل بيانات الصفحة. أعد المحاولة بعد التحقق من الاتصال.';
+                document.getElementById('tadabburNaming').textContent = 'سيظهر سبب التسمية ومكان النزول بعد تحميل بيانات السورة.';
+                document.getElementById('tadabburBenefits').textContent = 'أعد تحميل الصفحة لعرض هدايات السورة.';
+                quranEl.insertAdjacentHTML('beforeend', ` <button type="button" class="btn btn-secondary" onclick="loadQuranPage(${currentPage})">إعادة المحاولة</button>`);
             }
         }
 
@@ -2951,6 +3015,36 @@
             container.prepend(post);
             document.getElementById('postInput').value = '';
         }
+
+
+        // التبديل بين مساحات المنصة في واجهة العرض الرئيسية
+        const showcaseItems = [
+            {kicker:'ابدأ رحلتك مع كتاب الله',title:'القرآن الكريم… تلاوة وفهم وتدبر',description:'اكتشف معاني الآيات، وتأمل هدايات السور، واجعل ما تتعلمه أثرًا في فكرك وسلوكك.',href:'#quran',cta:'افتح المصحف والتدبر'},
+            {kicker:'تعرف إلى سور القرآن',title:'لكل سورة مقصد… ولكل آية هداية',description:'تعرّف على مقاصد السور وأسباب تسميتها، وانتقل بين السور لتتعرف إلى موضوعاتها.',href:'#surahsOverview',cta:'تصفح دليل السور'},
+            {kicker:'العلم الذي يظهر في السلوك',title:'الأخلاق… قيم نتعلمها ونعيش بها',description:'تأمل القيم والأخلاق، وتعرّف إلى ما يعينك على تطبيقها في حياتك اليومية.',href:'#morals',cta:'اكتشف مساحة الأخلاق'},
+            {kicker:'صحبة تغيّر القلب',title:'فضل مصاحبة القرآن وحفظه والعمل به',description:'اقرأ عن فضل القرآن وآثار صحبته، واجعل علاقتك به حفظًا وفهمًا وتدبرًا وعملًا.',href:'#quranCompanionship',cta:'اكتشف فضل مصاحبة القرآن'},
+            {kicker:'أهدافك تستحق السعي',title:'اكتب أمنيتك… وخذ بالأسباب',description:'مساحة تكتب فيها أمنياتك وتتابع ما ترجوه، وتشارك غيرك الأهداف الطيبة.',href:'#wishlist',cta:'اذهب إلى الأماني'},
+            {kicker:'مساحة للهمة والإنجاز',title:'خَيْرٌ وَأَبْقَىٰ',description:'مساحة تجمع الأمنيات الطيبة والتشجيع على العمل لما يبقى أثره وينفع صاحبه.',href:'#jannahRoom',cta:'ادخل الغرفة'},
+            {kicker:'نتعلم معًا ونتناقش',title:'محاضرات أ. يوسف مسعد',description:'محاضرات مجانية للطلاب وطلاب الجامعة والخريجين، مع مساحة للنقاش والأسئلة.',href:'#lectures',cta:'تعرف على المحاضرات'},
+            {kicker:'شارك فكرتك وتفاعل',title:'منتدى قُرَّةَ أَعْيُنٍ',description:'شارك ما تعلمته، واكتب فكرة أو فائدة، وتفاعل مع بقية أعضاء المنصة.',href:'#community',cta:'شارك في المنتدى'}
+        ];
+        document.getElementById('showcaseLink').addEventListener('click', event => {
+            if (!currentUser) { event.preventDefault(); openAccountModal(); showAuthMode('signup'); }
+        });
+        document.querySelectorAll('.showcase-choice').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = showcaseItems[Number(button.dataset.index)];
+                if (!item) return;
+                document.getElementById('showcaseKicker').textContent = item.kicker;
+                document.getElementById('showcaseTitle').textContent = item.title;
+                document.getElementById('showcaseDescription').textContent = item.description;
+                const link = document.getElementById('showcaseLink');
+                link.href = item.href;
+                link.innerHTML = `${item.cta} <i class="fa-solid fa-arrow-left"></i>`;
+                document.querySelectorAll('.showcase-choice').forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
+            });
+        });
+
     </script>
 </body>
 </html>
