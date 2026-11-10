@@ -1813,6 +1813,8 @@
                 <button class="quran-tab active" onclick="switchTab('quranTextTab', this)"><i class="fa-solid fa-book-open"></i> قراءة الصفحة</button>
                 <button class="quran-tab" onclick="switchTab('tadabburTab', this)"><i class="fa-solid fa-feather-pointed"></i> تدبر ومقاصد السورة (من أمهات التفسير)</button>
                 <button class="quran-tab" onclick="switchTab('tafsirTab', this)"><i class="fa-solid fa-lightbulb"></i> المعاني والتفسير الميسّر</button>
+                <button class="quran-tab" onclick="switchTab('ksuMushafTab', this)"><i class="fa-solid fa-book-quran"></i> المصحف الإلكتروني الكامل</button>
+                <button class="quran-tab" onclick="switchTab('quranSourcesTab', this)"><i class="fa-solid fa-headphones"></i> التلاوات ومصادر القرآن</button>
             </div>
 
             <!-- Tab 1: Quran Text -->
@@ -1854,11 +1856,60 @@
                 </div>
             </div>
 
-            <!-- Tab 3: Tafsir Tab -->
+            <!-- Tab 3: Tafsir Tab (kept as-is) -->
             <div id="tafsirTab" class="tab-content">
                 <div class="tafsir-box">
                     <h4 style="margin-bottom: 0.8rem; font-size: 1.1rem;"><i class="fa-solid fa-graduation-cap"></i> التفسير الميسّر ومعاني الكلمات للصفحة:</h4>
                     <div id="tafsirText" style="line-height: 1.8; font-size: 1.05rem;">جاري تحميل التفسير والمعاني...</div>
+                </div>
+            </div>
+
+            <!-- Tab 4: Official KSU Ayat electronic mushaf embed -->
+            <div id="ksuMushafTab" class="tab-content">
+                <div class="tadabbur-box">
+                    <h4 style="color:var(--primary);margin-bottom:.6rem;"><i class="fa-solid fa-book-quran"></i> المصحف الإلكتروني بجامعة الملك سعود (آيات)</h4>
+                    <p style="line-height:1.9;color:#475569;margin-bottom:1rem;">مصحف تفاعلي يتيح القراءة من صفحات مصحف المدينة، واختيار السورة والآية والصفحة والجزء، والاستماع إلى القراء، وتغيير الرواية، وإخفاء الآيات للتدرب على الحفظ، والاطلاع على التفاسير ومعاني الكلمات والترجمات. هذه نافذة المصدر الأصلية كما أتاحها المشروع للتضمين.</p>
+                    <div style="width:100%;overflow-x:auto;border:1px solid #e2e8f0;border-radius:12px;background:#fff;-webkit-overflow-scrolling:touch;">
+                        <iframe title="المصحف الإلكتروني - مشروع آيات بجامعة الملك سعود" src="https://quran.ksu.edu.sa/index.php?l=ar" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" style="display:block;width:100%;min-width:1000px;height:890px;border:0;" allow="autoplay; fullscreen"></iframe>
+                    </div>
+                    <p style="font-size:.88rem;color:#64748b;margin-top:.7rem;">إذا لم تظهر النافذة داخل المتصفح، <a href="https://quran.ksu.edu.sa/index.php?l=ar" target="_blank" rel="noopener noreferrer">افتح المصحف الإلكتروني مباشرة من موقع جامعة الملك سعود</a>.</p>
+                </div>
+            </div>
+
+            <!-- Tab 5: Audio recitations and source register -->
+            <div id="quranSourcesTab" class="tab-content">
+                <div class="tadabbur-box" style="margin-bottom:1rem;">
+                    <h4 style="color:var(--primary);margin-bottom:.8rem;"><i class="fa-solid fa-headphones"></i> الاستماع إلى التلاوات - MP3Quran</h4>
+                    <p style="line-height:1.8;color:#475569;">اختر قارئًا ومصحفًا متاحًا، ثم استمع إلى السورة الحالية. تُحمّل قائمة القراء والمصاحف من واجهة MP3Quran الرسمية.</p>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:1rem 0;">
+                        <label style="display:block;font-weight:700;color:#334155;">القارئ والرواية
+                            <select id="mp3ReciterSelect" style="display:block;width:100%;margin-top:6px;" onchange="playSelectedMp3Surah(false)"><option value="">جارٍ تحميل القراء...</option></select>
+                        </label>
+                        <label style="display:block;font-weight:700;color:#334155;">السورة
+                            <select id="mp3SurahSelect" style="display:block;width:100%;margin-top:6px;" onchange="playSelectedMp3Surah(false)"></select>
+                        </label>
+                    </div>
+                    <audio id="mp3QuranAudio" controls preload="none" style="width:100%;margin-top:.4rem;"></audio>
+                    <p id="mp3QuranStatus" role="status" style="font-size:.9rem;color:#64748b;margin-top:.5rem;">يمكنك اختيار القارئ والسورة لبدء الاستماع.</p>
+                    <p style="font-size:.88rem;margin-top:.5rem;"><a href="https://www.mp3quran.net/ar" target="_blank" rel="noopener noreferrer">زيارة مكتبة MP3Quran</a> · <a href="https://apiquran.mp3quran.net/ar/api" target="_blank" rel="noopener noreferrer">توثيق واجهة المطورين</a></p>
+                </div>
+                <div class="tadabbur-box">
+                    <h4 style="color:var(--primary);margin-bottom:.8rem;"><i class="fa-solid fa-book-open"></i> سجل مصادر المحتوى القرآني</h4>
+                    <p style="color:#475569;line-height:1.8;">هذه قائمة المصادر التي طلبت اعتمادها. نُبقي وظيفة كل مصدر واضحة، ولا ننسب إليه معلومة لا يقدمها. بعض المصادر تطبيقات أو ملفات بيانات؛ لذلك أُثبت اسمها ووظيفتها هنا دون اختراع رابط تحميل غير متحقق منه.</p>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:1rem;">
+                        <div class="tadabbur-item"><strong>مصحف التجويد - دار المعرفة</strong><p>مرجع نسخة مصحف التجويد وضبط علامات التجويد.</p></div>
+                        <div class="tadabbur-item"><strong>مجمع الملك فهد لطباعة المصحف الشريف</strong><p>الرسم العثماني وبيانات مصحف المدينة، وملفات المطورين التي تتضمن السورة والآية والصفحة والجزء وبدايات الأسطر ونهاياتها.</p><a href="https://qurancomplex.gov.sa/quran-dev/" target="_blank" rel="noopener noreferrer">منصة مطوري برمجيات القرآن الكريم</a></div>
+                        <div class="tadabbur-item"><strong>Tanzil - تنزيل</strong><p>مصدر النص القرآني مضبوطًا. يجب إبقاء النص كما هو دون تغيير، مع إثبات نسبة النص إلى تنزيل وفق شروط الاستخدام.</p><a href="https://tanzil.net/" target="_blank" rel="noopener noreferrer">موقع تنزيل</a></div>
+                        <div class="tadabbur-item"><strong>Quran.com</strong><p>أسماء السور ومعلوماتها وبيانات التعريف بالسورة.</p><a href="https://quran.com/" target="_blank" rel="noopener noreferrer">موقع القرآن</a></div>
+                        <div class="tadabbur-item"><strong>MP3Quran.net</strong><p>التلاوات الصوتية، وأسماء القراء، والمصاحف والروايات المتاحة لكل قارئ.</p><a href="https://www.mp3quran.net/ar" target="_blank" rel="noopener noreferrer">موقع MP3Quran</a></div>
+                        <div class="tadabbur-item"><strong>تطبيق آيات</strong><p>مرجع التفاسير الذي حددته ضمن مصادر المشروع.</p><a href="https://quran.ksu.edu.sa/" target="_blank" rel="noopener noreferrer">مشروع المصحف الإلكتروني بجامعة الملك سعود</a></div>
+                        <div class="tadabbur-item"><strong>تطبيق آية - المختصر في تفسير القرآن الكريم</strong><p>مرجع تفسير المختصر، مع الحفاظ على نسبة النص إلى مصدره وعدم صياغة تفسير بديل على أنه منقول.</p></div>
+                        <div class="tadabbur-item"><strong>القرآن العظيم - وقف الراجحي</strong><p>مرجع إحداثيات مواضع الآيات على صفحات مصحف المدينة.</p></div>
+                        <div class="tadabbur-item"><strong>مصحف الشمرلي - الحرمين</strong><p>مرجع إحداثيات صفحات مصحف الشمرلي.</p></div>
+                        <div class="tadabbur-item"><strong>تطبيق مصحف المدينة</strong><p>مرجع إطار صفحة المصحف وتنسيقها.</p></div>
+                        <div class="tadabbur-item"><strong>المصحف الإلكتروني بجامعة الملك سعود (آيات)</strong><p>مرجع إضافي للتفسير والإعراب، ويتيح المشروع التفاسير والقراءة من مصحف المدينة والاستماع والتكرار واختبار الحفظ.</p><a href="https://quran.ksu.edu.sa/m.php?l=ar#aya=1_1&m2=1" target="_blank" rel="noopener noreferrer">فتح المصحف ومصادر التفسير والإعراب</a></div>
+                    </div>
+                    <p style="font-size:.86rem;color:#64748b;line-height:1.8;margin-top:.8rem;">تنبيه توثيقي: بيانات إحداثيات الصفحات وإطار المصحف لا تُستبدل بتخمينات؛ يلزم توفير ملفات البيانات الأصلية أو واجهة رسمية متاحة قبل عرضها كإحداثيات دقيقة داخل الموقع.</p>
                 </div>
             </div>
 
@@ -2966,6 +3017,7 @@
             document.querySelectorAll('.quran-tab').forEach(tb => tb.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
+            if (tabId === 'quranSourcesTab') loadMp3QuranReciters();
         }
 
         function initQuranSelect() {
@@ -3009,6 +3061,58 @@
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 return await response.json();
             } finally { clearTimeout(timer); }
+        }
+
+        let mp3QuranMoshafOptions = [];
+        let mp3QuranLoaded = false;
+        const MP3QURAN_SURAHS = [
+            'الفاتحة','البقرة','آل عمران','النساء','المائدة','الأنعام','الأعراف','الأنفال','التوبة','يونس','هود','يوسف','الرعد','إبراهيم','الحجر','النحل','الإسراء','الكهف','مريم','طه','الأنبياء','الحج','المؤمنون','النور','الفرقان','الشعراء','النمل','القصص','العنكبوت','الروم','لقمان','السجدة','الأحزاب','سبأ','فاطر','يس','الصافات','ص','الزمر','غافر','فصلت','الشورى','الزخرف','الدخان','الجاثية','الأحقاف','محمد','الفتح','الحجرات','ق','الذاريات','الطور','النجم','القمر','الرحمن','الواقعة','الحديد','المجادلة','الحشر','الممتحنة','الصف','الجمعة','المنافقون','التغابن','الطلاق','التحريم','الملك','القلم','الحاقة','المعارج','نوح','الجن','المزمل','المدثر','القيامة','الإنسان','المرسلات','النبأ','النازعات','عبس','التكوير','الانفطار','المطففين','الانشقاق','البروج','الطارق','الأعلى','الغاشية','الفجر','البلد','الشمس','الليل','الضحى','الشرح','التين','العلق','القدر','البينة','الزلزلة','العاديات','القارعة','التكاثر','العصر','الهمزة','الفيل','قريش','الماعون','الكوثر','الكافرون','النصر','المسد','الإخلاص','الفلق','الناس'
+        ];
+
+        async function loadMp3QuranReciters() {
+            if (mp3QuranLoaded) return;
+            const select = document.getElementById('mp3ReciterSelect');
+            const surahSelect = document.getElementById('mp3SurahSelect');
+            if (!select || !surahSelect) return;
+            surahSelect.innerHTML = MP3QURAN_SURAHS.map((name, i) => `<option value="${i + 1}">${i + 1}. ${name}</option>`).join('');
+            try {
+                const data = await fetchWithTimeout('https://mp3quran.net/api/v3/reciters?language=ar', 20000);
+                const options = [];
+                (data.reciters || []).forEach(reciter => (reciter.moshaf || []).forEach(moshaf => {
+                    if (moshaf.server && moshaf.surah_list) options.push({
+                        value: `${moshaf.server}|${moshaf.surah_list}`,
+                        label: `${reciter.name} - ${moshaf.name}`,
+                        server: moshaf.server,
+                        surahList: moshaf.surah_list.split(',').map(Number)
+                    });
+                }));
+                mp3QuranMoshafOptions = options;
+                select.innerHTML = options.map((item, i) => `<option value="${i}">${escapeLeaderboardText(item.label)}</option>`).join('');
+                if (!options.length) throw new Error('لا توجد مصاحف متاحة في الاستجابة');
+                mp3QuranLoaded = true;
+                const currentSurah = Number(surahSelect.value) || 1;
+                const available = options.findIndex(item => item.surahList.includes(currentSurah));
+                if (available >= 0) select.value = String(available);
+                document.getElementById('mp3QuranStatus').textContent = 'تم تحميل قائمة القراء والمصاحف. اختر السورة ثم اضغط تشغيل.';
+            } catch (error) {
+                select.innerHTML = '<option value="">تعذر تحميل قائمة القراء</option>';
+                document.getElementById('mp3QuranStatus').textContent = 'تعذر الاتصال بمكتبة MP3Quran الآن. يمكنك إعادة فتح التبويب أو زيارة الموقع مباشرة.';
+            }
+        }
+
+        function playSelectedMp3Surah(autoplay = true) {
+            const select = document.getElementById('mp3ReciterSelect');
+            const surahSelect = document.getElementById('mp3SurahSelect');
+            const audio = document.getElementById('mp3QuranAudio');
+            const status = document.getElementById('mp3QuranStatus');
+            if (!select || !surahSelect || !audio) return;
+            const option = mp3QuranMoshafOptions[Number(select.value)];
+            const surah = Number(surahSelect.value) || 1;
+            if (!option) { status.textContent = 'اختر قارئًا ومصحفًا متاحًا أولًا.'; return; }
+            if (!option.surahList.includes(surah)) { status.textContent = 'هذه السورة غير مدرجة ضمن المصحف المختار لهذا القارئ. اختر قارئًا آخر.'; return; }
+            audio.src = `${option.server}${String(surah).padStart(3, '0')}.mp3`;
+            status.textContent = `التلاوة المختارة: ${MP3QURAN_SURAHS[surah - 1]} - ${option.label}`;
+            if (autoplay) audio.play().catch(() => { status.textContent += ' — اضغط تشغيل من مشغل الصوت.'; });
         }
 
         async function loadQuranPage(pageNum) {
