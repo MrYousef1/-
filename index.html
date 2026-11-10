@@ -66,12 +66,6 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
-            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.8); }
-            100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
-        }
-
         .animate-fade { animation: fadeInUp 0.6s ease-out forwards; }
         .animate-zoom { animation: zoomIn 0.4s ease-out forwards; }
 
@@ -143,41 +137,6 @@
             margin-bottom: 1.2rem;
         }
 
-        .plan-selector {
-            display: flex;
-            gap: 0.8rem;
-            margin-bottom: 1.2rem;
-            flex-wrap: wrap;
-        }
-
-        .plan-box {
-            flex: 1 1 140px;
-            border: 2px solid #cbd5e1;
-            padding: 0.8rem 0.5rem;
-            border-radius: 12px;
-            cursor: pointer;
-            text-align: center;
-            background: #f8fafc;
-            box-sizing: border-box;
-        }
-
-        .plan-box.active {
-            border-color: var(--primary);
-            background: var(--primary-soft);
-        }
-
-        .plan-box h4 {
-            color: var(--primary);
-            font-size: 0.95rem;
-        }
-
-        .plan-box .price {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-top: 0.2rem;
-        }
-
         .form-group {
             margin-bottom: 1rem;
             text-align: right;
@@ -214,56 +173,6 @@
             margin-bottom: 1rem;
             font-size: 0.9rem;
             font-weight: bold;
-        }
-
-        .payment-box {
-            background: #f8fafc;
-            border: 1px dashed var(--primary-light);
-            border-radius: 12px;
-            padding: 1.2rem;
-            margin: 1rem 0;
-            text-align: right;
-        }
-
-        .payment-title {
-            font-weight: 800;
-            color: var(--primary);
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .payment-item {
-            background: var(--white);
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 0.8rem 1rem;
-            margin-bottom: 0.6rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .payment-item strong {
-            color: #1e293b;
-            font-size: 1.05rem;
-            direction: ltr;
-        }
-
-        .voda-fee-note {
-            font-size: 0.8rem;
-            color: #b91c1c;
-            background: #fef2f2;
-            padding: 0.3rem 0.6rem;
-            border-radius: 6px;
-            margin-top: 0.3rem;
-            width: 100%;
-            text-align: center;
-            font-weight: 600;
         }
 
         header {
@@ -530,11 +439,6 @@
             justify-content: space-between;
         }
 
-        .quran-verse-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
-        }
-
         .quran-verse-text {
             font-family: 'Amiri', serif;
             font-size: 1.25rem;
@@ -570,10 +474,7 @@
             }
         }
 
-        .search-box {
-            flex: 1;
-        }
-
+        .search-box { flex: 1; }
         .search-input {
             width: 100%;
             padding: 12px 16px;
@@ -677,30 +578,6 @@
             line-height: 1.6;
         }
 
-        .points-list {
-            list-style-type: none;
-            margin-bottom: 16px;
-        }
-
-        .points-list li {
-            font-size: 0.85rem;
-            color: var(--dark);
-            padding: 4px 0;
-            position: relative;
-            padding-right: 16px;
-            line-height: 1.6;
-        }
-
-        .points-list li::before {
-            content: "•";
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1.2rem;
-            position: absolute;
-            right: 0;
-            top: -2px;
-        }
-
         .no-results {
             grid-column: 1 / -1;
             text-align: center;
@@ -727,38 +604,12 @@
             border-top: 5px solid var(--accent);
         }
 
-        .stats-table-wrapper {
-            overflow-x: auto;
-            margin-top: 1rem;
-        }
-
-        .stats-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-        }
-
-        .stats-table th, .stats-table td {
-            padding: 0.85rem 0.6rem;
-            border: 1px solid #e2e8f0;
-            font-size: 0.95rem;
-        }
-
-        .stats-table th {
-            background: #f1f5f9;
-            color: var(--primary);
-            font-weight: 800;
-        }
-
+        .stats-table-wrapper { overflow-x: auto; margin-top: 1rem; }
+        .stats-table { width: 100%; border-collapse: collapse; text-align: center; }
+        .stats-table th, .stats-table td { padding: 0.85rem 0.6rem; border: 1px solid #e2e8f0; font-size: 0.95rem; }
+        .stats-table th { background: #f1f5f9; color: var(--primary); font-weight: 800; }
         .stats-table tr:nth-child(even) { background: #f8fafc; }
-
-        .stat-highlight {
-            background: var(--primary-soft);
-            color: var(--primary);
-            font-weight: 800;
-            border-radius: 6px;
-            padding: 0.2rem 0.5rem;
-        }
+        .stat-highlight { background: var(--primary-soft); color: var(--primary); font-weight: 800; border-radius: 6px; padding: 0.2rem 0.5rem; }
 
         /* Quran Section */
         .quran-card {
@@ -781,13 +632,7 @@
             padding-bottom: 1rem;
         }
 
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--primary);
-        }
-
+        .section-title { display: flex; align-items: center; gap: 12px; color: var(--primary); }
         .section-title i { font-size: 1.8rem; color: var(--secondary); }
         .page-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
@@ -812,10 +657,7 @@
             text-decoration: none;
         }
 
-        .btn:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-        }
+        .btn:hover { background: var(--primary-light); transform: translateY(-2px); }
 
         .btn-spotify {
             background-color: #1DB954;
@@ -831,23 +673,12 @@
             box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
         }
 
-        .btn-spotify:hover {
-            background-color: #1aa34a;
-            color: #ffffff;
-            transform: translateY(-2px);
-        }
-
-        .btn-danger {
-            background: #ef4444;
-            color: #fff;
-        }
+        .btn-spotify:hover { background-color: #1aa34a; color: #ffffff; transform: translateY(-2px); }
+        .btn-danger { background: #ef4444; color: #fff; }
         .btn-danger:hover { background: #dc2626; }
-
         .btn-secondary { background: var(--secondary); color: var(--dark); }
         .btn-secondary:hover { background: #c29d2b; }
         .btn-full { width: 100%; padding: 0.8rem; font-size: 1.05rem; }
-        .btn-instapay { background: #25093a; color: #fff; }
-        .btn-instapay:hover { background: #3b105c; color: #fff; }
 
         .workshop-gallery {
             display: grid;
@@ -898,25 +729,168 @@
             position: relative;
         }
 
-        .lecture-plan-card.highlight {
-            border-color: var(--secondary);
-            background: var(--secondary-light);
-        }
-
+        .lecture-plan-card.highlight { border-color: var(--secondary); background: var(--secondary-light); }
         .lecture-plan-card h4 { color: var(--primary); font-size: 1.3rem; margin-bottom: 0.5rem; }
-        .lecture-plan-card .plan-price {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin: 0.5rem 0;
+        .lecture-plan-card .plan-schedule { color: #64748b; font-size: 0.92rem; margin-bottom: 1rem; font-weight: 600; }
+
+        /* قسم التسميع الأونلاين */
+        .recitation-section {
+            background: #ffffff;
+            border-radius: var(--radius);
+            padding: 2rem 1.5rem;
+            box-shadow: var(--shadow);
+            margin: 2rem auto;
+            border-top: 6px solid var(--primary);
+            border-bottom: 3px solid var(--secondary);
         }
 
-        .lecture-plan-card .plan-schedule {
-            color: #64748b;
-            font-size: 0.92rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
+        .recitation-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px dashed #e2e8f0;
+            padding-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 12px;
         }
+
+        .recitation-title-group { display: flex; align-items: center; gap: 15px; }
+
+        .recitation-icon-main {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 1.8rem;
+            border: 2px solid var(--primary);
+            flex-shrink: 0;
+        }
+
+        .recitation-title-group h3 { font-family: 'Amiri', serif; color: var(--primary); font-size: 1.7rem; line-height: 1.2; }
+        .recitation-title-group p { color: #64748b; font-size: 0.95rem; margin-top: 4px; }
+
+        .recitation-badge {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid #fde68a;
+        }
+
+        .recitation-options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .recitation-option-card {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .recitation-option-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
+        .recitation-option-card.highlight-live { border-color: #cbd5e1; }
+        .recitation-option-card.highlight-async { border-color: var(--secondary); background: var(--secondary-light); }
+
+        .option-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 0.2rem 0.8rem;
+            border-radius: 12px;
+        }
+
+        .option-badge.alt-badge { background: #0284c7; }
+
+        .option-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .option-icon.alt-icon { background: #e0f2fe; color: #0369a1; }
+        .recitation-option-card h4 { color: var(--dark); font-size: 1.25rem; margin-bottom: 0.5rem; font-weight: 800; }
+        .recitation-option-card p { color: #475569; font-size: 0.92rem; line-height: 1.7; margin-bottom: 1.2rem; }
+
+        .option-status {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #166534;
+            padding: 0.6rem 0.9rem;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .option-actions { display: flex; gap: 0.6rem; }
+        .btn-recite {
+            flex: 1;
+            padding: 0.65rem 0.8rem;
+            border-radius: 10px;
+            border: none;
+            font-weight: 800;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: transform 0.2s;
+        }
+
+        .btn-recite:hover { transform: scale(1.02); }
+        .btn-recite.text-btn { background: var(--primary); color: #fff; }
+        .btn-recite.audio-btn { background: #0284c7; color: #fff; }
+
+        .recitation-form-box {
+            background: #ffffff;
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            box-shadow: 0 8px 20px rgba(15, 81, 50, 0.1);
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        .form-box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.6rem;
+        }
+
+        .form-box-header h4 { color: var(--primary); font-size: 1.15rem; }
+        .close-form-btn { background: #f1f5f9; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; }
 
         .quran-tabs {
             display: flex;
@@ -966,12 +940,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
-        .tadabbur-item {
-            margin-bottom: 1.2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px dashed #cbd5e1;
-        }
-
+        .tadabbur-item { margin-bottom: 1.2rem; padding-bottom: 1rem; border-bottom: 1px dashed #cbd5e1; }
         .tadabbur-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
         .tadabbur-tag {
@@ -1118,15 +1087,6 @@
             border: 2px solid var(--secondary);
             position: relative;
             overflow: hidden;
-        }
-
-        .jannah-section::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(2, 132, 199, 0.2) 0%, transparent 50%);
-            pointer-events: none;
         }
 
         .jannah-header {
@@ -1288,14 +1248,12 @@
             border-radius: 10px;
         }
 
-        /* المحتوى متاح للزوار؛ شريط بيانات الحساب يظهر بعد تسجيل الدخول فقط */
+        /* التحكم في إظهار وإخفاء المحتوى بحسب حالة الاشتراك وتسجيل الدخول */
         body:not(.subscriber-active) .user-status { display: none !important; }
-        /* الأقسام التعليمية والحسابية لا تظهر إلا بعد تسجيل الدخول */
         body:not(.subscriber-active) .protected-content { display: none !important; }
         body:not(.subscriber-active) .protected-nav-item { display: none !important; }
         .guest-content-prompt{max-width:900px;margin:1rem auto 2rem;padding:1rem 1.2rem;border-radius:16px;background:#f0fdf4;border:1px solid #bbf7d0;color:#14532d;text-align:center;line-height:1.9}
         .guest-content-prompt button{border:0;border-radius:999px;padding:.65rem 1.2rem;background:#14532d;color:#fff;font-weight:800;cursor:pointer;margin:.3rem}
-
 
         .lectures-section {
             background: var(--white);
@@ -1377,7 +1335,7 @@
             margin-top: 1rem;
         }
 
-        /* لوحة الشرف الشهرية - منافسة هجرية */
+        /* لوحة الشرف الشهرية */
         .leaderboard-panel{margin:1.25rem 0 2rem;padding:1.25rem;border-radius:24px;background:linear-gradient(135deg,#102f27,#17634b 58%,#238568);color:#fff;box-shadow:0 16px 35px rgba(15,60,45,.18);overflow:hidden}
         .leaderboard-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:1rem}
         .leaderboard-heading h4{font-size:1.25rem;margin:0 0 .25rem}.leaderboard-heading p{margin:0;color:#d1fae5;font-size:.88rem}
@@ -1396,7 +1354,7 @@
         .review-actions{display:flex;gap:.4rem}.review-actions button{border:0;border-radius:8px;padding:.4rem .65rem;cursor:pointer;font-weight:800}.approve-review{background:#bbf7d0;color:#14532d}.reject-review{background:#fee2e2;color:#991b1b}
         @media(max-width:520px){.leaderboard-panel{padding:1rem .7rem}.podium{gap:.35rem}.podium-card{padding:.65rem .25rem}.podium-card strong{font-size:.78rem}.leaderboard-row{grid-template-columns:34px 1fr auto;padding:.6rem}.leaderboard-rank{width:30px;height:30px}}
 
-        /* واجهة اكتشاف المحتوى على طريقة بطاقات المشاهدة */
+        /* شريط تسجيل الدخول واكتشاف المحتوى */
         .quick-auth-bar{display:flex;justify-content:center;gap:.7rem;align-items:center;padding:.85rem 1rem;background:#102b22}
         .quick-auth-bar button{border:0;border-radius:999px;padding:.7rem 1.35rem;font-weight:900;cursor:pointer;font-size:.95rem}
         .quick-auth-bar .quick-signup{background:var(--secondary);color:#172016}
@@ -1522,6 +1480,7 @@
                     <li class="protected-nav-item"><a href="#stats" onclick="navigateToSection(event, 'stats')"><i class="fa-solid fa-chart-line"></i> سجل النقاط</a></li>
                     <li class="protected-nav-item"><a href="#community" onclick="navigateToSection(event, 'community')"><i class="fa-solid fa-users"></i> المنتدى</a></li>
                     <li><a href="#lectures" onclick="navigateToSection(event, 'lectures')"><i class="fa-solid fa-chalkboard-user"></i> المحاضرات</a></li>
+                    <li class="protected-nav-item"><a href="#onlineRecitation" onclick="navigateToSection(event, 'onlineRecitation')"><i class="fa-solid fa-microphone-lines"></i> التسميع الأونلاين</a></li>
                 </ul>
             </nav>
 
@@ -1547,7 +1506,7 @@
         </div>
     </header>
 
-    <!-- لوحة المسابقة في أعلى الصفحة لتكون حافزًا ظاهرًا -->
+    <!-- لوحة المسابقة في أعلى الصفحة -->
     <div class="top-leaderboard-wrap">
         <div class="leaderboard-panel" aria-live="polite">
             <div class="leaderboard-heading">
@@ -1555,7 +1514,10 @@
                 <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap"><span class="hijri-period" id="leaderboardPeriod">المسابقة الهجرية</span><button class="leaderboard-refresh" onclick="loadMonthlyLeaderboard()"><i class="fa-solid fa-rotate"></i> تحديث</button></div>
             </div>
             <div id="leaderboardContent"><div class="leaderboard-empty">جارٍ تحميل ترتيب المتنافسين...</div></div>
-            <div id="leaderboardAdminPanel" class="leaderboard-admin" style="display:none"><h5><i class="fa-solid fa-clipboard-check"></i> مراجعة طلبات اعتماد النقاط</h5><div id="leaderboardReviewRequests">جارٍ التحميل...</div></div>
+            <div id="leaderboardAdminPanel" class="leaderboard-admin" style="display:none">
+                <h5><i class="fa-solid fa-clipboard-check"></i> مراجعة طلبات اعتماد النقاط</h5>
+                <div id="leaderboardReviewRequests">جارٍ التحميل...</div>
+            </div>
             <p class="leaderboard-note">تُضاف نقاط المسابقة بعد اعتماد إنجاز الحفظ والاستيعاب والتفسير والتدبر في المحاضرات المباشرة.</p>
         </div>
     </div>
@@ -1575,10 +1537,11 @@
             <button class="showcase-choice" type="button" aria-pressed="false" data-index="1"><span class="choice-icon"><i class="fa-solid fa-layer-group"></i></span><span>دليل السور</span></button>
             <button class="showcase-choice" type="button" aria-pressed="false" data-index="2"><span class="choice-icon"><i class="fa-solid fa-heart"></i></span><span>الأخلاق</span></button>
             <button class="showcase-choice" type="button" aria-pressed="false" data-index="3"><span class="choice-icon"><i class="fa-solid fa-seedling"></i></span><span>مصاحبة القرآن</span></button>
-            <button class="showcase-choice" type="button" aria-pressed="false" data-index="4"><span class="choice-icon"><i class="fa-solid fa-gift"></i></span><span>أمانيك</span></button>
-            <button class="showcase-choice" type="button" aria-pressed="false" data-index="5"><span class="choice-icon"><i class="fa-solid fa-star-and-crescent"></i></span><span>خير وأبقى</span></button>
-            <button class="showcase-choice" type="button" aria-pressed="false" data-index="6"><span class="choice-icon"><i class="fa-solid fa-chalkboard-user"></i></span><span>المحاضرات</span></button>
-            <button class="showcase-choice" type="button" aria-pressed="false" data-index="7"><span class="choice-icon"><i class="fa-solid fa-users"></i></span><span>المنتدى</span></button>
+            <button class="showcase-choice" type="button" aria-pressed="false" data-index="4"><span class="choice-icon"><i class="fa-solid fa-microphone-lines"></i></span><span>التسميع الأونلاين</span></button>
+            <button class="showcase-choice" type="button" aria-pressed="false" data-index="5"><span class="choice-icon"><i class="fa-solid fa-gift"></i></span><span>أمانيك</span></button>
+            <button class="showcase-choice" type="button" aria-pressed="false" data-index="6"><span class="choice-icon"><i class="fa-solid fa-star-and-crescent"></i></span><span>خير وأبقى</span></button>
+            <button class="showcase-choice" type="button" aria-pressed="false" data-index="7"><span class="choice-icon"><i class="fa-solid fa-chalkboard-user"></i></span><span>المحاضرات</span></button>
+            <button class="showcase-choice" type="button" aria-pressed="false" data-index="8"><span class="choice-icon"><i class="fa-solid fa-users"></i></span><span>المنتدى</span></button>
         </div>
     </section>
 
@@ -1603,7 +1566,7 @@
         </div>
     </section>
 
-    <!-- Vision & Mission Section مع بطاقات الآيات الكريمة -->
+    <!-- Vision & Mission Section -->
     <section id="vision" class="container vision-section animate-fade">
         <div class="vision-title">
             <i class="fa-solid fa-compass"></i> الرؤية والرسالة
@@ -1729,6 +1692,93 @@
         <p class="lecture-note">المحاضرات مجانية، والتسجيل من الرابط المخصص للفئة المناسبة لك.</p>
     </section>
 
+    <!-- قسم التسميع الأونلاين -->
+    <section id="onlineRecitation" class="protected-content recitation-section container animate-fade">
+        <div class="recitation-card-header">
+            <div class="recitation-title-group">
+                <div class="recitation-icon-main">
+                    <i class="fa-solid fa-microphone-lines"></i>
+                </div>
+                <div>
+                    <h3>التسميع الخاص بالمحاضرة المباشرة</h3>
+                    <p>يشمل التسميع: 1. تلاوة الآيات | 2. تفسير ومعاني الكلمات | 3. التطبيق العملي في حياتك</p>
+                </div>
+            </div>
+            <span class="recitation-badge"><i class="fa-solid fa-circle-dot"></i> متاح للطلاب</span>
+        </div>
+
+        <div class="recitation-options-grid">
+            <div class="recitation-option-card highlight-live">
+                <div class="option-badge">الخيار الافتراضي</div>
+                <div class="option-icon"><i class="fa-solid fa-headset"></i></div>
+                <h4>تسميع حي أثناء المحاضرة</h4>
+                <p>التسميع المباشر مع الأستاذ يوسف والأخوة أثناء وقت المحاضرة (الآيات + التفسير + التطبيق العملي شفهياً).</p>
+                <div class="option-status"><i class="fa-solid fa-check-double"></i> يتم التقييم فورياً خلال اللقاء</div>
+            </div>
+
+            <div class="recitation-option-card highlight-async">
+                <div class="option-badge alt-badge">خيار مريح وبديل</div>
+                <div class="option-icon alt-icon"><i class="fa-solid fa-user-shield"></i></div>
+                <h4>التسميع البديل عبر الموقع</h4>
+                <p>إذا كنت تشعر بالخجل من التسميع المباشر، يمكنك إرسال تسميعك (الآيات، المعاني، والتطبيق العملي) كتابةً أو تسجيلاً بكل خصوصية.</p>
+                <div class="option-actions">
+                    <button type="button" class="btn-recite text-btn" onclick="openRecitationForm('text')">
+                        <i class="fa-solid fa-pen-to-square"></i> تسميع كتابي
+                    </button>
+                    <button type="button" class="btn-recite audio-btn" onclick="openRecitationForm('audio')">
+                        <i class="fa-solid fa-microphone"></i> تسجيل صوتي
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="recitationFormArea" class="recitation-form-box" style="display: none;">
+            <div class="form-box-header">
+                <h4 id="recitationFormTitle"><i class="fa-solid fa-paper-plane"></i> إرسال التسميع البديل</h4>
+                <button type="button" class="close-form-btn" onclick="closeRecitationForm()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div id="textRecitationInput" class="recitation-input-group" style="display: none;">
+                <div style="margin-bottom: 1rem;">
+                    <label style="font-weight: 700; margin-bottom: 0.3rem; display: block; color: var(--primary);">1. تسميع الآيات الكريمة:</label>
+                    <textarea id="recitationTextAyah" placeholder="اكتب الآيات الكريمة المطلوبة بدقة..." style="width:100%; height:90px; padding:0.8rem; border-radius:10px; border:1px solid #cbd5e1; outline:none; font-size:0.95rem;"></textarea>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label style="font-weight: 700; margin-bottom: 0.3rem; display: block; color: var(--primary);">2. تفسير الصفحة ومعاني الكلمات:</label>
+                    <textarea id="recitationTextTafsir" placeholder="اذكر أهم معاني الكلمات والتفسير الإجمالي للصفحة..." style="width:100%; height:80px; padding:0.8rem; border-radius:10px; border:1px solid #cbd5e1; outline:none; font-size:0.95rem;"></textarea>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label style="font-weight: 700; margin-bottom: 0.3rem; display: block; color: var(--primary);">3. التطبيق العملي للصفحة في حياتك:</label>
+                    <textarea id="recitationTextApplication" placeholder="كيف ستطبق آيات وهدايات هذه الصفحة في سلوكك وحياتك اليومية؟" style="width:100%; height:80px; padding:0.8rem; border-radius:10px; border:1px solid #cbd5e1; outline:none; font-size:0.95rem;"></textarea>
+                </div>
+            </div>
+
+            <div id="audioRecitationInput" class="recitation-input-group" style="display: none; text-align: center;">
+                <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:0.8rem; border-radius:10px; margin-bottom:1rem; text-align:right; font-size:0.9rem; color:#166534;">
+                    <strong>تعليمات التسجيل الصوتي:</strong> يُرجى أن يتضمن تسجيلك الصوتي:
+                    <ul style="padding-right:1.2rem; margin-top:0.3rem;">
+                        <li>تلاوة وتسميع الآيات الكريمة.</li>
+                        <li>تفسير الصفحة ومعاني الكلمات الأساسية.</li>
+                        <li>كيفية تطبيق الصفحة عملياً في حياتك اليومية.</li>
+                    </ul>
+                </div>
+                <div class="audio-controls-wrap">
+                    <button type="button" id="startRecBtn" class="btn btn-secondary" onclick="startAudioRecord()"><i class="fa-solid fa-circle" style="color:#ef4444;"></i> بدء التسجيل</button>
+                    <button type="button" id="stopRecBtn" class="btn btn-danger" onclick="stopAudioRecord()" style="display:none;"><i class="fa-solid fa-square"></i> إيقاف التسجيل</button>
+                </div>
+                <audio id="audioPreview" controls style="display:none; width:100%; margin-top:1rem; border-radius:30px;"></audio>
+            </div>
+
+            <div style="margin-top:1.2rem; text-align:left;">
+                <button type="button" class="btn btn-secondary" style="padding:0.7rem 1.8rem; font-size:1rem;" onclick="submitStudentRecitation()">
+                    <i class="fa-solid fa-paper-plane"></i> إرسال التسميع الشامل للأستاذ
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Main Container -->
     <div class="container">
 
@@ -1831,7 +1881,6 @@
                 </div>
             </div>
 
-            <!-- Controls: Live Search & Juz Filter -->
             <div class="controls">
                 <div class="search-box">
                     <input 
@@ -1849,7 +1898,6 @@
                 </div>
             </div>
 
-            <!-- Cards Grid -->
             <div id="surahGrid" class="surah-grid"></div>
         </section>
 
@@ -1942,13 +1990,10 @@
                 </div>
             </div>
 
-            <div class="wishes-grid" id="wishesContainer">
-                <!-- Dynamic wishes loaded here -->
-            </div>
+            <div class="wishes-grid" id="wishesContainer"></div>
         </section>
 
         <!-- 5. Jannah Room Section / غرفة خير وأمنيات الجنة -->
-        <!-- فضل مصاحبة القرآن الكريم -->
         <section id="quranCompanionship" class="protected-content container quran-card animate-fade">
             <div class="section-header">
                 <div class="section-title">
@@ -2000,7 +2045,7 @@
                     </select>
                 </div>
                 <div>
-                    <label style="font-size:0.85rem; font-weight:800; color:#1e293b;">ما الذي يت مناه قلبك في الجنة؟</label>
+                    <label style="font-size:0.85rem; font-weight:800; color:#1e293b;">ما الذي يتمناه قلبك في الجنة؟</label>
                     <input type="text" id="jannahTitle" class="form-control" placeholder="مثال: النظر لوجه الله الكريم / قصر من لؤلؤة واحدة">
                 </div>
                 <div>
@@ -2012,9 +2057,7 @@
                 </div>
             </div>
 
-            <div class="jannah-grid" id="jannahGrid">
-                <!-- Dynamic Jannah wishes loaded here -->
-            </div>
+            <div class="jannah-grid" id="jannahGrid"></div>
         </section>
 
         <!-- 6. Stats & Progress Table Section -->
@@ -2042,9 +2085,7 @@
                             <th>إجمالي السنة (البنك)</th>
                         </tr>
                     </thead>
-                    <tbody id="statsTableBody">
-                        <!-- Dynamic stats row loaded via JS -->
-                    </tbody>
+                    <tbody id="statsTableBody"></tbody>
                 </table>
             </div>
         </section>
@@ -2098,7 +2139,6 @@
 
     <!-- JavaScript Logic -->
     <script>
-        // الـ 114 سورة بالترتيب ومقاصدها وأسباب تسميتها ومكان نزولها
         const ALL_SURAHS_DB = [
             { number: 1, name: "الفاتحة", type: "مكية", juz: 1, theme: "تحقيق التوحيد والعبودية لله، وإعلان الافتقار إليه، وبيان معالم الصراط المستقيم.", naming: "سُمّيت بالفاتحة لأنه يُفتتح بها القراءة في الصلاة، وتُفتتح بها كتابة المصحف الشريف." },
             { number: 2, name: "البقرة", type: "مدنية", juz: 1, theme: "إعداد الأمة الاستخلافية (أمة الإسلام) لقيادة العالم وحمل أمانة الدين بعد عزله عن بني إسرائيل، وتبيان الأحكام والشرائع.", naming: "لتضمنها قصة بني إسرائيل مع بقرة بني إسرائيل والأمر ببحثهم عن القاتل عن طريق ضربه ببعضها، دلالة على قدرة الله في إحياء الموتى." },
@@ -2120,7 +2160,7 @@
             { number: 18, name: "الكهف", type: "مكية", juz: 15, theme: "العصمة من الفتن (فتنة الدين، المال، العلم، والسلطة) والتمسك بالحق والتذكير باليوم الآخر.", naming: "لقصة فتية الكهف الذين فروا بدينهم وجعلوا الكهف ملجأً لهم." },
             { number: 19, name: "مريم", type: "مكية", juz: 16, theme: "إثبات رحمة الله المباشرة بعباده وفضل دعائه، وتنزيه الله عن الولد والشريك.", naming: "لتكريم مريم العذراء وبيان قصتها العجيبة في حملها وإنجابها لنبي الله عيسى عليه السلام بدون أب." },
             { number: 20, name: "طه", type: "مكية", juz: 16, theme: "التسلية والتثبيت للنبي والمسلمين بأن القرآن لم ينزل ليشقى به الإنسان بل سعادة وتذكرة، وإبراز قصة موسى الموسعة.", naming: "لافتتاحها بالنداء الحرفي طه، وقيل هو اسم من أسماء النبي ﷺ أو نداء باللغة السريانية/النبطية." },
-            { number: 21, name: "الأنبياء", type: "مكية", juz: 17, theme: "إثبات وحدة الدين والرسالة الإلهية، والإنذار بقرب الحساب والقيامة.", naming: "لأنها استوعبت ذكر عدد كبير من الأنبياء والمرسلين (حوالي 16 نبياً) وبيان وحدتهم في عقيدة التوحيد." },
+            { number: 21, name: "الأننبياء", type: "مكية", juz: 17, theme: "إثبات وحدة الدين والرسالة الإلهية، والإنذار بقرب الحساب والقيامة.", naming: "لأنها استوعبت ذكر عدد كبير من الأنبياء والمرسلين (حوالي 16 نبياً) وبيان وحدتهم في عقيدة التوحيد." },
             { number: 22, name: "الحج", type: "مختلطة", juz: 17, theme: "التذكير بزلزلة الساعة وعظمة الخالق، والأمر بالجهاد والدفاع عن شعائر الله.", naming: "لتضمنها أحكام الحج ونداء إبراهيم للناس بالعبادة، وما فيه من منافع وشعائر." },
             { number: 23, name: "المؤمنون", type: "مكية", juz: 18, theme: "بيان صفات الفلاح والنجاة في الدنيا والآخرة، وإثبات حقيقة البعث والنشور.", naming: "لافتتاحها ببيان صفات المؤمنين الصادقين الذين كتب الله لهم الفلاح والوراثة للفردوس." },
             { number: 24, name: "النور", type: "مدنية", juz: 18, theme: "حماية المجتمع المسلم وعفافه من خلال التشريعات والآداب (حدود القذف، الزنا، الاستئذان، وغض البصر).", naming: "لتضمنها آية النور العظيمة، ولأنها تشرع أحكاماً تنور المجتمع وتحفظ الأعراض والبيوت من الفاحشة." },
@@ -2244,10 +2284,6 @@
             document.getElementById('authModal').style.display = 'none';
         }
 
-        let selectedPlanType = 'monthly';
-        let selectedPlanPrice = 150;
-
-        // بيانات مستقلة لكل حساب: لا نقرأ أو نكتب أي بيانات شخصية بمفتاح مشترك.
         const DEFAULT_STATS = { today: 0, yesterday: 0, currentWeek: 0, pastWeeks: 0, currentMonth: 0, yearlyBank: 0 };
         const DEFAULT_WISHES = [
             { id: 1, title: 'رحلة ترفيهية أسبوعية', reason: 'المواظبة على السلوكيات والتفوق الأسبوعي', points: 50, img: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=400&q=80' },
@@ -2274,6 +2310,11 @@
         let leaderboardRows = [];
         let surahsData = ALL_SURAHS_DB;
 
+        let currentRecitationType = 'text';
+        let mediaRecorder;
+        let audioChunks = [];
+        let audioBlob = null;
+
         document.addEventListener('DOMContentLoaded', async () => {
             await checkAuthStatus();
             updatePointsDisplay();
@@ -2281,14 +2322,10 @@
             renderWishes();
             renderJannahWishes();
             renderStatsTable();
-            
-            // تهيئة وتفعيل بطاقات السور والفلترة
             initJuzFilter();
             renderSurahCards(surahsData);
-            // لا نحمّل المصحف أو التفسير قبل تسجيل الدخول.
         });
 
-        // 1. إنشاء خيارات الأجزاء الـ 30 لقائمة الفلترة
         function initJuzFilter() {
             const select = document.getElementById('juzSelect');
             if (!select) return;
@@ -2300,7 +2337,6 @@
             }
         }
 
-        // 2. عرض بطاقات السور بالكامل
         function renderSurahCards(surahs) {
             const grid = document.getElementById('surahGrid');
             if (!grid) return;
@@ -2332,7 +2368,6 @@
             });
         }
 
-        // 3. التصفية المباشرة بحسب البحث والأجزاء
         function filterSurahs() {
             const query = document.getElementById('searchInput').value.trim().toLowerCase();
             const selectedJuz = document.getElementById('juzSelect').value;
@@ -2349,16 +2384,6 @@
             });
 
             renderSurahCards(filtered);
-        }
-
-        function copyVoda() {
-            navigator.clipboard.writeText('01033253907');
-            alert('تم نسخ رقم فودافون كاش (01033253907) بنجاح!');
-        }
-
-        function copyInsta() {
-            navigator.clipboard.writeText('01033253907');
-            alert('تم نسخ رقم InstaPay (01033253907) بنجاح!');
         }
 
         function setProtectedSectionsAccess(allowed) {
@@ -2489,7 +2514,6 @@
                     return raw === null ? fallback : JSON.parse(raw);
                 } catch (_) { return fallback; }
             };
-            // أرصدة النقاط تُحمّل من Supabase في loadUserWallet، ولا تُقرأ من تخزين المتصفح.
             points = 0;
             totalBank = 0;
             stats = { ...DEFAULT_STATS, ...read('stats', {}) };
@@ -2562,7 +2586,6 @@
         }
 
         function logout() {
-
             if (confirm('هل ترغب في تسجيل الخروج أو تبديل الحساب؟')) {
                 signOutUser();
             }
@@ -2616,10 +2639,13 @@
                 }
                 const adminPanel = document.getElementById('leaderboardAdminPanel');
                 if (adminPanel) adminPanel.style.display = adminMarker ? 'block' : 'none';
-                if (adminMarker) await loadPendingPointReviews();
+                if (adminMarker) {
+                    await loadPendingPointReviews();
+                    await loadPendingRecitationsForTeacher();
+                }
             } catch (error) {
                 console.error('Leaderboard load error:', error);
-                host.innerHTML = '<div class="leaderboard-empty">تعذر تحميل لوحة الشرف. تأكد من تنفيذ إعدادات Supabase الموضحة مع ملف الموقع.</div>';
+                host.innerHTML = '<div class="leaderboard-empty">تعذر تحميل لوحة الشرف.</div>';
             }
         }
 
@@ -2668,6 +2694,70 @@
             await loadMonthlyLeaderboard();
         }
 
+        /* دالة تحميل ومراجعة التسميعات الأونلاين المعلقة الخاصة بالأستاذ */
+        async function loadPendingRecitationsForTeacher() {
+            const host = document.getElementById('leaderboardReviewRequests');
+            if (!host) return;
+
+            const { data: recitations, error } = await supabaseClient
+                .from('recitations')
+                .select('*')
+                .eq('status', 'pending')
+                .order('created_at', { ascending: true });
+
+            if (error || !recitations?.length) {
+                host.innerHTML += '<div class="leaderboard-empty" style="margin-top:1rem;">لا توجد تسميعات أونلاين معلقة لمراجعتها.</div>';
+                return;
+            }
+
+            const html = recitations.map(r => `
+                <div class="review-request" style="flex-direction:column; align-items:flex-start; background:rgba(255,255,255,0.15); padding:1rem; border-radius:12px; margin-bottom:1rem; border-right:4px solid var(--secondary);">
+                    <div style="width:100%; display:flex; justify-content:space-between; align-items:center;">
+                        <strong><i class="fa-solid fa-user-graduate"></i> ${escapeLeaderboardText(r.student_name)}</strong>
+                        <span class="type-tag" style="background:#fef3c7; color:#92400e;">${r.recitation_type === 'text' ? 'تسميع نصي' : 'تسجيل صوتي'}</span>
+                    </div>
+                    
+                    ${r.recitation_type === 'text' ? `
+                        <div style="margin-top:0.5rem; font-size:0.9rem; background:rgba(0,0,0,0.2); padding:0.8rem; border-radius:8px; width:100%; color:#fff;">
+                            <p style="margin-bottom:0.3rem;"><strong>1️⃣ الآيات:</strong> ${escapeLeaderboardText(r.ayah_text)}</p>
+                            <p style="margin-bottom:0.3rem;"><strong>2️⃣ التفسير والمعاني:</strong> ${escapeLeaderboardText(r.tafsir_text)}</p>
+                            <p><strong>3️⃣ التطبيق العملي:</strong> ${escapeLeaderboardText(r.application_text)}</p>
+                        </div>
+                    ` : `
+                        <div style="margin-top:0.5rem; width:100%;">
+                            <audio controls src="${r.audio_url}" style="width:100%; border-radius:20px;"></audio>
+                        </div>
+                    `}
+
+                    <div class="review-actions" style="margin-top:0.8rem; width:100%; justify-content:flex-end; gap:0.5rem;">
+                        <button class="approve-review" onclick="reviewRecitation('${r.id}', '${r.user_id}', 'approved')"><i class="fa-solid fa-check"></i> اعتماد (+15 نقطة)</button>
+                        <button class="reject-review" onclick="reviewRecitation('${r.id}', '${r.user_id}', 'rejected')"><i class="fa-solid fa-xmark"></i> رفض</button>
+                    </div>
+                </div>
+            `).join('');
+
+            host.innerHTML += `<h5 style="margin-top:1.5rem; color:#fef08a;"><i class="fa-solid fa-headphones"></i> تسميعات الطلاب الأونلاين المعلقة:</h5>` + html;
+        }
+
+        async function reviewRecitation(recitationId, userId, action) {
+            const { error } = await supabaseClient
+                .from('recitations')
+                .update({ status: action })
+                .eq('id', recitationId);
+
+            if (error) {
+                alert('تعذر تحديث حالة التسميع: ' + error.message);
+                return;
+            }
+
+            if (action === 'approved') {
+                await submitPointsForReview(15, 'اعتماد التسميع الأونلاين البديل (الآيات والتفسير والتطبيق)');
+            }
+
+            alert(action === 'approved' ? 'تم اعتماد التسميع وإضافة النقاط بنجاح!' : 'تم رفض التسميع.');
+            await loadMonthlyLeaderboard();
+        }
+
         async function submitPointsForReview(amount, reason) {
             if (!currentUser) {
                 alert('سجّل الدخول أولًا حتى يُسجل إنجازك باسم حسابك.');
@@ -2690,19 +2780,17 @@
                 alert('تعذر إرسال الإنجاز للمراجعة. حاول مرة أخرى.');
                 return false;
             }
-            alert('تم تسجيل إنجازك وإرساله للمراجعة. ستضاف نقاط المسابقة بعد التحقق منها في المحاضرة المباشرة.');
+            alert('تم تسجيل إنجازك وإرساله للمراجعة. ستضاف نقاط المسابقة بعد التحقق منها.');
             return true;
         }
 
         function updatePointsDisplay() {
             document.getElementById('userPoints').innerText = points;
             document.getElementById('totalPointsBank').innerText = totalBank;
-            // لا تحفظ أرصدة النقاط محليًا؛ Supabase هو المصدر الموحد لكل الأجهزة.
             renderStatsTable();
         }
 
         function addPoints(pts, reason = 'إنجاز تعليمي') {
-            // لا تُضاف نقاط المنافسة مباشرة من المتصفح؛ تُرسل للمراجعة أولًا.
             return submitPointsForReview(pts, reason);
         }
 
@@ -2723,6 +2811,156 @@
             `;
         }
 
+        /* دوال قسم التسميع الأونلاين وتخزين البيانات مباشرة في Supabase */
+        function openRecitationForm(type) {
+            if (!currentUser) {
+                alert('يرجى تسجيل الدخول أولاً لتتمكن من إرسال التسميع الأونلاين.');
+                openAccountModal();
+                return;
+            }
+
+            currentRecitationType = type;
+            const formArea = document.getElementById('recitationFormArea');
+            const textGroup = document.getElementById('textRecitationInput');
+            const audioGroup = document.getElementById('audioRecitationInput');
+            const title = document.getElementById('recitationFormTitle');
+
+            formArea.style.display = 'block';
+
+            if (type === 'text') {
+                textGroup.style.display = 'block';
+                audioGroup.style.display = 'none';
+                title.innerHTML = '<i class="fa-solid fa-pen-to-square"></i> تسميع كتابي (الآيات + التفسير + التطبيق العملي)';
+            } else {
+                textGroup.style.display = 'none';
+                audioGroup.style.display = 'block';
+                title.innerHTML = '<i class="fa-solid fa-microphone"></i> تسجيل صوتي للتسميع (الآيات + التفسير + التطبيق العملي)';
+            }
+
+            formArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function closeRecitationForm() {
+            document.getElementById('recitationFormArea').style.display = 'none';
+        }
+
+        async function startAudioRecord() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+                mediaRecorder.onstop = () => {
+                    audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    const player = document.getElementById('audioPreview');
+                    player.src = audioUrl;
+                    player.style.display = 'block';
+                };
+
+                mediaRecorder.start();
+                document.getElementById('startRecBtn').style.display = 'none';
+                document.getElementById('stopRecBtn').style.display = 'inline-flex';
+            } catch (err) {
+                alert('يرجى السماح بالوصول للميكروفون لتسجيل التسميع الصوتي.');
+            }
+        }
+
+        function stopAudioRecord() {
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                mediaRecorder.stop();
+                document.getElementById('startRecBtn').style.display = 'inline-flex';
+                document.getElementById('stopRecBtn').style.display = 'none';
+            }
+        }
+
+        async function submitStudentRecitation() {
+            if (!currentUser) {
+                alert('يرجى تسجيل الدخول أولاً لإرسال التسميع.');
+                openAccountModal();
+                return;
+            }
+
+            const studentName = currentUser.user_metadata?.full_name || currentUser.email || 'طالب';
+
+            if (currentRecitationType === 'text') {
+                const ayahContent = document.getElementById('recitationTextAyah').value.trim();
+                const tafsirContent = document.getElementById('recitationTextTafsir').value.trim();
+                const appContent = document.getElementById('recitationTextApplication').value.trim();
+
+                if (!ayahContent || !tafsirContent || !appContent) {
+                    alert('يرجى إكمال جميع الأركان الثلاثة للتسميع (الآيات، التفسير، والتطبيق) قبل الإرسال.');
+                    return;
+                }
+
+                // حفظ التسميع النصي في Supabase
+                const { error } = await supabaseClient.from('recitations').insert({
+                    user_id: currentUser.id,
+                    student_name: studentName,
+                    recitation_type: 'text',
+                    ayah_text: ayahContent,
+                    tafsir_text: tafsirContent,
+                    application_text: appContent,
+                    status: 'pending'
+                });
+
+                if (error) {
+                    alert('حدث خطأ أثناء حفظ التسميع: ' + error.message);
+                    return;
+                }
+
+                alert('تم إرسال التسميع النصي بنجاح وإدراجه في لوحة المراجعة الخاصة بالأستاذ!');
+                
+                document.getElementById('recitationTextAyah').value = '';
+                document.getElementById('recitationTextTafsir').value = '';
+                document.getElementById('recitationTextApplication').value = '';
+
+            } else {
+                if (!audioBlob) {
+                    alert('يرجى تسجيل الصوت أولاً قبل الإرسال.');
+                    return;
+                }
+
+                const fileName = `${currentUser.id}_${Date.now()}.mp3`;
+
+                // 1. رفع الملف الصوتي إلى Supabase Storage
+                const { data: uploadData, error: uploadError } = await supabaseClient.storage
+                    .from('recitations_audio')
+                    .upload(fileName, audioBlob, { contentType: 'audio/mp3' });
+
+                if (uploadError) {
+                    alert('تعذر رفع التسجيل الصوتي: ' + uploadError.message);
+                    return;
+                }
+
+                // 2. الحصول على رابط الصوت العام
+                const { data: publicUrlData } = supabaseClient.storage
+                    .from('recitations_audio')
+                    .getPublicUrl(fileName);
+
+                // 3. حفظ بيانات التسميع والصوت في الجدول
+                const { error: insertError } = await supabaseClient.from('recitations').insert({
+                    user_id: currentUser.id,
+                    student_name: studentName,
+                    recitation_type: 'audio',
+                    audio_url: publicUrlData.publicUrl,
+                    status: 'pending'
+                });
+
+                if (insertError) {
+                    alert('تعذر تسجيل التسميع في القاعدة: ' + insertError.message);
+                    return;
+                }
+
+                alert('تم رفع التسجيل الصوتي بنجاح إلى لوحة المراجعة الخاصة بالأستاذ!');
+                audioBlob = null;
+                document.getElementById('audioPreview').style.display = 'none';
+            }
+
+            closeRecitationForm();
+        }
+
         function switchTab(tabId, btn) {
             document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
             document.querySelectorAll('.quran-tab').forEach(tb => tb.classList.remove('active'));
@@ -2741,7 +2979,6 @@
             }
         }
 
-        // دالة قراءة تدبر السورة واستخراج مقاصدها وأسباب تسميتها ومكان نزولها
         async function fetchProtectedTadabbur(surahNumber, surahName) {
             const axisEl = document.getElementById('tadabburMainAxis');
             const namingEl = document.getElementById('tadabburNaming');
@@ -2926,7 +3163,6 @@
             renderWishes();
         }
 
-        /* ووظائف غرفة أمنيات الجنة / غرفة خير */
         function renderJannahWishes() {
             const grid = document.getElementById('jannahGrid');
             if (!grid) return;
@@ -3016,21 +3252,23 @@
             document.getElementById('postInput').value = '';
         }
 
-
-        // التبديل بين مساحات المنصة في واجهة العرض الرئيسية
+        /* العناصر التفاعلية لشريط اكتشاف المحتوى الرئيسي */
         const showcaseItems = [
-            {kicker:'ابدأ رحلتك مع كتاب الله',title:'القرآن الكريم… تلاوة وفهم وتدبر',description:'اكتشف معاني الآيات، وتأمل هدايات السور، واجعل ما تتعلمه أثرًا في فكرك وسلوكك.',href:'#quran',cta:'افتح المصحف والتدبر'},
-            {kicker:'تعرف إلى سور القرآن',title:'لكل سورة مقصد… ولكل آية هداية',description:'تعرّف على مقاصد السور وأسباب تسميتها، وانتقل بين السور لتتعرف إلى موضوعاتها.',href:'#surahsOverview',cta:'تصفح دليل السور'},
-            {kicker:'العلم الذي يظهر في السلوك',title:'الأخلاق… قيم نتعلمها ونعيش بها',description:'تأمل القيم والأخلاق، وتعرّف إلى ما يعينك على تطبيقها في حياتك اليومية.',href:'#morals',cta:'اكتشف مساحة الأخلاق'},
-            {kicker:'صحبة تغيّر القلب',title:'فضل مصاحبة القرآن وحفظه والعمل به',description:'اقرأ عن فضل القرآن وآثار صحبته، واجعل علاقتك به حفظًا وفهمًا وتدبرًا وعملًا.',href:'#quranCompanionship',cta:'اكتشف فضل مصاحبة القرآن'},
-            {kicker:'أهدافك تستحق السعي',title:'اكتب أمنيتك… وخذ بالأسباب',description:'مساحة تكتب فيها أمنياتك وتتابع ما ترجوه، وتشارك غيرك الأهداف الطيبة.',href:'#wishlist',cta:'اذهب إلى الأماني'},
-            {kicker:'مساحة للهمة والإنجاز',title:'خَيْرٌ وَأَبْقَىٰ',description:'مساحة تجمع الأمنيات الطيبة والتشجيع على العمل لما يبقى أثره وينفع صاحبه.',href:'#jannahRoom',cta:'ادخل الغرفة'},
-            {kicker:'نتعلم معًا ونتناقش',title:'محاضرات أ. يوسف مسعد',description:'محاضرات مجانية للطلاب وطلاب الجامعة والخريجين، مع مساحة للنقاش والأسئلة.',href:'#lectures',cta:'تعرف على المحاضرات'},
-            {kicker:'شارك فكرتك وتفاعل',title:'منتدى قُرَّةَ أَعْيُنٍ',description:'شارك ما تعلمته، واكتب فكرة أو فائدة، وتفاعل مع بقية أعضاء المنصة.',href:'#community',cta:'شارك في المنتدى'}
+            {kicker:'ابدأ رحلتك مع كتاب الله', title:'القرآن الكريم… تلاوة وفهم وتدبر', description:'اكتشف معاني الآيات، وتأمل هدايات السور، واجعل ما تتعلمه أثرًا في فكرك وسلوكك.', href:'#quran', cta:'افتح المصحف والتدبر'},
+            {kicker:'تعرف إلى سور القرآن', title:'لكل سورة مقصد… ولكل آية هداية', description:'تعرّف على مقاصد السور وأسباب تسميتها، وانتقل بين السور لتتعرف إلى موضوعاتها.', href:'#surahsOverview', cta:'تصفح دليل السور'},
+            {kicker:'العلم الذي يظهر في السلوك', title:'الأخلاق… قيم نتعلمها ونعيش بها', description:'تأمل القيم والأخلاق، وتعرّف إلى ما يعينك على تطبيقها في حياتك اليومية.', href:'#morals', cta:'اكتشف مساحة الأخلاق'},
+            {kicker:'صحبة تغيّر القلب', title:'فضل مصاحبة القرآن وحفظه والعمل به', description:'اقرأ عن فضل القرآن وآثار صحبته، واجعل علاقتك به حفظًا وفهمًا وتدبرًا وعملًا.', href:'#quranCompanionship', cta:'اكتشف فضل مصاحبة القرآن'},
+            {kicker:'التسميع والتقييم الذاتي', title:'تسميع الآيات والمعاني والتطبيق العملي', description:'أرسل تسميعك كتابةً أو تسجيلاً صوتياً بكل سهولة، ويشمل: الآيات + المعاني والتفسير + التطبيق العملي.', href:'#onlineRecitation', cta:'الانتقال للتسميع الأونلاين'},
+            {kicker:'أهدافك تستحق السعي', title:'اكتب أمنيتك… وخذ بالأسباب', description:'مساحة تكتب فيها أمنياتك وتتابع ما ترجوه، وتشارك غيرك الأهداف الطيبة.', href:'#wishlist', cta:'اذهب إلى الأماني'},
+            {kicker:'مساحة للهمة والإنجاز', title:'خَيْرٌ وَأَبْقَىٰ', description:'مساحة تجمع الأمنيات الطيبة والتشجيع على العمل لما يبقى أثره وينفع صاحبه.', href:'#jannahRoom', cta:'ادخل الغرفة'},
+            {kicker:'نتعلم معًا ونتناقش', title:'محاضرات أ. يوسف مسعد', description:'محاضرات مجانية للطلاب وطلاب الجامعة والخريجين، مع مساحة للنقاش والأسئلة.', href:'#lectures', cta:'تعرف على المحاضرات'},
+            {kicker:'شارك فكرتك وتفاعل', title:'منتدى قُرَّةَ أَعْيُنٍ', description:'شارك ما تعلمته، واكتب فكرة أو فائدة، وتفاعل مع بقية أعضاء المنصة.', href:'#community', cta:'شارك في المنتدى'}
         ];
+
         document.getElementById('showcaseLink').addEventListener('click', event => {
             if (!currentUser) { event.preventDefault(); openAccountModal(); showAuthMode('signup'); }
         });
+
         document.querySelectorAll('.showcase-choice').forEach(button => {
             button.addEventListener('click', () => {
                 const item = showcaseItems[Number(button.dataset.index)];
