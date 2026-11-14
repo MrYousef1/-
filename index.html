@@ -1764,10 +1764,27 @@
                         <li>كيفية تطبيق الصفحة عملياً في حياتك اليومية.</li>
                     </ul>
                 </div>
+
+                <div style="margin-bottom: 0.8rem; text-align: right;">
+                    <label style="font-size:0.85rem; font-weight:700; color:#334155;">اختر الميكروفون:</label>
+                    <select id="micSelect" class="form-control" style="margin-top:4px; padding:0.5rem;">
+                        <option value="">الميكروفون الافتراضي للجهاز</option>
+                    </select>
+                </div>
+
                 <div class="audio-controls-wrap">
                     <button type="button" id="startRecBtn" class="btn btn-secondary" onclick="startAudioRecord()"><i class="fa-solid fa-circle" style="color:#ef4444;"></i> بدء التسجيل</button>
                     <button type="button" id="stopRecBtn" class="btn btn-danger" onclick="stopAudioRecord()" style="display:none;"><i class="fa-solid fa-square"></i> إيقاف التسجيل</button>
                 </div>
+
+                <!-- مؤشر مستوى الصوت الحي أثناء التسجيل -->
+                <div id="micLevelWrap" style="display:none; margin: 1rem auto; max-width: 320px;">
+                    <div style="font-size:0.8rem; color:#166534; font-weight:700; margin-bottom:4px;">مستوى التقاط الصوت (تحدث الآن):</div>
+                    <div style="width:100%; height:12px; background:#e2e8f0; border-radius:10px; overflow:hidden;">
+                        <div id="micLevelBar" style="width:0%; height:100%; background:#16a34a; transition:width 0.08s;"></div>
+                    </div>
+                </div>
+
                 <audio id="audioPreview" controls style="display:none; width:100%; margin-top:1rem; border-radius:30px;"></audio>
             </div>
 
@@ -2211,7 +2228,7 @@
             { number: 18, name: "الكهف", type: "مكية", juz: 15, theme: "العصمة من الفتن (فتنة الدين، المال، العلم، والسلطة) والتمسك بالحق والتذكير باليوم الآخر.", naming: "لقصة فتية الكهف الذين فروا بدينهم وجعلوا الكهف ملجأً لهم." },
             { number: 19, name: "مريم", type: "مكية", juz: 16, theme: "إثبات رحمة الله المباشرة بعباده وفضل دعائه، وتنزيه الله عن الولد والشريك.", naming: "لتكريم مريم العذراء وبيان قصتها العجيبة في حملها وإنجابها لنبي الله عيسى عليه السلام بدون أب." },
             { number: 20, name: "طه", type: "مكية", juz: 16, theme: "التسلية والتثبيت للنبي والمسلمين بأن القرآن لم ينزل ليشقى به الإنسان بل سعادة وتذكرة، وإبراز قصة موسى الموسعة.", naming: "لافتتاحها بالنداء الحرفي طه، وقيل هو اسم من أسماء النبي ﷺ أو نداء باللغة السريانية/النبطية." },
-            { number: 21, name: "الأننبياء", type: "مكية", juz: 17, theme: "إثبات وحدة الدين والرسالة الإلهية، والإنذار بقرب الحساب والقيامة.", naming: "لأنها استوعبت ذكر عدد كبير من الأنبياء والمرسلين (حوالي 16 نبياً) وبيان وحدتهم في عقيدة التوحيد." },
+            { number: 21, name: "الأنبياء", type: "مكية", juz: 17, theme: "إثبات وحدة الدين والرسالة الإلهية، والإنذار بقرب الحساب والقيامة.", naming: "لأنها استوعبت ذكر عدد كبير من الأنبياء والمرسلين (حوالي 16 نبياً) وبيان وحدتهم في عقيدة التوحيد." },
             { number: 22, name: "الحج", type: "مختلطة", juz: 17, theme: "التذكير بزلزلة الساعة وعظمة الخالق، والأمر بالجهاد والدفاع عن شعائر الله.", naming: "لتضمنها أحكام الحج ونداء إبراهيم للناس بالعبادة، وما فيه من منافع وشعائر." },
             { number: 23, name: "المؤمنون", type: "مكية", juz: 18, theme: "بيان صفات الفلاح والنجاة في الدنيا والآخرة، وإثبات حقيقة البعث والنشور.", naming: "لافتتاحها ببيان صفات المؤمنين الصادقين الذين كتب الله لهم الفلاح والوراثة للفردوس." },
             { number: 24, name: "النور", type: "مدنية", juz: 18, theme: "حماية المجتمع المسلم وعفافه من خلال التشريعات والآداب (حدود القذف، الزنا، الاستئذان، وغض البصر).", naming: "لتضمنها آية النور العظيمة، ولأنها تشرع أحكاماً تنور المجتمع وتحفظ الأعراض والبيوت من الفاحشة." },
@@ -2365,6 +2382,10 @@
         let mediaRecorder;
         let audioChunks = [];
         let audioBlob = null;
+        let activeAudioStream = null;
+        let recordedMimeType = 'audio/webm';
+        let audioContext = null;
+        let levelInterval = null;
 
         document.addEventListener('DOMContentLoaded', async () => {
             await checkAuthStatus();
@@ -2745,7 +2766,7 @@
             await loadMonthlyLeaderboard();
         }
 
-        /* دالة تحميل ومراجعة التسميعات الأونلاين المعلقة الخاصة بالأستاذ */
+        /* دالة تحميل ومراجعة التسميعات الأونلاين المعلقة الخاصة بالأستاذ (بروابط موقّتة آمنة) */
         async function loadPendingRecitationsForTeacher() {
             const host = document.getElementById('leaderboardReviewRequests');
             if (!host) return;
@@ -2761,7 +2782,27 @@
                 return;
             }
 
-            const html = recitations.map(r => `
+            // توليد روابط موقّتة صالحة لمدة ساعة لكل تسجيل صوتي
+            const itemsWithUrls = await Promise.all(recitations.map(async (r) => {
+                let playableUrl = '';
+                if (r.recitation_type === 'audio' && r.audio_url) {
+                    const marker = '/recitation-audio/';
+                    const filePath = r.audio_url.includes(marker)
+                        ? r.audio_url.split(marker)[1]
+                        : r.audio_url;
+
+                    const { data: signedData, error: signError } = await supabaseClient.storage
+                        .from('recitation-audio')
+                        .createSignedUrl(filePath, 3600);
+
+                    if (!signError && signedData?.signedUrl) {
+                        playableUrl = signedData.signedUrl;
+                    }
+                }
+                return { ...r, playableUrl };
+            }));
+
+            const html = itemsWithUrls.map(r => `
                 <div class="review-request" style="flex-direction:column; align-items:flex-start; background:rgba(255,255,255,0.15); padding:1rem; border-radius:12px; margin-bottom:1rem; border-right:4px solid var(--secondary);">
                     <div style="width:100%; display:flex; justify-content:space-between; align-items:center;">
                         <strong><i class="fa-solid fa-user-graduate"></i> ${escapeLeaderboardText(r.student_name)}</strong>
@@ -2776,7 +2817,9 @@
                         </div>
                     ` : `
                         <div style="margin-top:0.5rem; width:100%;">
-                            <audio controls src="${r.audio_url}" style="width:100%; border-radius:20px;"></audio>
+                            ${r.playableUrl 
+                                ? `<audio controls src="${r.playableUrl}" style="width:100%; border-radius:20px;"></audio>` 
+                                : `<small style="color:#fecaca;">تعذر تحميل رابط التسجيل الصوتي (تحقق من صلاحية SELECT للمشرف).</small>`}
                         </div>
                     `}
 
@@ -2886,35 +2929,156 @@
                 textGroup.style.display = 'none';
                 audioGroup.style.display = 'block';
                 title.innerHTML = '<i class="fa-solid fa-microphone"></i> تسجيل صوتي للتسميع (الآيات + التفسير + التطبيق العملي)';
+                populateMicrophones();
             }
 
             formArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
         function closeRecitationForm() {
+            stopAudioRecord();
             document.getElementById('recitationFormArea').style.display = 'none';
+        }
+
+        async function populateMicrophones() {
+            try {
+                if (!navigator.mediaDevices?.enumerateDevices) return;
+                const devices = await navigator.mediaDevices.enumerateDevices();
+                const mics = devices.filter(d => d.kind === 'audioinput');
+                const select = document.getElementById('micSelect');
+                if (!select) return;
+                const currentVal = select.value;
+                select.innerHTML = '<option value="">الميكروفون الافتراضي للجهاز</option>';
+                mics.forEach((mic, idx) => {
+                    const opt = document.createElement('option');
+                    opt.value = mic.deviceId;
+                    opt.textContent = mic.label || `ميكروفون ${idx + 1}`;
+                    select.appendChild(opt);
+                });
+                if (currentVal) select.value = currentVal;
+            } catch (_) {}
+        }
+
+        function getSupportedAudioMimeType() {
+            const types = [
+                'audio/webm;codecs=opus',
+                'audio/webm',
+                'audio/mp4',
+                'audio/ogg;codecs=opus'
+            ];
+            for (const type of types) {
+                if (window.MediaRecorder && MediaRecorder.isTypeSupported(type)) {
+                    return type;
+                }
+            }
+            return '';
+        }
+
+        function stopMicMonitoring() {
+            if (levelInterval) {
+                clearInterval(levelInterval);
+                levelInterval = null;
+            }
+            if (audioContext) {
+                audioContext.close().catch(() => {});
+                audioContext = null;
+            }
+            const levelWrap = document.getElementById('micLevelWrap');
+            if (levelWrap) levelWrap.style.display = 'none';
         }
 
         async function startAudioRecord() {
             try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                mediaRecorder = new MediaRecorder(stream);
-                audioChunks = [];
+                if (activeAudioStream) {
+                    activeAudioStream.getTracks().forEach(track => track.stop());
+                }
+                stopMicMonitoring();
 
-                mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+                const selectedMicId = document.getElementById('micSelect')?.value;
+                // طلب الصوت الخام بدون فلاتر قد تسبب كتم الإشارة في بعض الأجهزة
+                const audioConstraints = selectedMicId
+                    ? { deviceId: { exact: selectedMicId }, echoCancellation: false, noiseSuppression: false, autoGainControl: false }
+                    : { echoCancellation: false, noiseSuppression: false, autoGainControl: false };
+
+                activeAudioStream = await navigator.mediaDevices.getUserMedia({ audio: audioConstraints });
+                await populateMicrophones();
+
+                // التحقق من أن مسار الصوت مفعل وغير مكتوم
+                const audioTrack = activeAudioStream.getAudioTracks()[0];
+                if (!audioTrack || audioTrack.muted || !audioTrack.enabled) {
+                    alert('الميكروفون مكتوم من إعدادات الجهاز أو المتصفح. يرجى اختيار ميكروفون آخر من القائمة.');
+                }
+
+                // تشغيل مؤشر مستوى الصوت الحي
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (AudioCtx) {
+                    audioContext = new AudioCtx();
+                    if (audioContext.state === 'suspended') await audioContext.resume();
+                    const source = audioContext.createMediaStreamSource(activeAudioStream);
+                    const analyser = audioContext.createAnalyser();
+                    analyser.fftSize = 256;
+                    source.connect(analyser);
+                    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+                    document.getElementById('micLevelWrap').style.display = 'block';
+                    const levelBar = document.getElementById('micLevelBar');
+
+                    levelInterval = setInterval(() => {
+                        analyser.getByteTimeDomainData(dataArray);
+                        let maxDeviation = 0;
+                        for (let i = 0; i < dataArray.length; i++) {
+                            const dev = Math.abs(dataArray[i] - 128);
+                            if (dev > maxDeviation) maxDeviation = dev;
+                        }
+                        const pct = Math.min(100, Math.round((maxDeviation / 64) * 100));
+                        if (levelBar) levelBar.style.width = pct + '%';
+                    }, 80);
+                }
+
+                const mimeType = getSupportedAudioMimeType();
+                mediaRecorder = mimeType
+                    ? new MediaRecorder(activeAudioStream, { mimeType })
+                    : new MediaRecorder(activeAudioStream);
+
+                recordedMimeType = mediaRecorder.mimeType || mimeType || 'audio/webm';
+                audioChunks = [];
+                audioBlob = null;
+
+                mediaRecorder.ondataavailable = (e) => {
+                    if (e.data && e.data.size > 0) {
+                        audioChunks.push(e.data);
+                    }
+                };
+
                 mediaRecorder.onstop = () => {
-                    audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
+                    stopMicMonitoring();
+                    if (activeAudioStream) {
+                        activeAudioStream.getTracks().forEach(track => track.stop());
+                        activeAudioStream = null;
+                    }
+
+                    if (!audioChunks.length) {
+                        alert('لم يتم التقاط أي بيانات صوتية.');
+                        return;
+                    }
+
+                    audioBlob = new Blob(audioChunks, { type: recordedMimeType });
                     const audioUrl = URL.createObjectURL(audioBlob);
                     const player = document.getElementById('audioPreview');
                     player.src = audioUrl;
+                    player.muted = false;
+                    player.volume = 1.0;
+                    player.load();
                     player.style.display = 'block';
                 };
 
-                mediaRecorder.start();
+                mediaRecorder.start(250);
+                document.getElementById('audioPreview').style.display = 'none';
                 document.getElementById('startRecBtn').style.display = 'none';
                 document.getElementById('stopRecBtn').style.display = 'inline-flex';
             } catch (err) {
-                alert('يرجى السماح بالوصول للميكروفون لتسجيل التسميع الصوتي.');
+                stopMicMonitoring();
+                alert('تعذر الوصول للميكروفون: ' + err.message);
             }
         }
 
@@ -2968,34 +3132,32 @@
                 document.getElementById('recitationTextApplication').value = '';
 
             } else {
-                if (!audioBlob) {
+                if (!audioBlob || audioBlob.size === 0) {
                     alert('يرجى تسجيل الصوت أولاً قبل الإرسال.');
                     return;
                 }
 
-                const fileName = `${currentUser.id}_${Date.now()}.mp3`;
+                const ext = recordedMimeType.includes('mp4') ? 'mp4'
+                          : recordedMimeType.includes('ogg') ? 'ogg'
+                          : 'webm';
+                const fileName = `${currentUser.id}/${Date.now()}.${ext}`;
 
-                // 1. رفع الملف الصوتي إلى Supabase Storage
-                const { data: uploadData, error: uploadError } = await supabaseClient.storage
-                    .from('recitations_audio')
-                    .upload(fileName, audioBlob, { contentType: 'audio/mp3' });
+                // 1. رفع الملف الصوتي إلى مجلد recitation-audio الخاص بنوعه الفعلي
+                const { error: uploadError } = await supabaseClient.storage
+                    .from('recitation-audio')
+                    .upload(fileName, audioBlob, { contentType: recordedMimeType });
 
                 if (uploadError) {
                     alert('تعذر رفع التسجيل الصوتي: ' + uploadError.message);
                     return;
                 }
 
-                // 2. الحصول على رابط الصوت العام
-                const { data: publicUrlData } = supabaseClient.storage
-                    .from('recitations_audio')
-                    .getPublicUrl(fileName);
-
-                // 3. حفظ بيانات التسميع والصوت في الجدول
+                // 2. حفظ مسار الملف في القاعدة (ليتم تشغيله برابط موقّت آمن)
                 const { error: insertError } = await supabaseClient.from('recitations').insert({
                     user_id: currentUser.id,
                     student_name: studentName,
                     recitation_type: 'audio',
-                    audio_url: publicUrlData.publicUrl,
+                    audio_url: fileName,
                     status: 'pending'
                 });
 
@@ -3239,7 +3401,7 @@
         }
 
         function deleteWish(id) {
-            if (confirm('هل أنت تأكد من حذف هذه الهدية من القائمة؟')) {
+            if (confirm('هل أنت متأكد من حذف هذه الهدية من القائمة؟')) {
                 wishes = wishes.filter(w => w.id !== id);
                 renderWishes();
             }
@@ -3300,7 +3462,7 @@
             const desc = document.getElementById('jannahDesc').value.trim();
 
             if (!title) {
-                alert('يرجى أمنيتك التي تحلم بها في الجنة أولاً.');
+                alert('يرجى كتابة أمنيتك التي تحلم بها في الجنة أولاً.');
                 return;
             }
 
